@@ -1,0 +1,165 @@
+/**
+ * **********************************
+ * Generics
+ * **********************************
+ */
+
+main,
+nav,
+section,
+article {
+  display: block;
+}
+
+@font-face {
+  font-family: "GT America";
+  font-style: normal;
+  font-weight: normal;
+  src: url("/fonts/GT-America-Standard-Regular.woff") format("woff");
+}
+
+@font-face {
+  font-family: "GT America";
+  font-style: normal;
+  font-weight: bold;
+  src: url("/fonts/GT-America-Standard-Bold.woff") format("woff");
+}
+
+/**
+ * **********************************
+ * Base styles
+ * **********************************
+ */
+
+body {
+  background: #f1f0ec;
+  color: #191949;
+  font-family: "GT America", "Helvetica", sans-serif;
+  font-size: 14px;
+  line-height: 1.4;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 0 0 24px;
+}
+
+h2 {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+a {
+  color: #3a30a1;
+}
+
+p {
+  max-width: 50ch;
+}
+
+img {
+  max-width: 100%;
+  vertical-align: bottom;
+}
+
+ul {
+  margin: 0;
+  padding-left: 15px;
+}
+
+li {
+  margin-bottom: 10px;
+}
+
+/**
+ * **********************************
+ * Layout
+ * **********************************
+ */
+.wrap {
+  max-width: 800px;
+  padding: 0 15px;
+  margin: auto;
+}
+
+.intro,
+.work {
+  padding-bottom: 64px;
+  padding-top: 64px;
+}
+
+/**
+ * **********************************
+ * Intro
+ * **********************************
+ */
+.intro {
+  background-color: #fff;
+  font-size: 18px;
+}
+
+.intro a {
+  color: #191949;
+}
+
+.intro p:last-child {
+  margin-bottom: 0;
+}
+
+.lead {
+  font-size: 24px;
+  margin-top: 0;
+}
+
+/**
+ * **********************************
+ * Work section
+ * **********************************
+ */
+
+.work__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-column-gap: 40px;
+}
+
+.project {
+  margin-bottom: 40px;
+  max-width: 55ch;
+}
+.project__summary {
+  font-size: 16px;
+}
+
+.project__link {
+  background: #fff;
+  border-radius: 3px;
+  display: block;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.project__link:hover {
+  color: #fff;
+  background-color: #3a30a1;
+  text-decoration: none;
+}
+
+/**
+ * **********************************
+ * Navigation
+ * **********************************
+ */
+
+nav {
+  background: #fff;
+}
+
+nav a {
+  color: #191949;
+  display: inline-block;
+  padding: 15px;
+}
