@@ -1,0 +1,22 @@
+:root {
+  --color--cms-ds: #5942d2;
+  --color--cms-ds-darker: #453c7b;
+  --color--hcgov: #0d7ea2;
+  --color--hcgov-darker: #07648d;
+  --color--highlights: #1a1a1a;
+  --color--highlights-darker: #000;
+  --color--vermont: #1f8462;
+  --color--vermont-darker: #286846;
+  --font-size--large: 20px;
+  --font-size--small: 13px;
+  --font-weight--normal: 400;
+  --font-weight--bold: 700;
+  --font-weight--black: 900;
+  --radius--large: 48px;
+  --radius--small: 32px;
+  --spacer: 8px;
+  --gutter: calc(var(--spacer) * 3);
+  --gutter--small: calc(var(--spacer) * 2);
+  --gutter--medium: calc(var(--spacer) * 6);
+  --gutter--large: calc(var(--spacer) * 10);
+}
