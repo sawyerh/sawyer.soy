@@ -7,7 +7,10 @@
   --color--highlights-darker: #000;
   --color--vermont: #1f8462;
   --color--vermont-darker: #286846;
+  --font-size--body: 16px;
+  --font-size--body-mobile: 15px;
   --font-size--large: 20px;
+  --font-size--large-mobile: 18px;
   --font-size--small: 13px;
   --font-weight--normal: 400;
   --font-weight--bold: 700;
