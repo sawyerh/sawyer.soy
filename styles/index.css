@@ -202,13 +202,13 @@ a {
 }
 
 /* Vermont */
-.project--vermont .project__title,
-.project--vermont .project__subtitle,
 .project--vermont .project__links__heading,
 .project--vermont .project__link {
   color: var(--color--vermont);
 }
 
+.project--vermont .project__title,
+.project--vermont .project__subtitle,
 .project--vermont .project__link:hover {
   color: var(--color--vermont-darker);
 }
