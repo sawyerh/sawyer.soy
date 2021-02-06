@@ -1,7 +1,9 @@
 import Head from "next/head";
-import getPosts from "../lib/getPosts";
+import { getFrameworks } from "../lib/contentful";
 
-const Page = () => {
+const Page = (props) => {
+  console.log(props);
+
   return (
     <>
       <Head>
@@ -13,11 +15,11 @@ const Page = () => {
 };
 
 export async function getStaticProps() {
-  const posts = await getPosts();
+  const frameworks = await getFrameworks();
 
   return {
     props: {
-      posts,
+      frameworks,
     },
   };
 }
