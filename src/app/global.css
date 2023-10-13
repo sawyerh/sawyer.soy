@@ -1,0 +1,79 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-slate-light: #ced9dd;
+    --color-slate: #9cb0b7;
+    --color-peach: #fdc0a6;
+    --color-intl-orange: #ff4f00;
+    --color-terracotta: #c85d30;
+    --color-light-yellow: #ffbc7d;
+    --color-yellow: #ea9500;
+    ---color-dark-green: #213623;
+
+    --spacing-lg: 4rem;
+    --spacing-lg-half: calc(var(--spacing-lg) / 2);
+    --spacing-md: 2rem;
+    --spacing-md-half: calc(var(--spacing-md) / 2);
+  }
+}
+
+html {
+  font-size: 16px;
+}
+
+body {
+  color: #2b303c;
+  font-size: 1rem;
+  font-family: var(--font-sans);
+}
+
+a {
+  text-decoration: underline;
+}
+
+p,
+ul,
+ol {
+  margin-bottom: 1.5rem;
+  max-width: 65ch;
+  line-height: 1.5rem;
+}
+
+li {
+  margin-bottom: 0.5rem;
+}
+
+/**
+Custom utilities
+*/
+.font-marker {
+  font-weight: 300;
+  font-family: var(--font-marker);
+  font-variation-settings:
+    "ital" 1,
+    "INFM" 40,
+    "BNCE" 10,
+    "SPAC" 0;
+}
+
+.list-item-marker {
+  margin-left: 0.75rem;
+  list-style-type: "▹";
+  list-style-position: outside;
+}
+
+.list-item-marker ::marker {
+  color: var(--color-yellow);
+  font-variation-settings: "ital" 0;
+}
+
+.list-item-marker li {
+  padding-left: 0.5rem;
+}
+
+.text-balance {
+  text-wrap: balance;
+}
