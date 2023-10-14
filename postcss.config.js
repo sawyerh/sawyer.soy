@@ -1,6 +1,9 @@
 module.exports = {
   plugins: {
     tailwindcss: {},
-    autoprefixer: {},
+    "@csstools/postcss-oklab-function": {},
+    "postcss-preset-env": {
+      browsers: "last 4 versions",
+    },
   },
-}
+};

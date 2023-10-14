@@ -4,10 +4,14 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        // International Orange
-        "intl-orange": "var(--color-intl-orange)",
-        terracotta: "var(--color-terracotta)",
-        yellow: "var(--color-yellow)",
+        "intl-orange": "#ff4f00",
+        terracotta: "oklch(0.56 0.19 38.97)",
+        peach: "#fdc0a6",
+        yellow: "oklch(0.71 0.18 64.51)",
+        "yellow-light": "#ffbc7d",
+        forrest: "#213623",
+        slate: "#9cb0b7",
+        "slate-light": "#ced9dd",
       },
       fontFamily: {
         sans: ["var(--font-inter)"],

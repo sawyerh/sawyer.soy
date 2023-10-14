@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import { Atkinson_Hyperlegible } from "next/font/google";
 import localFont from "next/font/local";
-import "./global.css";
+import "../global.css";
 
 export const metadata: Metadata = {
   title: "Sawyer Hollenshead",

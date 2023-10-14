@@ -4,15 +4,6 @@
 
 @layer base {
   :root {
-    --color-slate-light: #ced9dd;
-    --color-slate: #9cb0b7;
-    --color-peach: #fdc0a6;
-    --color-intl-orange: #ff4f00;
-    --color-terracotta: #c85d30;
-    --color-light-yellow: #ffbc7d;
-    --color-yellow: #ea9500;
-    ---color-dark-green: #213623;
-
     --spacing-lg: 4rem;
     --spacing-lg-half: calc(var(--spacing-lg) / 2);
     --spacing-md: 2rem;
@@ -28,6 +19,33 @@ body {
   color: #2b303c;
   font-size: 1rem;
   font-family: var(--font-sans);
+}
+
+/**
+Type elements
+*/
+h1,
+h2,
+h3,
+h4 {
+  margin-bottom: 0.25em;
+  font-family: var(--font-serif);
+}
+
+h1 {
+  font-size: theme(fontSize.3xl);
+}
+
+h2 {
+  font-size: theme(fontSize.2xl);
+}
+
+h3 {
+  font-size: theme(fontSize.xl);
+}
+
+h4 {
+  font-size: theme(fontSize.lg);
 }
 
 a {
@@ -66,7 +84,7 @@ Custom utilities
 }
 
 .list-item-marker ::marker {
-  color: var(--color-yellow);
+  color: theme(colors.yellow);
   font-variation-settings: "ital" 0;
 }
 

@@ -7,7 +7,7 @@
 .hero {
   container-name: video-column;
   container-type: size;
-  background-color: var(--color-terracotta);
+  background-color: theme(colors.terracotta);
   width: 100%;
   height: 150px;
   overflow: hidden;
@@ -27,7 +27,7 @@
   top: 50%;
   left: 50%;
   transform: translateX(-50%) translateY(-50%);
-  opacity: 90%;
+  opacity: 95%;
   max-width: none;
   max-height: 100%;
 }
@@ -37,4 +37,17 @@
     max-width: 100%;
     max-height: none;
   }
+}
+
+.link-list {
+  text-wrap: balance;
+}
+
+.link-list li {
+  display: inline;
+}
+
+.link-list a {
+  display: inline-block;
+  padding: theme(spacing.1);
 }

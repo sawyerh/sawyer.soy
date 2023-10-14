@@ -1,4 +1,3 @@
-import classNames from "classnames";
 import Link from "next/link";
 import styles from "./home.module.css";
 
@@ -17,7 +16,8 @@ export default function Page() {
         />
         <span className="sr-only" id="video-alt">
           Video shows a man in a white shirt, blue pants, sunglasses, and a
-          black hat. He's standing on red boulders looking into the distance.
+          black hat. He&rsquo;s standing on red boulders looking into the
+          distance.
         </span>
       </div>
       <section className="grow">
@@ -36,12 +36,12 @@ export default function Page() {
           </Link>
         </nav>
 
-        <div className="px-md sm:px-lg py-lg-half">
+        <div className="px-md py-lg-half sm:px-lg">
           <p className="font-marker text-3xl text-terracotta">Heyo,</p>
           <p className="text-balance text-lg">
-            I&rsquo;m a full-stack engineer and technical leader, with a
-            specialization in frontend development and a background in UX
-            design. Coworkers have given me shoutouts for:
+            I&rsquo;m a full-stack engineer specializing in frontend
+            development, with a background in UX design. Coworkers have given me
+            shoutouts for:
           </p>
           <ul className="list-item-marker list-none font-marker">
             <li>
@@ -54,7 +54,7 @@ export default function Page() {
               environments
             </li>
             <li>Creating concise roadmaps and technical plans</li>
-            <li>Anticipating issues and finding solutions</li>
+            <li>Anticipating issues and diving deep to find solutions</li>
           </ul>
           <p className="mb-0">
             I&rsquo;m currently at <a href="https://www.navapbc.com/">Nava</a>,
@@ -77,7 +77,7 @@ export default function Page() {
           </p>
         </div>
 
-        <div className="px-md sm:px-lg py-lg-half bg-[#ced9dd]">
+        <div className="bg-[#ced9dd] px-md py-lg-half sm:px-lg">
           <p>
             Prior to Nava, I was at <a href="https://oak.is">Oak Studios</a>,
             where I helped lead product design and engineering on projects like{" "}
