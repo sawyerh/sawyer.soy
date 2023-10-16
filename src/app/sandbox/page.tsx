@@ -1,5 +1,3 @@
-import classNames from "classnames";
-
 const lorem = `Lorem ipsum dolor sit amet, consectetur adipiscing elit.`.repeat(
   3,
 );
@@ -21,6 +19,26 @@ export default function Page() {
           "bg-slate-light",
         ].map((color) => (
           <div key={color} className={`${color} m-2 aspect-square w-40`}>
+            {color}
+          </div>
+        ))}
+      </div>
+
+      <div className="flex">
+        {[
+          "text-intl-orange",
+          "text-terracotta",
+          "text-peach",
+          "text-yellow",
+          "text-yellow-light",
+          "text-forrest",
+          "text-slate",
+          "text-slate-light",
+        ].map((color) => (
+          <div
+            key={color}
+            className={`${color} m-2 aspect-square w-40 font-bold`}
+          >
             {color}
           </div>
         ))}

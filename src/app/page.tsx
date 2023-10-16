@@ -25,18 +25,18 @@ export default function Page() {
           <span className="mr-4 inline-block font-semibold">
             Sawyer <span className="font-marker">→</span>
           </span>
-          <Link className="inline-block px-2 py-4 text-slate-500" href="/notes">
+          <Link className="inline-block px-2 py-4 text-slate-700" href="/notes">
             Writing
           </Link>
-          <Link className="inline-block px-2 py-4 text-slate-500" href="/notes">
+          <Link className="inline-block px-2 py-4 text-slate-700" href="/notes">
             Learning
           </Link>
-          <Link className="inline-block px-2 py-4 text-slate-500" href="/notes">
+          <Link className="inline-block px-2 py-4 text-slate-700" href="/notes">
             Socializing
           </Link>
         </nav>
 
-        <div className="px-md py-lg-half sm:px-lg">
+        <div className="p-md sm:p-lg">
           <p className="font-marker text-3xl text-terracotta">Heyo,</p>
           <p className="text-balance text-lg">
             I&rsquo;m a full-stack engineer specializing in frontend
@@ -48,7 +48,7 @@ export default function Page() {
               Helping teams maintain momentum and focus on the highest-impact
               work
             </li>
-            <li>Kind and constructive code reviews</li>
+            <li>Constructive and timely code reviews</li>
             <li>
               A calm and communicative approach in complex, ambiguous
               environments
@@ -77,7 +77,7 @@ export default function Page() {
           </p>
         </div>
 
-        <div className="bg-[#ced9dd] px-md py-lg-half sm:px-lg">
+        <div className="bg-slate-200 p-md sm:px-lg">
           <p>
             Prior to Nava, I was at <a href="https://oak.is">Oak Studios</a>,
             where I helped lead product design and engineering on projects like{" "}

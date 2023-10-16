@@ -2,21 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-  :root {
-    --spacing-lg: 4rem;
-    --spacing-lg-half: calc(var(--spacing-lg) / 2);
-    --spacing-md: 2rem;
-    --spacing-md-half: calc(var(--spacing-md) / 2);
-  }
-}
-
 html {
   font-size: 16px;
 }
 
 body {
-  color: #2b303c;
+  color: theme(colors.moss.900);
   font-size: 1rem;
   font-family: var(--font-sans);
 }
@@ -49,7 +40,13 @@ h4 {
 }
 
 a {
+  color: theme(colors.moss.700);
   text-decoration: underline;
+  text-decoration-color: theme(colors.moss.500);
+}
+
+a:hover {
+  color: theme(colors.terracotta);
 }
 
 p,
@@ -57,7 +54,7 @@ ul,
 ol {
   margin-bottom: 1.5rem;
   max-width: 65ch;
-  line-height: 1.5rem;
+  line-height: 1.6rem;
 }
 
 li {
