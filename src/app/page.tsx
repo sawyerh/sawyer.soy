@@ -9,13 +9,15 @@ export default function Page() {
       <div className={styles.hero}>
         <video
           className={styles.video}
-          src="/alabama-hills.webm"
           autoPlay
           loop
           muted
           playsInline
           aria-describedby="video-alt"
-        />
+        >
+          <source src="/alabama-hills.webm" type="video/webm" />
+          <source src="/alabama-hills.mp4" type="video/mp4" />
+        </video>
         <span className="sr-only" id="video-alt">
           Video shows a man in a white shirt, blue pants, sunglasses, and a
           black hat. He&rsquo;s standing on red boulders looking into the
