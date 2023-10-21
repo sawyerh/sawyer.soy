@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import { Atkinson_Hyperlegible, Manrope } from "next/font/google";
+import { Atkinson_Hyperlegible } from "next/font/google";
 import localFont from "next/font/local";
 import "../global.css";
 
@@ -21,6 +21,13 @@ const sansFont = Atkinson_Hyperlegible<"--font-sans">({
   variable: "--font-sans",
   weight: ["400", "700"],
 });
+
+// const sansFont = Raleway<"--font-sans">({
+//   subsets: ["latin"],
+//   style: ["normal", "italic"],
+//   variable: "--font-sans",
+//   weight: ["400", "700"],
+// });
 
 // https://www.gent.media/manrope
 // const sansFont = Manrope<"--font-sans">({

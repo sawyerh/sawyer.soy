@@ -2,6 +2,8 @@ import Link from "next/link";
 import styles from "./home.module.css";
 
 export default function Page() {
+  const showNav = process.env.NODE_ENV === "development";
+
   return (
     <div className={styles.container}>
       <div className={styles.hero}>
@@ -22,21 +24,38 @@ export default function Page() {
       </div>
       <section className="grow">
         <nav className="px-md sm:px-lg">
-          <span className="mr-4 inline-block font-semibold">
-            Sawyer <span className="font-marker">→</span>
-          </span>
-          <Link className="inline-block px-2 py-4 text-slate-700" href="/notes">
-            Writing
+          <Link
+            href="/"
+            className="mr-4 inline-block py-4 font-semibold no-underline"
+          >
+            Sawyer Hollenshead{" "}
+            {showNav && <span className="font-marker">→</span>}
           </Link>
-          <Link className="inline-block px-2 py-4 text-slate-700" href="/notes">
-            Learning
-          </Link>
-          <Link className="inline-block px-2 py-4 text-slate-700" href="/notes">
-            Socializing
-          </Link>
+          {showNav && (
+            <>
+              <Link
+                className="inline-block px-2 py-4 text-slate-700"
+                href="/notes"
+              >
+                Writing
+              </Link>
+              <Link
+                className="inline-block px-2 py-4 text-slate-700"
+                href="/notes"
+              >
+                Learning
+              </Link>
+              <Link
+                className="inline-block px-2 py-4 text-slate-700"
+                href="/notes"
+              >
+                Socializing
+              </Link>
+            </>
+          )}
         </nav>
 
-        <div className="p-md sm:p-lg">
+        <div className="p-md py-md sm:px-lg">
           <p className="font-marker text-3xl text-terracotta">Heyo,</p>
           <p className="text-balance text-lg">
             I&rsquo;m a full-stack engineer specializing in frontend
