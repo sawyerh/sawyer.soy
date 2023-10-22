@@ -5,8 +5,11 @@ import "../global.css";
 
 export const metadata: Metadata = {
   title: "Sawyer Hollenshead",
-  description: "Designer and frontend developer",
+  description: "Frontend developer and UX designer",
   icons: ["/favicon.png"],
+  openGraph: {
+    images: "/og-image.jpeg",
+  },
 };
 
 // https://shantellsans.com
