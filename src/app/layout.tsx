@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   description: "Frontend developer and UX designer",
   icons: ["/favicon.png"],
   openGraph: {
-    images: "/og-image.jpeg",
+    images: "/og-image.jpg",
   },
 };
 
