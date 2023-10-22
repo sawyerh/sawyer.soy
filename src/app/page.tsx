@@ -1,13 +1,11 @@
 import Link from "next/link";
 import styles from "./home.module.css";
-import { PreloadResources } from "./preload";
 
 export default function Page() {
   const showNav = process.env.NODE_ENV === "development";
 
   return (
     <div className={styles.container}>
-      <PreloadResources />
       <div className={styles.hero}>
         <video
           className={styles.video}
