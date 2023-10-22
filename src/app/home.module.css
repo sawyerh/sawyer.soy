@@ -47,6 +47,7 @@
 
 @container video-column (min-aspect-ratio: 16/9) {
   .video {
+    top: 66%; /* vertically align myself */
     max-width: 100%;
     max-height: none;
   }
