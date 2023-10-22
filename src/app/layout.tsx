@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 
 // https://shantellsans.com
 const markerFont = localFont({
-  src: "../../public/fonts/shantell-sans/variable.woff2",
+  src: "../../public/fonts/shantell-sans/normal-light.woff2",
   variable: "--font-marker",
 });
 

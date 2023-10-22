@@ -65,13 +65,13 @@ li {
 Custom utilities
 */
 .font-marker {
-  font-weight: 300;
   font-family: var(--font-marker);
+  /* Only relevant when using the variable font, which is heavy...
   font-variation-settings:
     "ital" 1,
     "INFM" 40,
     "BNCE" 10,
-    "SPAC" 0;
+    "SPAC" 0; */
 }
 
 .list-item-marker {
