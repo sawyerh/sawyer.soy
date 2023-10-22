@@ -7,9 +7,6 @@ export const metadata: Metadata = {
   title: "Sawyer Hollenshead",
   description: "Frontend developer and UX designer",
   icons: ["/favicon.png"],
-  openGraph: {
-    images: "/og-image.jpg",
-  },
 };
 
 // https://shantellsans.com

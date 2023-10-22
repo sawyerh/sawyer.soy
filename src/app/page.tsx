@@ -25,7 +25,6 @@ export default function Page() {
           black hat. He&rsquo;s standing on red boulders looking into the
           distance.
         </span>
-        PreloadResources
       </div>
       <section className="grow">
         <nav className="px-md sm:px-lg">
