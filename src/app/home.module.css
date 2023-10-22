@@ -7,7 +7,8 @@
 .hero {
   container-name: video-column;
   container-type: size;
-  background-color: theme(colors.terracotta);
+  background: url("/alabama-hills-cover.jpg") no-repeat center center;
+  background-size: cover;
   padding-top: 38.2%; /* Golden ratio */
   width: 100%;
   overflow: hidden;
@@ -39,19 +40,19 @@
 
 .video {
   position: absolute;
-  top: 66%; /* vertically align myself */
+  top: 50%;
   left: 50%;
-  transform: translateX(-50%) translateY(-50%) scale(1.6);
-  max-width: 100%;
-  max-height: none;
+  transform: translateX(-50%) translateY(-50%);
+  max-width: none;
+  max-height: 100%;
 }
 
-@media screen(sm) {
+@container video-column (min-aspect-ratio: 1303/978) {
   .video {
-    top: 50%;
-    transform: translateX(-50%) translateY(-50%);
-    max-width: none;
-    max-height: 100%;
+    top: 66%; /* vertically align myself */
+    transform: translateX(-50%) translateY(-50%) scale(1.6);
+    max-width: 100%;
+    max-height: none;
   }
 }
 
