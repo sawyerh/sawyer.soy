@@ -69,6 +69,11 @@
   }
 }
 
+.cover lite-youtube {
+  width: 100%;
+  max-width: none;
+}
+
 .publish-time {
   display: block;
   color: theme(colors.moss.500);

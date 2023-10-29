@@ -1,3 +1,4 @@
+import { YouTubeEmbed } from "@next/third-parties/google"; // Experimental. https://github.com/vercel/next.js/tree/canary/packages/third-parties
 import { BlogPost } from "tina/helpers";
 
 export default function Cover(props: {
@@ -7,6 +8,23 @@ export default function Cover(props: {
   embed?: BlogPost["cover"]["embed"];
 }) {
   if (props.embed) {
+    /**
+     * Get YouTube ID from URL like one of:
+     * - https://www.youtube.com/watch?v=yhF7OmuIILc
+     * - https://youtu.be/yhF7OmuIILc
+     */
+    const youtubeId = props.embed.match(
+      /(?:youtu\.be\/|youtube\.com\/watch\?v=)([^&]+)/,
+    )?.[1];
+
+    if (youtubeId) {
+      return (
+        <div className={props.className}>
+          <YouTubeEmbed videoid={youtubeId} />
+        </div>
+      );
+    }
+
     return (
       <div
         className={props.className}

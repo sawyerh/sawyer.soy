@@ -7,12 +7,13 @@ cover:
 excerpt: >-
   How I built a semantic search feature for my reading highlights. It turns out
   you can go surprisingly far with just storing embeddings in a file in S3.
+_template: article
 ---
 
 I’ve been exporting my reading highlights to [my website](https://highlights.sawyerh.com/) for the past eight years. This has provided an opportunity to experiment with new technologies that I wouldn’t typically get to try out in my day-to-day work:
 
-* [In 2015](https://sawyerh.medium.com/how-i-m-exporting-my-highlights-from-the-grasps-of-ibooks-and-kindle-ce6a6031b298), I built the foundation that much of the system still runs on: an email address that receives various export formats, like Kindle’s “Export Notebook to Email”, and then stores the parsed highlights in my database. These highlights are then displayed on [highlights.sawyerh.com](https://highlights.sawyerh.com/).
-* [In 2018](https://sawyerh.medium.com/how-i-export-process-and-resurface-my-kindle-highlights-addc9de9af1a), I used my reading highlights as an opportunity to experiment with natural language processing and text messaging, with the goal of making it easier to rediscover and extract insights from my highlights.
+- [In 2015](https://sawyerh.medium.com/how-i-m-exporting-my-highlights-from-the-grasps-of-ibooks-and-kindle-ce6a6031b298), I built the foundation that much of the system still runs on: an email address that receives various export formats, like Kindle’s “Export Notebook to Email”, and then stores the parsed highlights in my database. These highlights are then displayed on [highlights.sawyerh.com](https://highlights.sawyerh.com/).
+- [In 2018](https://sawyerh.medium.com/how-i-export-process-and-resurface-my-kindle-highlights-addc9de9af1a), I used my reading highlights as an opportunity to experiment with natural language processing and text messaging, with the goal of making it easier to rediscover and extract insights from my highlights.
 
 Now in 2023, Large Language Models (LLMs), like OpenAI’s GPT, are cheap and easy to use. These models are fueled by text. I have my own dataset of text in the form of reading highlights, so this seemed like a good opportunity to learn more about AI tools. There’s more to them than chatbots.
 
@@ -22,8 +23,8 @@ Since 2018, I’ve been running my reading highlights through Google’s Natural
 
 What I found myself wanting though were features like:
 
-* Search across all my highlights for a topic.
-* Distill many highlights down to a handful of takeaways.
+- Search across all my highlights for a topic.
+- Distill many highlights down to a handful of takeaways.
 
 New APIs from companies like OpenAI provide the building blocks to accomplish those features, in a much more approachable way.
 
@@ -73,9 +74,9 @@ I was initially worried that the costs for generating and storing embeddings for
 
 Turns out it’s cheap as hell. Here were the numbers:
 
-* I had exactly 3,000 highlights. I thought for sure there was a bug in my query, like a default LIMIT, but I confirmed this was an accurate total. The largest highlight was under 4k characters.
-* Tiktoken estimated the existing highlights would be a total of \~249,000 tokens.
-* Using OpenAI’s pricing of $0.0001 per 1K tokens, the estimated cost for creating text embeddings for all my highlights: $0.02.
+- I had exactly 3,000 highlights. I thought for sure there was a bug in my query, like a default LIMIT, but I confirmed this was an accurate total. The largest highlight was under 4k characters.
+- Tiktoken estimated the existing highlights would be a total of \~249,000 tokens.
+- Using OpenAI’s pricing of $0.0001 per 1K tokens, the estimated cost for creating text embeddings for all my highlights: $0.02.
 
 ### Embeddings storage
 
@@ -120,12 +121,12 @@ So far this has been working well enough for my purposes. If you’re interested
 
 ### Similar posts
 
-* [Building Ask Paul](https://paul.kinlan.me/building-ask-paul/)
-* [Building a magical AI-powered semantic search from scratch](https://blog.maximeheckel.com/posts/building-magical-ai-powered-semantic-search/)
-* [Man and machine: GPT for second brains](https://reasonabledeviations.com/2023/02/05/gpt-for-second-brain/)
+- [Building Ask Paul](https://paul.kinlan.me/building-ask-paul/)
+- [Building a magical AI-powered semantic search from scratch](https://blog.maximeheckel.com/posts/building-magical-ai-powered-semantic-search/)
+- [Man and machine: GPT for second brains](https://reasonabledeviations.com/2023/02/05/gpt-for-second-brain/)
 
 ### Tools I enjoyed as part of building this
 
-* [Powertools for AWS Lambda](https://docs.powertools.aws.dev/lambda/python/latest/)
-* [Serverless Framework](https://www.serverless.com/)
-* [Streamlit](https://streamlit.io/)
+- [Powertools for AWS Lambda](https://docs.powertools.aws.dev/lambda/python/latest/)
+- [Serverless Framework](https://www.serverless.com/)
+- [Streamlit](https://streamlit.io/)

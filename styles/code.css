@@ -3,6 +3,14 @@
     font-size: theme(fontSize.sm);
   }
 
+  code:not(pre code) {
+    display: inline-block;
+    border-radius: theme(borderRadius.sm);
+    background-color: theme(colors.slate.100);
+    padding: 0 4px;
+    color: theme(colors.slate.600);
+  }
+
   pre {
     box-shadow: theme(boxShadow.DEFAULT);
     border: 1px solid theme(colors.slate.50);
