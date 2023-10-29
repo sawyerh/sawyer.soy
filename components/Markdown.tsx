@@ -1,18 +1,20 @@
+import hljs from "highlight.js";
 import { useId } from "react";
-import SyntaxHighlighter from "react-syntax-highlighter";
 import { TinaMarkdown, TinaMarkdownContent } from "tinacms/dist/rich-text";
 
 function CodeBlock(props: { lang?: string; value: string }) {
-  const showLineNumbers = props.value.split("\n").length > 4;
+  const lang = props.lang;
+
+  const highlighted = lang
+    ? hljs.highlight(props.value, {
+        language: lang,
+      })
+    : hljs.highlightAuto(props.value);
 
   return (
-    <SyntaxHighlighter
-      language={props.lang}
-      useInlineStyles={false}
-      showLineNumbers={showLineNumbers}
-    >
-      {props.value}
-    </SyntaxHighlighter>
+    <pre>
+      <code dangerouslySetInnerHTML={{ __html: highlighted.value }}></code>
+    </pre>
   );
 }
 
