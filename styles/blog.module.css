@@ -1,0 +1,123 @@
+@screen md {
+  .post {
+    font-size: theme(fontSize.lg);
+  }
+}
+
+/* Post permalink */
+.post {
+  margin-bottom: theme(margin.2xl);
+
+  a {
+    transition: all 0.2s ease-in-out;
+    color: theme(colors.terracotta.900);
+  }
+
+  a:hover {
+    color: theme(colors.terracotta.700);
+    text-decoration-thickness: 3px;
+  }
+
+  h1 {
+    text-wrap: balance;
+    max-width: 45ch;
+    color: theme(colors.terracotta.800);
+    font-size: theme(fontSize.2xl);
+    line-height: theme(lineHeight.snug);
+  }
+
+  @screen sm {
+    h1 {
+      font-size: theme(fontSize.3xl);
+    }
+  }
+
+  @screen md {
+    h1 {
+      font-size: theme(fontSize.4xl);
+    }
+  }
+
+  /* Heading preceded by a cover */
+  .cover ~ h1 {
+    margin-top: 0;
+  }
+
+  /* Heading followed by a publish time */
+  h1:has(+ .publish-time) {
+    margin-bottom: theme(margin.sm);
+  }
+
+  .h1,
+  .publish-time,
+  .cover {
+    margin-bottom: theme(margin.md);
+  }
+
+  h2 {
+    margin-top: theme(margin.lg);
+  }
+
+  h3 {
+    margin-top: theme(margin.md);
+  }
+
+  h2,
+  h3,
+  h4 {
+    color: theme(colors.moss.600);
+  }
+
+  /* Images within a post are in their own <p> tags */
+  p:has(> img) {
+    margin: theme(margin.lg) 0;
+    max-width: none;
+  }
+}
+
+.publish-time {
+  display: block;
+  color: theme(colors.moss.500);
+  font-size: theme(fontSize.sm);
+  font-family: theme(fontFamily.marker);
+}
+
+.post-list {
+  display: grid;
+  grid: auto-flow / repeat(auto-fill, minmax(45ch, 1fr));
+  gap: theme(margin.md);
+}
+
+.post-preview {
+  display: block;
+  margin-bottom: theme(margin.md);
+  border: 1px solid theme(colors.slate.200);
+  border-radius: theme(borderRadius.md);
+  padding: theme(padding.md);
+  text-decoration: none;
+
+  h1 {
+    font-size: theme(fontSize.xl);
+    text-wrap: balance;
+    color: theme(colors.terracotta.800);
+  }
+
+  /* Heading followed by a publish time */
+  h1:has(+ .publish-time) {
+    margin-bottom: 0.25em;
+  }
+
+  h1,
+  .publish-time,
+  .cover {
+    margin-bottom: theme(margin.sm);
+  }
+
+  p {
+    margin: 0;
+  }
+}
+
+.post-preview:hover {
+  color: inherit;
+}

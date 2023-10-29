@@ -1,7 +1,7 @@
 import { Metadata } from "next";
-import { Atkinson_Hyperlegible } from "next/font/google";
+import { Manrope } from "next/font/google";
 import localFont from "next/font/local";
-import "../global.css";
+import "styles/global.css";
 
 export const metadata: Metadata = {
   title: "Sawyer Hollenshead",
@@ -11,16 +11,16 @@ export const metadata: Metadata = {
 
 // https://shantellsans.com
 const markerFont = localFont({
-  src: "../../public/fonts/shantell-sans/normal-light.woff2",
+  src: "../public/fonts/shantell-sans/normal-light.woff2",
   variable: "--font-marker",
 });
 
-const sansFont = Atkinson_Hyperlegible<"--font-sans">({
-  subsets: ["latin"],
-  style: ["normal", "italic"],
-  variable: "--font-sans",
-  weight: ["400", "700"],
-});
+// const sansFont = Atkinson_Hyperlegible<"--font-sans">({
+//   subsets: ["latin"],
+//   style: ["normal", "italic"],
+//   variable: "--font-sans",
+//   weight: ["400", "700"],
+// });
 
 // const sansFont = Raleway<"--font-sans">({
 //   subsets: ["latin"],
@@ -30,11 +30,11 @@ const sansFont = Atkinson_Hyperlegible<"--font-sans">({
 // });
 
 // https://www.gent.media/manrope
-// const sansFont = Manrope<"--font-sans">({
-//   subsets: ["latin"],
-//   variable: "--font-sans",
-//   weight: ["400", "700"],
-// });
+const sansFont = Manrope<"--font-sans">({
+  subsets: ["latin"],
+  variable: "--font-sans",
+  weight: ["400", "700"],
+});
 
 export default function RootLayout({
   children,

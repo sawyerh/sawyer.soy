@@ -1,9 +1,7 @@
-import Link from "next/link";
-import styles from "./home.module.css";
+import styles from "styles/home.module.css";
+import { HeaderNav } from "../components/HeaderNav";
 
 export default function Page() {
-  const showNav = process.env.NODE_ENV === "development";
-
   return (
     <div className={styles.container}>
       <div className={styles.hero}>
@@ -25,46 +23,16 @@ export default function Page() {
         </span>
       </div>
       <section className="grow">
-        <nav className="px-md sm:px-lg">
-          <Link
-            href="/"
-            className="mr-4 inline-block py-4 font-semibold no-underline"
-          >
-            Sawyer Hollenshead{" "}
-            {showNav && <span className="font-marker">→</span>}
-          </Link>
-          {showNav && (
-            <>
-              <Link
-                className="inline-block px-2 py-4 text-slate-700"
-                href="/notes"
-              >
-                Writing
-              </Link>
-              <Link
-                className="inline-block px-2 py-4 text-slate-700"
-                href="/notes"
-              >
-                Learning
-              </Link>
-              <Link
-                className="inline-block px-2 py-4 text-slate-700"
-                href="/notes"
-              >
-                Socializing
-              </Link>
-            </>
-          )}
-        </nav>
+        <HeaderNav className="px-md sm:px-lg" />
 
-        <div className="p-md py-md sm:px-lg">
-          <p className="font-marker text-3xl text-terracotta">Heyo,</p>
+        <div className="px-md pb-md sm:px-lg">
+          <p className="text-terracotta-700 font-marker text-3xl">Heyo,</p>
           <p className="text-balance text-lg">
             I&rsquo;m a full-stack engineer specializing in frontend
             development, with a background in UX design. Coworkers have given me
             shoutouts for:
           </p>
-          <ul className="list-item-marker list-none font-marker">
+          <ul className="font-marker">
             <li>
               Helping teams maintain momentum and focus on the highest-impact
               work

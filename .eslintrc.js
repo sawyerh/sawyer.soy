@@ -14,4 +14,7 @@ module.exports = {
     tsconfigRootDir: __dirname,
     project: ["./tsconfig.json"],
   },
+  rules: {
+    "@next/next/no-img-element": "off",
+  },
 };
