@@ -1,6 +1,7 @@
+import { GeistMono } from "geist/font";
 import { Metadata } from "next";
-import { Manrope } from "next/font/google";
-import localFont from "next/font/local";
+import { Atkinson_Hyperlegible } from "next/font/google";
+import LocalFont from "next/font/local";
 import "styles/global.css";
 
 export const metadata: Metadata = {
@@ -10,31 +11,24 @@ export const metadata: Metadata = {
 };
 
 // https://shantellsans.com
-const markerFont = localFont({
+const markerFont = LocalFont({
   src: "../public/fonts/shantell-sans/normal-light.woff2",
   variable: "--font-marker",
 });
 
-// const sansFont = Atkinson_Hyperlegible<"--font-sans">({
-//   subsets: ["latin"],
-//   style: ["normal", "italic"],
-//   variable: "--font-sans",
-//   weight: ["400", "700"],
-// });
-
-// const sansFont = Raleway<"--font-sans">({
-//   subsets: ["latin"],
-//   style: ["normal", "italic"],
-//   variable: "--font-sans",
-//   weight: ["400", "700"],
-// });
-
-// https://www.gent.media/manrope
-const sansFont = Manrope<"--font-sans">({
+const atkinson = Atkinson_Hyperlegible<"--font-atkinson">({
   subsets: ["latin"],
-  variable: "--font-sans",
+  style: ["normal", "italic"],
+  variable: "--font-atkinson",
   weight: ["400", "700"],
 });
+
+// https://www.gent.media/manrope
+// const manrope = Manrope<"--font-manrope">({
+//   subsets: ["latin"],
+//   variable: "--font-manrope",
+//   weight: ["400", "700"],
+// });
 
 export default function RootLayout({
   children,
@@ -44,7 +38,11 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={[sansFont.variable, markerFont.variable].join(" ")}
+      className={[
+        GeistMono.variable,
+        atkinson.variable,
+        markerFont.variable,
+      ].join(" ")}
     >
       <body>{children}</body>
     </html>

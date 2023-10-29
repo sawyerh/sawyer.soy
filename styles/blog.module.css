@@ -1,20 +1,18 @@
-@screen md {
-  .post {
-    font-size: theme(fontSize.lg);
-  }
-}
-
 /* Post permalink */
 .post {
   margin-bottom: theme(margin.2xl);
 
+  @screen md {
+    font-size: theme(fontSize.lg);
+  }
+
   a {
     transition: all 0.2s ease-in-out;
     color: theme(colors.terracotta.900);
+    text-decoration-color: currentColor;
   }
 
   a:hover {
-    color: theme(colors.terracotta.700);
     text-decoration-thickness: 3px;
   }
 
@@ -24,16 +22,12 @@
     color: theme(colors.terracotta.800);
     font-size: theme(fontSize.2xl);
     line-height: theme(lineHeight.snug);
-  }
 
-  @screen sm {
-    h1 {
+    @screen sm {
       font-size: theme(fontSize.3xl);
     }
-  }
 
-  @screen md {
-    h1 {
+    @screen md {
       font-size: theme(fontSize.4xl);
     }
   }

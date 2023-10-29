@@ -3,7 +3,6 @@ const defaultTheme = require("tailwindcss/defaultTheme");
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ["./{app,content,components}/**/*.{js,ts,jsx,tsx,mdx}"],
-  important: true,
   theme: {
     extend: {
       colors: {
@@ -51,7 +50,8 @@ module.exports = {
         },
       },
       fontFamily: {
-        sans: ["var(--font-inter)"],
+        sans: ["var(--font-atkinson)"],
+        mono: ["var(--font-geist-mono)"],
         marker: ["var(--font-marker)"],
       },
       lineHeight: {
