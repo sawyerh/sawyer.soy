@@ -18,7 +18,7 @@ module.exports = {
           700: "oklch(39.83% 0.04 141.04 / <alpha-value>)",
           800: "oklch(34.01% 0.03 144.92 / <alpha-value>)",
           900: "oklch(30.89% 0.04 146.76 / <alpha-value>)",
-          950: "oklch(26.44% 0.04 150.43 / <alpha-value>)",
+          950: "oklch(19.95% 0.02 148.93 / <alpha-value>)",
         },
         // Based on #ced9dd (200) generated on https://uicolors.app/create
         slate: {

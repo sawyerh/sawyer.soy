@@ -1,6 +1,6 @@
 import hljs from "highlight.js";
-import { useId } from "react";
 import { TinaMarkdown, TinaMarkdownContent } from "tinacms/dist/rich-text";
+import MarkdownImage, { MarkdownImageProps } from "./MarkdownImage";
 
 function CodeBlock(props: { lang?: string; value: string }) {
   const lang = props.lang;
@@ -18,38 +18,17 @@ function CodeBlock(props: { lang?: string; value: string }) {
   );
 }
 
-function MarkdownImage(
-  props?: Partial<{ url: string; alt: string; caption: string }>,
-) {
-  const id = useId();
-  if (!props?.url) return <></>;
-  const caption = props.caption;
-  const alt = props.alt ?? caption;
-
-  return (
-    <>
-      <img
-        src={props.url}
-        alt={alt}
-        aria-describedby={caption ? `caption_${id}` : undefined}
-        loading="lazy"
-      />
-      {caption && (
-        <span className="img-caption" id={`caption_${id}`}>
-          {caption}
-        </span>
-      )}
-    </>
-  );
-}
-
 export default function Markdown(props: { content: TinaMarkdownContent }) {
+  if (!props.content) return null;
+
   return (
-    <TinaMarkdown
+    <TinaMarkdown<{ MarkdownImage: MarkdownImageProps }>
       content={props.content}
       components={{
         img: MarkdownImage,
         code_block: CodeBlock,
+        // @ts-expect-error Pretty sure TinaMarkdown types are wrong. This functionality works.
+        MarkdownImage,
       }}
     />
   );

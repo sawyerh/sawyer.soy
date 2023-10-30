@@ -1,0 +1,96 @@
+---
+title: My notes learning Python as a frontend developer
+published_at: 2023-10-30T14:59:30.685Z
+category: Article
+---
+
+At Nava, I've contributed to Python projects, but the foundations had already been set by engineers who were already familiar with the Python ecosystem. This has let me dip my toes and learn Python. With LLM's I've started writing Python more for personal side projects, and had ran into confusion during the initial setup process.
+These are the resources that helped me setup a Python project from scratch.
+Virtual environments
+"First things first: always work in, and deploy in, a virtual environment. Even if you think you don’t need one. In fact, especially if you don’t think you need one. Virtual environments \[...] provide isolation of a particular Python environment and set of installed packages"
+"invoke python -m venv however you like, and activate it before running any packaging-related commands. There are several popular conventions for this, and I won’t push any specific one on you, but I do recommend that you adopt some sort of standard way of placing your virtual environments, whether it’s to put them all in a single directory, or always in a hidden directory at the root of a project’s source tree, or something else."
+"no matter where you put it, “activation” is a simple matter: set the environment variable VIRTUAL\_ENV to the path to the virtual environment and then put $VIRTUAL\_ENV/bin onto $PATH to be sure any accidental direct invocations of scripts will work."
+"Most of the projects I work on use a Makefile to drive common dev tasks, so a make requirements target that invokes pip-tools is pretty standard for me, and usually I have it run something like this inside the container:
+python -m pip install --upgrade pip-tools
+python -m pip-tools compile --generate-hashes requirements/app.in --output-file requirements/app.txt
+python -m pip-tools compile --generate-hashes requirements/tests.in ..."
+[https://packaging.python.org/en/latest/tutorials/installing-packages/#id16](https://packaging.python.org/en/latest/tutorials/installing-packages/#id16)
+
+Package management
+The smoothest transition for someone familiar with `npm` is to use `poetry`. It's an additional tool to install, unlike `npm`, but eases the transition by handling a number of things I found confusing (i.e virtual environments, requirements.txt vs pyproject.toml, lockfiles, install scripts).
+Pro-tip: set `poetry config virtualenvs.in-project true` and `poetry config virtualenvs.prefer-active-python true` so the virtual env is created within your project, and uses the same Python version your project is setup to use.
+
+[https://www.b-list.org/weblog/2022/may/13/boring-python-dependencies/](https://www.b-list.org/weblog/2022/may/13/boring-python-dependencies/)
+"Python’s packaging ecosystem has default tools for each of these. In order, they are: (1) setuptools, (2) pip, (3) virtual environments. These three tools are your foundation, and for truly “boring” Python development work, I would argue that you should stick to them almost exclusively."
+`pip` sounds similar to `npm` — sure, you can use yarn or pnmp but using the default is my preference.
+`pip install pkg1 pkg2` is also similar to `npm`
+`pip install -r filename` is kinda like `npm install` and `package.json`, but you have to pass the filename to `pip`. This allows you to have separate requirements files for "production" dependencies, and different requirements file for dev/test dependiencies. So, similar to `dependencies` and `devDependencies` in `package.json` files.
+"I recommend creating a top-level requirements/ directory in your source-code repository and placing requirements files in it, rather than putting the files themselves top-level"
+
+pip-tools can be used for stricter security/reproducibility. `pip-compile` sounds like it outputs a requirements file like `package-lock.json`
+
+"One common way to run into trouble here is having one Python environment’s package directory be first on your $PYTHONPATH while, unbeknownst to you, a different one’s bin/ directory is first on your general $PATH. If you just run pip install you’ll get the second one’s instance of pip, which may not be at all what you want.
+This is why the official Python packaging guides, and official documentation for tools like pip, always use a different approach: they run python -m pip instead of pip, and python -m venv instead of a standalone script like virtualenv. The -m flag allows a Python module to be run as a script (providing it’s been written to expose an entry point for this, which pip and venv both have), and while it doesn’t guarantee that you’ll invoke the Python interpreter you were expecting, it does prevent a lot of potential hard-to-debug issues that can accidentally result from things like manually hacking around with paths."
+[https://hynek.me/articles/python-app-deps-2018](https://hynek.me/articles/python-app-deps-2018)
+[https://peps.python.org/pep-0621/](https://peps.python.org/pep-0621/)
+pyproject.toml sounds more like package.json though. Confusing whether to use requirements.txt or this. pyproject.toml == package.json, and requirements.txt essentially is then package-lock.json — but you can have multiple requirements-\*.txt files if you want.
+pyproject.toml is where you can figure tools, like Black.
+"A source package historically includes a setup.py script which specifies how to build and install it (though this is being gradually replaced by the static pyproject.toml config file)"
+You could use pip-tools to install dependencies from pyproject.toml and have it output separate requirements files. [https://hynek.me/til/pip-tools-and-pyproject-toml/](https://hynek.me/til/pip-tools-and-pyproject-toml/)
+
+Type checking
+Interestingly, James didn't recommend run a static type checker. "I personally use them only as documentation, and do not currently use a static type checker"
+
+Linting
+[https://www.b-list.org/weblog/2022/dec/19/boring-python-code-quality/](https://www.b-list.org/weblog/2022/dec/19/boring-python-code-quality/)
+flake8 or Pylint.
+"flake8 is generally faster and will raise fewer false positives, but checks/enforces fewer things. Pylint is generally slower and will have more false positives, but checks/enforces a lot more things."
+"Pylint \[...] requires everything, including all of your dependencies, to be importable during the run (in order to check for things like correct usage of imported modules/functions/classes)"
+"if you use flake8 in any capacity, I recommend including the flake8-bugbear plugin, which adds a bunch of useful checks on top of the normal flake8 suite"
+
+Code formatting
+Prettier equivalent seems to be a combo of Black and isort
+"the only option I recommend setting for Black is the target Python version, which should match the version of Python you intend to deploy on"
+" For isort, I recommend setting the “profile” option to "black" to tell isort to match Black’s preferences. If it has trouble recognizing which modules are part of your codebase and which aren’t, consider setting known\_first\_party and/or known\_third\_party to help it out"
+"putting the configuration in a top-level pyproject.toml file in your repository. In the case of Black this is the only supported configuration file, and most other tools support using pyproject.toml as a centralized configuration file now — there’s only one I’m going to recommend (flake8) that doesn’t"
+
+Testing
+Node has recently added a testing module to their standard library. Popular third-party module is jest. Similar story in Python (see below).
+"pick either the unittest module in the standard library, or the third-party pytest test framework. I have a preference for unittest, and if you’re doing Django its built-in testing tools are all built around unittest, but pytest has plenty of fans and there are third-party plugins to re-create some of the nice Django testing tools on top of pytest"
+If you're used to jest.spyOn, install [https://pytest-mock.readthedocs.io/en/latest/usage.html](https://pytest-mock.readthedocs.io/en/latest/usage.html)
+
+Documentation / Comments
+Docstring is kinda like JSDoc, except it's within the function definition.
+There doesn't appear to be a consistent format for these strings, but reStructuredText (reST) seems popular: [https://stackoverflow.com/questions/3898572/what-are-the-most-common-python-docstring-formats](https://stackoverflow.com/questions/3898572/what-are-the-most-common-python-docstring-formats)
+Google also has their own format
+Docstrings appear to be a 1st class thing in Python which is neat: "Whenever string literals are present just after the definition of a function, module, class or method, they are associated with the object as their **doc** attribute. We can later use this attribute to retrieve this docstring."
+You can also call help() to output the docstring of an object.
+Docstring linting: [https://interrogate.readthedocs.io/en/latest/](https://interrogate.readthedocs.io/en/latest/)
+[https://www.programiz.com/python-programming/docstrings](https://www.programiz.com/python-programming/docstrings)
+
+Serverless
+[https://aws.github.io/chalice](https://aws.github.io/chalice)
+Nice, but not super well maintained. For instance, lacking support for newer features like Function URLs
+Created a serverless API extremely quickly, after working through the venv issues. With zero dependencies.
+"You can set the automatic\_layer in your .chalice/config.json file which will instruct Chalice to create your 3rd party packages as a separate Lambda layer."
+
+VS Code
+I dislike pre-commit and rather my IDE do linting, formatting for me. This required setting .vscode/settings.json.
+Also needed the following so VS Code Pylance could find the imports of a sub-project with its own poetry install
+"python.analysis.extraPaths": \[
+"aws/search/.venv/lib/python3.10/site-packages"
+],
+
+Language-agnostic tools
+pre-commit
+There are built-in hooks like requirements-txt-fixer (source)
+
+Makefile
+Like package.json scripts
+
+Learning the Python language
+[https://www.programiz.com/python-programming](https://www.programiz.com/python-programming)
+
+People
+I follow a lot of folks in the frontend community, where I stay up to date with the most recent developments. Not so much right now for Python though.
+[https://simonwillison.net/tags/](https://simonwillison.net/tags/)

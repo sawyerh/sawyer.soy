@@ -1,4 +1,48 @@
 /**
+ * @type {import('tinacms').Collection['templates']}
+ * @see https://tina.io/docs/editing/markdown/#providing-custom-components-for-mdx-documents
+ */
+const bodyFieldComponents = [
+  {
+    name: "MarkdownImage",
+    label: "Styled image",
+    description:
+      "Image component that supports custom classes for better control of styling",
+    fields: [
+      {
+        name: "url",
+        label: "Image",
+        type: "image",
+      },
+      {
+        name: "alt",
+        label: "Alt text",
+        type: "string",
+      },
+      {
+        name: "caption",
+        label: "Caption",
+        type: "string",
+      },
+      {
+        name: "size",
+        label: "Size",
+        description:
+          "Constrain the width of the image. By default, images span the entire width of the container.",
+        type: "string",
+        options: ["prose", "small", "medium"],
+      },
+      {
+        name: "className",
+        label: "CSS class names",
+        description: "e.g. 'w-full opacity-50'",
+        type: "string",
+      },
+    ],
+  },
+];
+
+/**
  * @type {import('tinacms').Collection['fields']}
  */
 const commonFields = [
@@ -65,6 +109,7 @@ const commonFields = [
     label: "Body",
     name: "body",
     isBody: true,
+    templates: bodyFieldComponents,
   },
 ];
 
@@ -79,6 +124,7 @@ export default {
   label: "Blog Posts",
   name: "post",
   path: "content/post",
+  format: "mdx",
   ui: {
     filename: {
       slugify: (values) => {

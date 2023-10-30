@@ -56,7 +56,7 @@ export default async function Page() {
       </div>
       <div className={styles["linkroll"]}>
         <h2 className={classNames(styles["post-lists-heading"])}>Linkroll</h2>
-        <p>Insightful things from others on the web</p>
+        <p>Things shaping my thinking as an engineer</p>
         {links.map((post) => (
           <Link
             href={postToUrl(post)}

@@ -5,6 +5,7 @@ export default function Cover(props: {
   className?: string;
   image_url?: BlogPost["cover"]["image_url"];
   image_alt?: BlogPost["cover"]["image_alt"];
+  embed?: BlogPost["cover"]["embed"];
   external_url?: BlogPost["external_url"];
 }) {
   if (props.external_url) {
@@ -24,7 +25,9 @@ export default function Cover(props: {
         </div>
       );
     }
+  }
 
+  if (props.embed) {
     return (
       <div
         className={props.className}

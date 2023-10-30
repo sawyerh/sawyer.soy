@@ -3,8 +3,10 @@ import FormattedDate from "components/FormattedDate";
 import { HeaderNav } from "components/HeaderNav";
 import Markdown from "components/Markdown";
 import { Metadata } from "next";
+import Link from "next/link";
 import styles from "styles/blog.module.css";
-import { getPost } from "tina/helpers";
+import { BlogPost, getPost } from "tina/helpers";
+import { getHostFromURL } from "utils/getHostFromURL";
 
 interface Props {
   params: { slug: string };
@@ -40,7 +42,20 @@ export default async function Page({ params }: Props) {
           className={styles["publish-time"]}
           value={post.published_at}
         />
-        <Markdown content={post.body} />
+        <div className={styles["post-body"]}>
+          <Markdown content={post.body} />
+        </div>
+        {post.category === "Article" && post.external_url && (
+          <>
+            {post.excerpt && <blockquote>{post.excerpt}</blockquote>}
+            <p>
+              <Link href={post.external_url}>
+                This post of mine was originally published on{" "}
+                {getHostFromURL(post.external_url)}. You can read it there.
+              </Link>
+            </p>
+          </>
+        )}
       </article>
     </div>
   );

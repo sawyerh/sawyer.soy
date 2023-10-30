@@ -33,7 +33,7 @@ export async function getPost(
   filenameWithoutExtension: string,
 ): Promise<BlogPost> {
   const { data } = await client.queries.post({
-    relativePath: `${filenameWithoutExtension}.md`,
+    relativePath: `${filenameWithoutExtension}.mdx`,
   });
 
   return setPostDefaults(data.post);
