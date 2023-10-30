@@ -55,6 +55,12 @@ const commonFields = [
     options: ["Link", "Article"],
   },
   {
+    type: "string",
+    label: "External URL",
+    name: "external_url",
+    description: "Behavior depends on category",
+  },
+  {
     type: "rich-text",
     label: "Body",
     name: "body",
@@ -75,35 +81,21 @@ export default {
   path: "content/post",
   ui: {
     filename: {
-      slugify: (values) =>
-        values.title?.replace(/\s+/g, "-").toLowerCase().slice(0, 200),
+      slugify: (values) => {
+        return values.title
+          ?.replace(/\s/g, "-")
+          .replace(/[^\w-]+/g, "")
+          .toLowerCase()
+          .slice(0, 200);
+      },
     },
     router: ({ document }) => {
       return `/posts/${document._sys.filename}`;
     },
+    defaultItem: {
+      category: "Article",
+      ...commonDefaultItem,
+    },
   },
-  templates: [
-    {
-      name: "external",
-      label: "External resource",
-      fields: [...commonFields],
-      ui: {
-        defaultItem: {
-          category: "Link",
-          ...commonDefaultItem,
-        },
-      },
-    },
-    {
-      name: "article",
-      label: "Article",
-      fields: [...commonFields],
-      ui: {
-        defaultItem: {
-          category: "Article",
-          ...commonDefaultItem,
-        },
-      },
-    },
-  ],
+  fields: [...commonFields],
 };

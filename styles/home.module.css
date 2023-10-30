@@ -9,7 +9,7 @@
   container-type: size;
   background: url("/alabama-hills-cover.jpg") no-repeat center center;
   background-size: cover;
-  padding-top: 38.2%; /* Golden ratio */
+  padding-top: theme(space.golden-small);
   width: 100%;
   overflow: hidden;
 }
@@ -19,7 +19,7 @@
     position: sticky;
     top: 0;
     padding-top: 0;
-    width: 38.2%; /* Golden ratio */
+    width: theme(space.golden-small);
     height: 100vh;
   }
 }

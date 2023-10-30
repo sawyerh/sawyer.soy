@@ -2,6 +2,14 @@
 .post {
   margin-bottom: theme(margin.2xl);
 
+  p:first-of-type::first-letter {
+    font-weight: bold;
+    font-family: var(--font-marker);
+    initial-letter: 2;
+    display: inline-block;
+    margin-right: 3px;
+  }
+
   @screen md {
     font-size: theme(fontSize.lg);
   }
@@ -81,35 +89,60 @@
   font-family: theme(fontFamily.marker);
 }
 
-.post-list {
-  display: grid;
-  grid: auto-flow / repeat(auto-fill, minmax(45ch, 1fr));
-  gap: theme(margin.md);
+.post-lists-heading {
+  font-size: theme(fontSize.xl);
+  font-family: var(--font-marker);
 }
 
-.post-preview {
-  display: block;
-  margin-bottom: theme(margin.md);
-  border: 1px solid theme(colors.slate.200);
-  border-radius: theme(borderRadius.md);
-  padding: theme(padding.md);
-  text-decoration: none;
+.list-article {
+  a {
+    display: block;
+    margin-bottom: theme(margin.md);
+    /* border-left: 3px solid theme(colors.slate.200); */
+    /* padding-left: theme(margin.sm); */
+    text-decoration: none;
+  }
 
-  h1 {
-    font-size: theme(fontSize.xl);
-    text-wrap: balance;
+  a:hover {
+    color: currentColor;
+
+    h2 {
+      text-decoration: underline;
+    }
+  }
+
+  .list-article__title-icon {
+    font-family: var(--font-marker);
+  }
+
+  a[target="_blank"]:hover {
+    h2 {
+      text-decoration: none;
+    }
+    .list-article__external-url {
+      background: theme(colors.terracotta.700);
+      padding: 0 theme(space.1);
+      color: theme(colors.white);
+      text-decoration: none;
+    }
+    .list-article__title-icon {
+      color: theme(colors.terracotta.700);
+      text-decoration: underline;
+      text-decoration-thickness: 5px;
+    }
+  }
+
+  .list-article__external-url {
+    @apply mb-2 inline-block font-mono text-xs font-normal text-slate-800 underline;
+    transition: all 0.2s ease-in-out;
+  }
+
+  h2 {
     color: theme(colors.terracotta.800);
-  }
-
-  /* Heading followed by a publish time */
-  h1:has(+ .publish-time) {
-    margin-bottom: 0.25em;
-  }
-
-  h1,
-  .publish-time,
-  .cover {
-    margin-bottom: theme(margin.sm);
+    font-size: theme(fontSize.xl);
+    line-height: theme(lineHeight.tight);
+    text-wrap: balance;
+    font-weight: bold;
   }
 
   p {
@@ -117,6 +150,62 @@
   }
 }
 
-.post-preview:hover {
-  color: inherit;
+.list-article:first-of-type {
+  h2 {
+    font-size: theme(fontSize.3xl);
+  }
+
+  p {
+    max-width: theme(maxWidth.prose);
+    font-size: theme(fontSize.xl);
+  }
+}
+
+.posts-illustration {
+  position: absolute;
+  top: theme(space.sm);
+  right: theme(space.md);
+  opacity: 0.1;
+  z-index: -1;
+  height: 250px;
+}
+
+.linkroll {
+  @apply bg-moss-800 p-md;
+  position: relative;
+  z-index: 0;
+  overflow: hidden;
+  color: theme(colors.slate.200);
+
+  @screen sm {
+    width: theme(space.golden-small);
+  }
+}
+
+.linkroll-post {
+  display: block;
+  color: theme(colors.terracotta.300);
+  text-wrap: balance;
+  margin-bottom: theme(margin.sm);
+  line-height: theme(lineHeight.tight);
+  text-decoration: none;
+}
+
+.linkroll-host {
+  display: block;
+  color: theme(colors.slate.400);
+  font-weight: normal;
+  font-size: theme(fontSize.xs);
+  font-family: theme(fontFamily.mono);
+  text-decoration: underline;
+}
+
+.linkroll-illustration {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  opacity: 0.5;
+  z-index: -1;
+  mix-blend-mode: multiply;
+  width: 100%;
 }

@@ -1,0 +1,8 @@
+---
+title: Estimation isn't for everyone
+published_at: 2023-10-30T02:24:03.105Z
+category: Link
+external_url: 'https://open.nytimes.com/estimation-isnt-for-everyone-a72484f88b27'
+---
+
+> if we just put the time and effort we were spending on estimates into actually completing tasks, we would get a lot more donealways talking about how we described the work, rather than the actual work itselfMany developers have been breaking down work and iterating for their entire careers. If your team has been working together for a while, they should be used to cracking chunks of their problem space into manageable tickets. And once that problem has been solved, a few key metrics can track and even predict how quickly that work is finished.If you’re worried that your team isn’t reducing its stories well enough, just turn to a concept from the Kanban method of Agile: Cycle Time. Track the time your stories spend between In progress and Done and you can tell how well you’re breaking down tickets. If the average cycle time of a task increases from, say, 36 hours to 7 or 10 days, use that as a catalyst for a conversation about work breakdown in those all important team retrospectives.

@@ -1,13 +1,13 @@
 ---
 title: Building a scrappy semantic search for my reading highlights
 published_at: 2023-08-20T07:00:00.000Z
+category: Article
 cover:
   image_url: /uploads/highlight-embeddings-cover.webp
   image_alt: A search interface overlayed on top of book covers
 excerpt: >-
   How I built a semantic search feature for my reading highlights. It turns out
   you can go surprisingly far with just storing embeddings in a file in S3.
-_template: article
 ---
 
 I’ve been exporting my reading highlights to [my website](https://highlights.sawyerh.com/) for the past eight years. This has provided an opportunity to experiment with new technologies that I wouldn’t typically get to try out in my day-to-day work:

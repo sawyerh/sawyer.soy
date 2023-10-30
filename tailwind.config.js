@@ -64,6 +64,9 @@ module.exports = {
         lg: defaultTheme.spacing[16],
         xl: defaultTheme.spacing[20],
         "2xl": defaultTheme.spacing[24],
+        /* Golden ratio */
+        "golden-small": "38.2%",
+        "golden-large": "61.8%",
       },
     },
   },

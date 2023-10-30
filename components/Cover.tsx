@@ -5,15 +5,15 @@ export default function Cover(props: {
   className?: string;
   image_url?: BlogPost["cover"]["image_url"];
   image_alt?: BlogPost["cover"]["image_alt"];
-  embed?: BlogPost["cover"]["embed"];
+  external_url?: BlogPost["external_url"];
 }) {
-  if (props.embed) {
+  if (props.external_url) {
     /**
      * Get YouTube ID from URL like one of:
      * - https://www.youtube.com/watch?v=yhF7OmuIILc
      * - https://youtu.be/yhF7OmuIILc
      */
-    const youtubeId = props.embed.match(
+    const youtubeId = props.external_url.match(
       /(?:youtu\.be\/|youtube\.com\/watch\?v=)([^&]+)/,
     )?.[1];
 

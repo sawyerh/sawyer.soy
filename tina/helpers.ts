@@ -39,6 +39,10 @@ export async function getPost(
   return setPostDefaults(data.post);
 }
 
+export function postToUrl(post: BlogPost) {
+  return `/blog/${post.filename}`;
+}
+
 function setPostDefaults(post: RawBlogPost): BlogPost {
   return {
     ...post,

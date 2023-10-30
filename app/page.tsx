@@ -22,11 +22,11 @@ export default function Page() {
           distance.
         </span>
       </div>
-      <section className="grow">
+      <section className="sm:w-golden-large">
         <HeaderNav className="px-md sm:px-lg" />
 
         <div className="px-md pb-md sm:px-lg">
-          <p className="text-terracotta-700 font-marker text-3xl">Heyo,</p>
+          <p className="font-marker text-3xl text-terracotta-700">Heyo,</p>
           <p className="text-balance text-lg">
             I&rsquo;m a full-stack engineer specializing in frontend
             development, with a background in UX design. Coworkers have given me

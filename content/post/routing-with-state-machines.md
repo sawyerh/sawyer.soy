@@ -1,8 +1,8 @@
 ---
 title: Using state machines to define and visualize routing logic
 published_at: 2021-06-27T07:00:00.000Z
+category: Article
 excerpt: "State machines can be a framework and language agnostic option for defining and visualizing the routing logic in your applications."
-_template: article
 ---
 
 Routing logic in complex web applications can be a source of confusion and bugs. It pays off if the technical solution your team chooses for managing routing logic makes it easy to change where pages route to, and provides a holistic view of how pages connect to each other. State machines can be a framework and language agnostic option for maintaining the routing logic in your applications, and they can be visualized!

@@ -17,7 +17,7 @@ export function HeaderNav(props: { className?: string }) {
           [
             {
               href: "/blog",
-              label: "Writing",
+              label: "Posts",
             },
             {
               href: "/social",

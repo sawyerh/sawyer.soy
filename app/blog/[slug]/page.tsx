@@ -30,7 +30,11 @@ export default async function Page({ params }: Props) {
     <div className="wrapper">
       <HeaderNav className="mb-md" />
       <article className={styles.post}>
-        <Cover className={styles.cover} {...post.cover} />
+        <Cover
+          className={styles.cover}
+          {...post.cover}
+          external_url={post.external_url}
+        />
         <h1>{post.title}</h1>
         <FormattedDate
           className={styles["publish-time"]}

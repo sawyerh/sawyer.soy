@@ -3,7 +3,6 @@ title: A mental model for React props for beginners
 published_at: 2021-04-25T07:00:00.000Z
 excerpt: How React Props relate to HTML attributes and JS functions.
 category: Article
-_template: article
 ---
 
 One of the React concepts I commonly see trip up folks when they’re initially learning React are how “props” work. [Props](https://reactjs.org/docs/components-and-props.html) is short for “properties” and understanding how to work with props is a fundamental part of working with React.

@@ -1,35 +1,83 @@
 import classNames from "classnames";
-import Cover from "components/Cover";
 import FormattedDate from "components/FormattedDate";
 import { HeaderNav } from "components/HeaderNav";
 import Link from "next/link";
 import styles from "styles/blog.module.css";
-import { getPosts } from "tina/helpers";
+import { getPosts, postToUrl } from "tina/helpers";
+import { getHostFromURL } from "utils/getHostFromURL";
 
 export default async function Page() {
   const posts = await getPosts();
+  const articles = posts.filter((post) => post.category === "Article");
+  const links = posts.filter((post) => post.category === "Link");
 
   return (
-    <div className="wrapper">
-      <HeaderNav />
-      <section className={styles["post-list"]}>
-        {posts.map((post) => (
-          <article key={post.id}>
-            <Link
-              href={`/blog/${post._sys?.filename}`}
-              className={styles["post-preview"]}
-            >
-              <Cover {...post.cover} />
-              <h1>{post.title}</h1>
-              <FormattedDate
-                className={classNames(styles["publish-time"])}
-                value={post.published_at}
-              />
-              {post.excerpt && <p>{post.excerpt}</p>}
-            </Link>
-          </article>
+    <div className="sm:flex">
+      <div className="sm:w-golden-large relative px-md sm:px-lg">
+        <HeaderNav />
+        <img
+          src="/illo-writing.gif"
+          loading="lazy"
+          className={styles["posts-illustration"]}
+          alt="Illustration of a man typing at a computer with a cat resting next to him"
+        />
+        <h1 className={classNames(styles["post-lists-heading"], "mb-md")}>
+          My latest posts
+        </h1>
+        <section>
+          <div className="">
+            {articles.map((post) => (
+              <article key={post.id} className={styles["list-article"]}>
+                <Link
+                  href={post.external_url ? post.external_url : postToUrl(post)}
+                  target={post.external_url ? "_blank" : undefined}
+                >
+                  <h2>
+                    {post.title}{" "}
+                    <span className={styles["list-article__title-icon"]}>
+                      {post.external_url ? "↗" : "→"}
+                    </span>
+                  </h2>
+                  {post.external_url && (
+                    <div className={styles["list-article__external-url"]}>
+                      Read this post on {getHostFromURL(post.external_url)}
+                    </div>
+                  )}
+                  {post.excerpt && <p>{post.excerpt}</p>}
+                  <FormattedDate
+                    className="font-marker text-xs"
+                    value={post.published_at}
+                  />
+                </Link>
+              </article>
+            ))}
+          </div>
+        </section>
+      </div>
+      <div className={styles["linkroll"]}>
+        <h2 className={classNames(styles["post-lists-heading"])}>Linkroll</h2>
+        <p>Insightful things from others on the web</p>
+        {links.map((post) => (
+          <Link
+            href={postToUrl(post)}
+            key={post.filename}
+            className={styles["linkroll-post"]}
+          >
+            {post.title}{" "}
+            {post.external_url && (
+              <span className={styles["linkroll-host"]}>
+                {getHostFromURL(post.external_url)}
+              </span>
+            )}
+          </Link>
         ))}
-      </section>
+        <img
+          src="/illo-linkroll.webp"
+          className={styles["linkroll-illustration"]}
+          alt="Illustration showing web browsers floating in the sky"
+          loading="lazy"
+        />
+      </div>
     </div>
   );
 }

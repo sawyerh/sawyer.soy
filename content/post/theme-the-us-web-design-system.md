@@ -1,0 +1,11 @@
+---
+title: Use the U.S. Web Design System and focus on bigger challenges
+published_at: 2022-03-24T07:00:00.000Z
+excerpt: >-
+  Instead of creating a design system from scratch, use the U.S. Web Design
+  System to save time and resources. Learn how to apply your own branding to a
+  system that’s already compliant and accessible.
+category: Article
+external_url: 'https://www.navapbc.com/insights/us-web-design-system'
+---
+
