@@ -179,13 +179,17 @@
 }
 
 .linkroll {
-  @apply bg-moss-800 p-md;
-  position: relative;
-  z-index: 0;
-  overflow: hidden;
+  background: url("/illo-linkroll-50.webp") center center no-repeat
+    theme(colors.moss.800);
+  background-size: 100% auto;
+  background-attachment: fixed;
+  background-blend-mode: multiply;
+  padding: theme(space.md);
   color: theme(colors.slate.200);
 
   @screen sm {
+    background-position: right bottom;
+    background-size: theme(space.golden-small) auto;
     width: theme(space.golden-small);
   }
 }
@@ -206,14 +210,4 @@
   font-size: theme(fontSize.xs);
   font-family: theme(fontFamily.mono);
   text-decoration: underline;
-}
-
-.linkroll-illustration {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  opacity: 0.5;
-  z-index: -1;
-  mix-blend-mode: multiply;
-  width: 100%;
 }

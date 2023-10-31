@@ -71,12 +71,6 @@ export default async function Page() {
             )}
           </Link>
         ))}
-        <img
-          src="/illo-linkroll.webp"
-          className={styles["linkroll-illustration"]}
-          alt="Illustration showing web browsers floating in the sky"
-          loading="lazy"
-        />
       </div>
     </div>
   );
