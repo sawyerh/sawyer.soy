@@ -5,7 +5,7 @@ import Markdown from "components/Markdown";
 import PostEditLink from "components/PostEditLink";
 import { Metadata } from "next";
 import Link from "next/link";
-import styles from "styles/blog.module.css";
+import styles from "styles/blog-post-permalink.module.css";
 import { getPost } from "tina/helpers";
 import { getHostFromURL } from "utils/getHostFromURL";
 
@@ -35,19 +35,19 @@ export default async function Page({ params }: Props) {
 
       <article className={styles.post}>
         <Cover
-          className={styles.cover}
+          className={styles["post__cover"]}
           {...post.cover}
           external_url={post.external_url}
         />
-        <h1>
+        <h1 className={styles["post__title"]}>
           {post.title}
           <PostEditLink filename={post.filename} />
         </h1>
         <FormattedDate
-          className={styles["publish-time"]}
+          className={styles["post__date"]}
           value={post.published_at}
         />
-        <div className={styles["post-body"]}>
+        <div className={styles["post__body"]}>
           <Markdown content={post.body} />
         </div>
         {post.category === "Article" && post.external_url && (

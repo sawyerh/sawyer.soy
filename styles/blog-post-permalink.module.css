@@ -1,0 +1,98 @@
+.post {
+  margin-bottom: theme(space.2xl);
+
+  @screen md {
+    font-size: theme(fontSize.lg);
+  }
+
+  a {
+    transition: all 0.2s ease-in-out;
+    color: theme(colors.terracotta.900);
+    text-decoration-color: currentColor;
+  }
+
+  a:hover {
+    text-decoration-thickness: 3px;
+  }
+}
+
+.post__title {
+  text-wrap: balance;
+  max-width: 45ch;
+  color: theme(colors.terracotta.800);
+  font-size: theme(fontSize.2xl);
+  line-height: theme(lineHeight.snug);
+
+  @screen sm {
+    font-size: theme(fontSize.3xl);
+  }
+
+  @screen md {
+    font-size: theme(fontSize.4xl);
+  }
+}
+
+/* Heading preceded by a cover */
+.post__cover ~ .post__title {
+  margin-top: 0;
+}
+
+.post__title,
+.post__date,
+.post__cover {
+  margin-bottom: theme(space.md);
+}
+
+/* Heading followed by a publish time */
+.post__title:has(+ .post__date) {
+  margin-bottom: theme(space.sm);
+}
+
+.post__body {
+  h2 {
+    margin-top: theme(space.lg);
+  }
+
+  h3 {
+    margin-top: theme(space.md);
+  }
+
+  h2,
+  h3,
+  h4 {
+    color: theme(colors.moss.600);
+  }
+}
+
+/* Plain Markdown images are in their own <p>, so remove the max-width to allow the image to be wider than prose */
+.post p:has(> .post__image) {
+  margin: 0;
+  max-width: none;
+}
+
+.post__image {
+  display: block;
+  margin: theme(space.lg) 0;
+}
+
+.post__cover lite-youtube {
+  width: 100%;
+  max-width: none;
+}
+
+.post__date {
+  display: block;
+  color: theme(colors.moss.500);
+  font-size: theme(fontSize.sm);
+  font-family: theme(fontFamily.marker);
+}
+
+.post__body {
+  p:first-of-type::first-letter {
+    font-weight: bold;
+    font-family: var(--font-marker);
+    initial-letter: 2;
+    display: inline-block;
+    margin-right: 3px;
+  }
+}

@@ -12,12 +12,12 @@ type Cover = NonNullable<RawBlogPost["cover"]>;
 export interface BlogPost extends Omit<RawBlogPost, "cover"> {
   cover: Omit<Cover, "__typename">;
   filename: string;
-  title: string;
 }
 
 export async function getPosts(): Promise<BlogPost[]> {
   const { data } = await client.queries.postConnection({
     sort: "published_at",
+    filter: { draft: { eq: false } },
   });
   const posts = data.postConnection.edges ?? [];
 
@@ -48,7 +48,6 @@ function setPostDefaults(post: RawBlogPost): BlogPost {
     ...post,
     cover: post.cover ?? {},
     filename: post._sys.filename,
-    title: post.title ?? "",
   };
 }
 

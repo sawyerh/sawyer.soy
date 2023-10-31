@@ -5,6 +5,9 @@ module.exports = {
   content: ["./{app,content,components}/**/*.{js,ts,jsx,tsx,mdx}"],
   theme: {
     extend: {
+      borderWidth: {
+        16: "16px",
+      },
       colors: {
         // Based on #213623 (900) generated on https://uicolors.app/create
         moss: {

@@ -1,0 +1,123 @@
+.section-heading {
+  font-size: theme(fontSize.xl);
+  font-family: var(--font-marker);
+}
+
+.desk-illustration {
+  position: absolute;
+  top: theme(space.sm);
+  right: theme(space.md);
+  opacity: 0.1;
+  z-index: -1;
+  mix-blend-mode: multiply;
+  height: 250px;
+
+  @screen 2xl {
+    height: 300px;
+  }
+}
+
+.article {
+  display: block;
+  margin-bottom: theme(space.md);
+  text-decoration: none;
+
+  .article-title__icon {
+    font-family: var(--font-marker);
+  }
+
+  .article-external-url {
+    @apply mb-2 inline-block font-mono text-xs font-normal text-slate-800 underline;
+    transition: all 0.2s ease-in-out;
+  }
+
+  .article-title {
+    color: theme(colors.terracotta.800);
+    font-size: theme(fontSize.xl);
+    line-height: theme(lineHeight.tight);
+    text-wrap: balance;
+    font-weight: bold;
+  }
+
+  p {
+    margin: 0;
+  }
+}
+
+.article:hover {
+  color: currentColor;
+
+  .article-title {
+    text-decoration: underline;
+  }
+}
+
+.article[target="_blank"]:hover {
+  .article-title {
+    text-decoration: none;
+  }
+
+  .article-external-url {
+    background: theme(colors.terracotta.700);
+    padding: 0 theme(space.1);
+    color: theme(colors.white);
+    text-decoration: none;
+  }
+
+  .article-title__icon {
+    color: theme(colors.terracotta.700);
+    text-decoration: underline;
+    text-decoration-thickness: 5px;
+  }
+}
+
+.article:first-of-type {
+  .article-title {
+    font-size: theme(fontSize.3xl);
+  }
+
+  p {
+    max-width: theme(maxWidth.prose);
+    font-size: theme(fontSize.xl);
+  }
+}
+
+.linkroll {
+  background: url("/illo-linkroll-50.webp") center center no-repeat
+    theme(colors.moss.800);
+  background-size: 100% auto;
+  background-attachment: fixed;
+  background-blend-mode: multiply;
+  padding: theme(space.md);
+  color: theme(colors.slate.200);
+
+  @screen sm {
+    background-position: right bottom;
+    background-size: theme(space.golden-small) auto;
+    width: theme(space.golden-small);
+  }
+}
+
+.linkroll-link {
+  display: block;
+  color: theme(colors.terracotta.300);
+  text-wrap: balance;
+  margin-bottom: theme(space.sm);
+  line-height: theme(lineHeight.tight);
+  text-decoration: none;
+}
+
+.linkroll-link:hover {
+  color: currentColor;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+}
+
+.linkroll-link__host {
+  display: block;
+  color: theme(colors.slate.400);
+  font-weight: normal;
+  font-size: theme(fontSize.xs);
+  font-family: theme(fontFamily.mono);
+  text-decoration: underline;
+}

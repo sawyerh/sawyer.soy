@@ -1,5 +1,6 @@
 ---
 title: My notes learning Python as a frontend developer
+draft: true
 published_at: 2023-10-30T14:59:30.685Z
 category: Article
 ---
@@ -9,7 +10,7 @@ These are the resources that helped me setup a Python project from scratch.
 Virtual environments
 "First things first: always work in, and deploy in, a virtual environment. Even if you think you don’t need one. In fact, especially if you don’t think you need one. Virtual environments \[...] provide isolation of a particular Python environment and set of installed packages"
 "invoke python -m venv however you like, and activate it before running any packaging-related commands. There are several popular conventions for this, and I won’t push any specific one on you, but I do recommend that you adopt some sort of standard way of placing your virtual environments, whether it’s to put them all in a single directory, or always in a hidden directory at the root of a project’s source tree, or something else."
-"no matter where you put it, “activation” is a simple matter: set the environment variable VIRTUAL\_ENV to the path to the virtual environment and then put $VIRTUAL\_ENV/bin onto $PATH to be sure any accidental direct invocations of scripts will work."
+"no matter where you put it, “activation” is a simple matter: set the environment variable VIRTUAL_ENV to the path to the virtual environment and then put $VIRTUAL\_ENV/bin onto $PATH to be sure any accidental direct invocations of scripts will work."
 "Most of the projects I work on use a Makefile to drive common dev tasks, so a make requirements target that invokes pip-tools is pretty standard for me, and usually I have it run something like this inside the container:
 python -m pip install --upgrade pip-tools
 python -m pip-tools compile --generate-hashes requirements/app.in --output-file requirements/app.txt
@@ -51,7 +52,7 @@ flake8 or Pylint.
 Code formatting
 Prettier equivalent seems to be a combo of Black and isort
 "the only option I recommend setting for Black is the target Python version, which should match the version of Python you intend to deploy on"
-" For isort, I recommend setting the “profile” option to "black" to tell isort to match Black’s preferences. If it has trouble recognizing which modules are part of your codebase and which aren’t, consider setting known\_first\_party and/or known\_third\_party to help it out"
+" For isort, I recommend setting the “profile” option to "black" to tell isort to match Black’s preferences. If it has trouble recognizing which modules are part of your codebase and which aren’t, consider setting known_first_party and/or known_third_party to help it out"
 "putting the configuration in a top-level pyproject.toml file in your repository. In the case of Black this is the only supported configuration file, and most other tools support using pyproject.toml as a centralized configuration file now — there’s only one I’m going to recommend (flake8) that doesn’t"
 
 Testing
@@ -72,7 +73,7 @@ Serverless
 [https://aws.github.io/chalice](https://aws.github.io/chalice)
 Nice, but not super well maintained. For instance, lacking support for newer features like Function URLs
 Created a serverless API extremely quickly, after working through the venv issues. With zero dependencies.
-"You can set the automatic\_layer in your .chalice/config.json file which will instruct Chalice to create your 3rd party packages as a separate Lambda layer."
+"You can set the automatic_layer in your .chalice/config.json file which will instruct Chalice to create your 3rd party packages as a separate Lambda layer."
 
 VS Code
 I dislike pre-commit and rather my IDE do linting, formatting for me. This required setting .vscode/settings.json.

@@ -48,13 +48,23 @@ const bodyFieldComponents = [
 const commonFields = [
   {
     type: "string",
+    required: true,
     label: "Title",
     name: "title",
+  },
+  {
+    name: "draft",
+    label: "Draft",
+    type: "boolean",
+    required: true,
+    description:
+      "If this is checked the post will not be visible in the production build",
   },
   {
     label: "Publish date",
     name: "published_at",
     type: "datetime",
+    required: true,
   },
   {
     label: "Cover",
@@ -97,6 +107,7 @@ const commonFields = [
     label: "Category",
     name: "category",
     options: ["Link", "Article"],
+    required: true,
   },
   {
     type: "string",
@@ -115,6 +126,7 @@ const commonFields = [
 
 const commonDefaultItem = {
   published_at: new Date().toISOString(),
+  draft: false,
 };
 
 /**
@@ -134,6 +146,10 @@ export default {
           .toLowerCase()
           .slice(0, 200);
       },
+    },
+    itemProps: (item) => {
+      // Field values are accessed by item?.<Field name>
+      return { label: item?.title };
     },
     router: ({ document }) => {
       return `/posts/${document._sys.filename}`;

@@ -1,4 +1,4 @@
-@import "./code.css";
+@import "./_code.css";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -75,7 +75,7 @@ Type elements
   ol,
   blockquote,
   pre {
-    margin-bottom: theme(margin.6);
+    margin-bottom: theme(space.6);
   }
 
   p,
@@ -127,7 +127,7 @@ Media
 */
 .img-caption {
   display: block;
-  margin-top: theme(margin.2);
+  margin-top: theme(space.2);
   color: theme(colors.slate.600);
   font-size: theme(fontSize.sm);
   font-family: theme(fontFamily.marker);

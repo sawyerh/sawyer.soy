@@ -1,6 +1,6 @@
 import classNames from "classnames";
 import { useId } from "react";
-import styles from "styles/blog.module.css";
+import styles from "styles/blog-post-permalink.module.css";
 
 export interface MarkdownImageProps {
   url: string;
@@ -17,7 +17,7 @@ export default function MarkdownImage(props: MarkdownImageProps) {
   const alt = props.alt ?? caption;
 
   return (
-    <span className={styles["post-image"]}>
+    <span className={styles["post__image"]}>
       <img
         src={props.url}
         alt={alt}
