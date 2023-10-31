@@ -2,10 +2,11 @@ import Cover from "components/Cover";
 import FormattedDate from "components/FormattedDate";
 import { HeaderNav } from "components/HeaderNav";
 import Markdown from "components/Markdown";
+import PostEditLink from "components/PostEditLink";
 import { Metadata } from "next";
 import Link from "next/link";
 import styles from "styles/blog.module.css";
-import { BlogPost, getPost } from "tina/helpers";
+import { getPost } from "tina/helpers";
 import { getHostFromURL } from "utils/getHostFromURL";
 
 interface Props {
@@ -31,13 +32,17 @@ export default async function Page({ params }: Props) {
   return (
     <div className="wrapper">
       <HeaderNav className="mb-md" />
+
       <article className={styles.post}>
         <Cover
           className={styles.cover}
           {...post.cover}
           external_url={post.external_url}
         />
-        <h1>{post.title}</h1>
+        <h1>
+          {post.title}
+          <PostEditLink filename={post.filename} />
+        </h1>
         <FormattedDate
           className={styles["publish-time"]}
           value={post.published_at}
