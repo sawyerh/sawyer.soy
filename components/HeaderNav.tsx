@@ -19,10 +19,6 @@ export function HeaderNav(props: { className?: string }) {
               href: "/blog",
               label: "Posts",
             },
-            {
-              href: "/social",
-              label: "Socializing",
-            },
           ].map(({ href, label }) => (
             <Link
               className="inline-block px-2 py-4 text-slate-700"

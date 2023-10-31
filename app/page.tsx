@@ -22,7 +22,7 @@ export default function Page() {
           distance.
         </span>
       </div>
-      <section className="sm:w-golden-large">
+      <section className="flex min-h-screen flex-col sm:w-golden-large">
         <HeaderNav className="px-md sm:px-lg" />
 
         <div className="px-md pb-md sm:px-lg">
@@ -66,7 +66,7 @@ export default function Page() {
           </p>
         </div>
 
-        <div className="bg-slate-200 p-md sm:px-lg">
+        <div className="grow bg-slate-200 p-md sm:px-lg">
           <p>
             Prior to Nava, I was at <a href="https://oak.is">Oak Studios</a>,
             where I helped lead product design and engineering on projects like{" "}
