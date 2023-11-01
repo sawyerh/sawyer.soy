@@ -61,6 +61,18 @@ export default async function Page({ params }: Props) {
             </p>
           </>
         )}
+        {post.category === "Link" && post.external_url && (
+          <p>
+            <Link
+              href={post.external_url}
+              className="font-bold"
+              target="_blank"
+            >
+              View the original post on {getHostFromURL(post.external_url)}
+              <span className="ml-2 inline-block font-marker">↗</span>
+            </Link>
+          </p>
+        )}
       </article>
     </div>
   );

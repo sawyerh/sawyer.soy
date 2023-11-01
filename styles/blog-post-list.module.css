@@ -44,12 +44,8 @@
   }
 }
 
-.article:hover {
-  color: currentColor;
-
-  .article-title {
-    text-decoration: underline;
-  }
+.article:hover .article-title {
+  text-decoration: underline;
 }
 
 .article[target="_blank"]:hover {
@@ -105,6 +101,7 @@
   margin-bottom: theme(space.sm);
   line-height: theme(lineHeight.tight);
   text-decoration: none;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
 }
 
 .linkroll-link:hover {

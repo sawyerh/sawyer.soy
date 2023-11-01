@@ -60,14 +60,12 @@ Type elements
   }
 
   a {
-    color: theme(colors.moss.700);
+    color: theme(colors.moss.950);
     text-decoration: underline;
-    text-decoration-color: theme(colors.moss.400);
   }
 
   a:hover {
     color: theme(colors.terracotta.800);
-    text-decoration-color: currentColor;
   }
 
   p,
@@ -132,6 +130,14 @@ Media
   font-size: theme(fontSize.sm);
   font-family: theme(fontFamily.marker);
   text-align: left;
+}
+
+@layer components {
+  .subhead--marker {
+    color: theme(colors.moss.700);
+    font-size: theme(fontSize.lg);
+    font-family: theme(fontFamily.marker);
+  }
 }
 
 /**

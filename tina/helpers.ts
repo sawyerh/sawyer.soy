@@ -15,9 +15,12 @@ export interface BlogPost extends Omit<RawBlogPost, "cover"> {
 }
 
 export async function getPosts(): Promise<BlogPost[]> {
+  const filter =
+    process.env.NODE_ENV === "development" ? {} : { draft: { eq: false } };
+
   const { data } = await client.queries.postConnection({
     sort: "published_at",
-    filter: { draft: { eq: false } },
+    filter,
   });
   const posts = data.postConnection.edges ?? [];
 

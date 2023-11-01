@@ -8,7 +8,6 @@
   a {
     transition: all 0.2s ease-in-out;
     color: theme(colors.terracotta.900);
-    text-decoration-color: currentColor;
   }
 
   a:hover {
@@ -60,7 +59,7 @@
   h2,
   h3,
   h4 {
-    color: theme(colors.moss.600);
+    color: theme(colors.moss.700);
   }
 }
 

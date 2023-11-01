@@ -1,3 +1,5 @@
+import SocialFooter from "components/SocialFooter";
+import Link from "next/link";
 import styles from "styles/home.module.css";
 import { HeaderNav } from "../components/HeaderNav";
 
@@ -22,17 +24,18 @@ export default function Page() {
           distance.
         </span>
       </div>
-      <section className="flex min-h-screen flex-col sm:w-golden-large">
-        <HeaderNav className="px-md sm:px-lg" />
+      <section className="flex min-h-screen flex-col px-md pb-lg sm:w-golden-large sm:px-lg">
+        <HeaderNav />
 
-        <div className="px-md pb-md sm:px-lg">
+        <div className={styles["body"]}>
           <p className="font-marker text-3xl text-terracotta-700">Heyo,</p>
           <p className="text-balance text-lg">
             I&rsquo;m a full-stack engineer specializing in frontend
             development, with a background in UX design. Coworkers have given me
             shoutouts for:
           </p>
-          <ul className="font-marker">
+
+          <ul className="font-marker text-lg">
             <li>
               Helping teams maintain momentum and focus on the highest-impact
               work
@@ -45,10 +48,12 @@ export default function Page() {
             <li>Creating concise roadmaps and technical plans</li>
             <li>Anticipating issues and diving deep to find solutions</li>
           </ul>
-          <p className="mb-0">
-            I&rsquo;m currently at <a href="https://www.navapbc.com/">Nava</a>,
-            working to make government services effective and accessible. Some
-            projects I&rsquo;ve worked on include:{" "}
+
+          <h2 className="subhead--marker mt-md">My work</h2>
+          <p>
+            I&rsquo;m at <a href="https://www.navapbc.com/">Nava</a>, working to
+            make government services effective and accessible. Some projects
+            I&rsquo;ve worked on include:{" "}
             <a href="https://HealthCare.gov">HealthCare.gov</a>,{" "}
             <a href="https://www.navapbc.com/case-studies/integrating-eligibility-enrollment-software">
               Vermont Integrated Benefits
@@ -64,33 +69,42 @@ export default function Page() {
             </a>{" "}
             and state levels.
           </p>
-        </div>
 
-        <div className="grow bg-slate-200 p-md sm:px-lg">
-          <p>
-            Prior to Nava, I was at <a href="https://oak.is">Oak Studios</a>,
-            where I helped lead product design and engineering on projects like{" "}
-            <a href="https://creativemornings.com">CreativeMornings</a>,{" "}
-            <a href="https://dropmark.com">Dropmark</a>, and{" "}
-            <a href="https://siteleaf.com">Siteleaf</a>.
-          </p>
-          <p className="mb-0">
-            Outside of my day-to-day job, I enjoy working on side projects like{" "}
-            <a href="https://highlights.sawyerh.com/">
-              tracking my reading highlights
-            </a>
-            , creating{" "}
-            <a href="https://github.com/sawyerh/eslint-plugin-todo-plz">
-              developer tooling
-            </a>
-            , <a href="https://cursor.in/">design resources</a>,{" "}
-            <a href="https://chrome.google.com/webstore/detail/devtools-us-web-design-sy/pkdhffidhfklfcpockffiadeaelfflge">
-              browser extensions
-            </a>
-            , and{" "}
-            <a href="https://github.com/sawyerh">other open source projects</a>.
-          </p>
+          <div className="max-w-prose gap-8 md:flex">
+            <p className="mb-0 flex-1">
+              Outside of my day-to-day job, I enjoy working on side projects
+              like{" "}
+              <a href="https://highlights.sawyerh.com/">
+                tracking my reading highlights
+              </a>
+              ,{" "}
+              <Link href="/blog/semantic-search-for-reading-highlights">
+                experimenting with AI
+              </Link>
+              , creating{" "}
+              <a href="https://github.com/sawyerh/eslint-plugin-todo-plz">
+                developer tooling
+              </a>
+              , <a href="https://cursor.in/">design resources</a>,{" "}
+              <a href="https://chrome.google.com/webstore/detail/devtools-us-web-design-sy/pkdhffidhfklfcpockffiadeaelfflge">
+                browser extensions
+              </a>
+              , and{" "}
+              <a href="https://github.com/sawyerh">
+                other open source projects
+              </a>
+              .
+            </p>
+            <p className="mb-0 flex-1">
+              Prior to Nava, I was at <a href="https://oak.is">Oak Studios</a>,
+              where I helped lead product design and engineering on projects
+              like <a href="https://creativemornings.com">CreativeMornings</a>,{" "}
+              <a href="https://dropmark.com">Dropmark</a>, and{" "}
+              <a href="https://siteleaf.com">Siteleaf</a>.
+            </p>
+          </div>
         </div>
+        <SocialFooter />
       </section>
     </div>
   );
