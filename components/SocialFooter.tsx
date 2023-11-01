@@ -22,9 +22,9 @@ const items: Array<{
   },
 ];
 
-export default function SocialFooter() {
+export default function SocialFooter(props: { className?: string }) {
   return (
-    <div className="my-md">
+    <div className={props.className}>
       <h2 className="subhead--marker">Contact</h2>
 
       {items.map((item) => (

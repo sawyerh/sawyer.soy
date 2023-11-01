@@ -33,8 +33,7 @@ export default async function Page() {
               className={styles["article"]}
             >
               <h2 className={styles["article-title"]}>
-                {post.draft && "✍️ "}
-                {post.title}{" "}
+                {post.title} {post.draft && "✏ [Draft] "}
                 <span className={styles["article-title__icon"]}>
                   {post.external_url ? "↗" : "→"}
                 </span>

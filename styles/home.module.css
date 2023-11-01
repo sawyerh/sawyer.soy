@@ -56,12 +56,16 @@
   }
 }
 
-.body a {
-  text-decoration: dotted underline;
-}
+.body {
+  margin-bottom: theme(space.md);
 
-.body a:hover {
-  text-decoration: solid underline;
+  a {
+    text-decoration: dotted underline;
+  }
+
+  a:hover {
+    text-decoration: solid underline;
+  }
 }
 
 .link-list {

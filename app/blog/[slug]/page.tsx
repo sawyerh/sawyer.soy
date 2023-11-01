@@ -3,6 +3,7 @@ import FormattedDate from "components/FormattedDate";
 import { HeaderNav } from "components/HeaderNav";
 import Markdown from "components/Markdown";
 import PostEditLink from "components/PostEditLink";
+import SocialFooter from "components/SocialFooter";
 import { Metadata } from "next";
 import Link from "next/link";
 import styles from "styles/blog-post-permalink.module.css";
@@ -74,6 +75,8 @@ export default async function Page({ params }: Props) {
           </p>
         )}
       </article>
+
+      <SocialFooter className="border-t-2 pb-lg pt-md" />
     </div>
   );
 }
