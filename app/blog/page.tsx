@@ -52,24 +52,26 @@ export default async function Page() {
           ))}
         </section>
       </div>
-      <div className={styles["linkroll"]}>
-        <h2 className={styles["section-heading"]}>Linkroll</h2>
-        <p>Things shaping my thinking as an engineer</p>
-        {links.map((post) => (
-          <Link
-            href={postToUrl(post)}
-            key={post.filename}
-            className={styles["linkroll-link"]}
-          >
-            {post.title}{" "}
-            {post.external_url && (
-              <span className={styles["linkroll-link__host"]}>
-                {getHostFromURL(post.external_url)}
-              </span>
-            )}
-          </Link>
-        ))}
-      </div>
+      {process.env.NODE_ENV === "development" && (
+        <div className={styles["linkroll"]}>
+          <h2 className={styles["section-heading"]}>Linkroll</h2>
+          <p>Things shaping my thinking as an engineer</p>
+          {links.map((post) => (
+            <Link
+              href={postToUrl(post)}
+              key={post.filename}
+              className={styles["linkroll-link"]}
+            >
+              {post.title}{" "}
+              {post.external_url && (
+                <span className={styles["linkroll-link__host"]}>
+                  {getHostFromURL(post.external_url)}
+                </span>
+              )}
+            </Link>
+          ))}
+        </div>
+      )}
     </div>
   );
 }
