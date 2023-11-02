@@ -1,8 +1,34 @@
 ---
 title: Towards an understanding of technical debt
-published_at: 2023-10-30T02:24:03.105Z
 draft: false
+published_at: 2023-11-02T07:00:00.000Z
 category: Link
 external_url: >-
   https://laughingmeme.org/2016/01/10/towards-an-understanding-of-technical-debt/
 ---
+
+Requirements and features change over time, and an approach that was once correct may no longer be correct. Making code easy to remove can help reduce the features of the codebase that resist change:
+
+> Over time both the problem we are trying to solve and our understanding of it will inevitably change, often dramatically. When that happens some percentage of our very explicit and exact description is now wrong, and a liability.
+
+> A little discussed and poorly understood design goal for code is disposability. Given change, what design patterns can we follow that allow us to quickly expunge incorrect behavior from our codebase? Interestingly it is a much more tractable metric for measuring as opposed to more popular criteria like “elegance”.
+
+When we don't understand something, we get angry, tired, or begin to resent the codebase or team that originally wrote it. Messy (spaghetti) code == fear and confusion == technical debt.
+
+> We often describe this code \[...] as messy (spaghetti), unmaintainable, or amateurish. Often what we’re describing under the surface is fear and confusion. We don’t understand the code, and when we don’t understand things, as human, we tend to get scared, tired, and angry. Often we find this pattern in teams who’ve inherited a codebase. The code that was originally written by a small tight knit team with a clear vision of the problem is now being worked on by (often much more senior) separate teams working in some degree of silo. What was a productive lack of indirection to the code becomes a poorly considered lack of abstraction resisting change.
+
+Describing "maintenance work" as "technical debt" is used a way to buy sprint capacity.
+
+> \[technical debt] is useful shorthand for buying breathing room. But it comes at a cost. We end up pathologizing something which is normal, often casting an earlier team as bumbling
+
+That team that added the dependency that's no longer maintained? They were probably doing the right thing at the time, and it's not their fault that the dependency is no longer maintained. Although:
+
+> focusing on a small number of well known technologies, and being diligent about your new technology adoption process can really pay off.
+
+Sometimes the feeling of technical debt is due to the lack of better processes or tooling. Cumbersome approval and release processes, flakey tests, and slow builds can all contribute to the feeling of technical debt.
+
+> Attempting to improve an environment either under conditions of constant crisis, or in the face of inertia often leads to the energy drained state that programmers attribute to working on systems with large amounts of technical debt. These are failings of operability.
+
+Ultimately, all code is technical debt, and you're never going to pay it off:
+
+> you should especially worry if your team believes they’re “fixing” or “paying off” technical debt. All code is technical debt. All code is, to varying degrees, an incorrect bet on what the future will look like.

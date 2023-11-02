@@ -15,6 +15,13 @@
   }
 }
 
+.post__link {
+  p {
+    font-size: theme(fontSize.sm);
+    font-family: theme(fontFamily.marker);
+  }
+}
+
 .post__title {
   text-wrap: balance;
   max-width: 45ch;
@@ -44,7 +51,7 @@
 
 /* Heading followed by a publish time */
 .post__title:has(+ .post__date) {
-  margin-bottom: theme(space.sm);
+  margin-bottom: theme(space.2);
 }
 
 .post__body {
@@ -86,7 +93,7 @@
   font-family: theme(fontFamily.marker);
 }
 
-.post__body {
+.post__article .post__body {
   p:first-of-type::first-letter {
     font-weight: bold;
     font-family: var(--font-marker);

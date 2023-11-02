@@ -1,3 +1,4 @@
+import classNames from "classnames";
 import Cover from "components/Cover";
 import FormattedDate from "components/FormattedDate";
 import { HeaderNav } from "components/HeaderNav";
@@ -34,7 +35,12 @@ export default async function Page({ params }: Props) {
     <div className="wrapper">
       <HeaderNav className="mb-md" />
 
-      <article className={styles.post}>
+      <article
+        className={classNames(
+          styles.post,
+          styles[`post__${post.category.toLowerCase()}`],
+        )}
+      >
         <Cover
           className={styles["post__cover"]}
           {...post.cover}
@@ -48,6 +54,19 @@ export default async function Page({ params }: Props) {
           className={styles["post__date"]}
           value={post.published_at}
         />
+        {post.category === "Link" && post.external_url && (
+          <div className="mb-md border-b-2 pb-md">
+            <Link
+              href={post.external_url}
+              className="font-bold"
+              target="_blank"
+            >
+              View the original post on {getHostFromURL(post.external_url)}
+              <span className="ml-2 inline-block font-marker">↗</span>
+            </Link>{" "}
+            or read <span className="font-marker">my notes</span> below.
+          </div>
+        )}
         <div className={styles["post__body"]}>
           <Markdown content={post.body} />
         </div>
@@ -61,18 +80,6 @@ export default async function Page({ params }: Props) {
               </Link>
             </p>
           </>
-        )}
-        {post.category === "Link" && post.external_url && (
-          <p>
-            <Link
-              href={post.external_url}
-              className="font-bold"
-              target="_blank"
-            >
-              View the original post on {getHostFromURL(post.external_url)}
-              <span className="ml-2 inline-block font-marker">↗</span>
-            </Link>
-          </p>
         )}
       </article>
 
