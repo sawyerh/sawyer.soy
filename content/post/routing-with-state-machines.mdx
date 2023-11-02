@@ -1,0 +1,198 @@
+---
+title: Using state machines to define and visualize routing logic
+draft: false
+published_at: 2021-06-27T07:00:00.000Z
+excerpt: >-
+  State machines can be a framework and language agnostic option for defining
+  and visualizing the routing logic in your applications.
+category: Article
+---
+
+Routing logic in complex web applications can be a source of confusion and bugs. It pays off if the technical solution your team chooses for managing routing logic makes it easy to change where pages route to, and provides a holistic view of how pages connect to each other. State machines can be a framework and language agnostic option for maintaining the routing logic in your applications, and they can be visualized!
+
+### What’s a state machine?
+
+State machines can sound intimidating when you first read about them, especially when most blog posts regurgitate [the Wikipedia definition](https://en.m.wikipedia.org/wiki/Finite-state_machine), which says state machines are “a mathematical model of computation.”
+
+The main points that have helped state machines click for me, and the most relevant for this post are:
+
+* A state machine can be in exactly one of a finite number of states at any given time. For this post, you can replace “state” with “page” — your app can show one out of a known set of pages at any given time.
+* A state machine can change from one state to another in response to an event; the change from one state to another is a transition. For example, a user pressing a button (the event), transitions your app from one page to another.
+
+State machines have been around since the 1950’s, so we’re not inventing anything new here, and they have [a wide range of use cases](https://xstate-catalogue.com/).
+
+### Elements of a routing machine
+
+On the three projects I’ve worked on so far at [Nava](https://www.navapbc.com/) over the past 4+ years, each one has included [building multi-page, branching form experiences](https://blog.navapbc.com/structuring-a-complex-eligibility-form-for-healthcare-gov-37d79a5ad6). Our forms often include branches a person is routed down, depending on their answers to preceding questions. Our forms need to answer: What’s the next page a person should be routed to after answering the current questions and pressing “Continue”? Using a state machine for this has worked really well. Below are the main elements of what we’ve implemented:
+
+* Routes
+* State machine
+* Router
+* Visualization
+
+### Routes
+
+The format of this can vary, but it’s helpful to have a mapping of keys to routes so you have one place for editing the pathnames for your routes. A JSON object is one way. For example:
+
+```javascript
+// routes.js
+export const routes = {
+  apply: {
+    documents: "/apply/upload-docs",
+    household: "/apply/household",
+    income: "/apply/income",
+    name: "/apply/name",
+    review: "/apply/review",
+    success: "/apply/success",
+  },
+  auth: {
+    create: "/auth/create-account",
+    login: "/auth/login",
+    reset: "/auth/reset-password",
+  },
+};
+```
+
+### State machine
+
+Your routing state machine is where you define the events each of your page’s supports that result in a routing transition. Within this machine you have:
+
+* State nodes. Each route is a node.
+* Events. Each route’s state node has events that result in a routing change.
+* Conditions (or “guards”). Some events conditionally transition to a different route, depending on the current page’s context.
+
+Below is an example state machine, using the [XState library](https://xstate.js.org/docs/), which adheres to the [SCXML specification](https://www.w3.org/TR/scxml/). XState makes it easy to get started with state machines in JS, but it’s not required to use XState, or even a third party library, to use state machines in your app.
+
+```js
+// machine.js
+import { Machine } from "xstate";
+
+// Conditions for some of our transitions
+const guards = {
+  hasJobIncome: (context) => context.has_job_income === true,
+};
+
+export const routingMachine = Machine({
+  // Initial state is mostly useful for visualizations, for our purposes.
+  initial: routes.auth.login,
+  states: {
+    [routes.auth.login]: {
+      on: {
+        LOG_IN: routes.apply.start,
+        FORGOT_PASSWORD: routes.auth.reset,
+      },
+    },
+    [routes.auth.reset]: {
+      on: {
+        RESET: routes.auth.login,
+      },
+    },
+    [routes.apply.start]: {
+      on: {
+        CONTINUE: routes.apply.name,
+      },
+    },
+    [routes.apply.name]: {
+      on: {
+        CONTINUE: routes.apply.income,
+      },
+    },
+    [routes.apply.income]: {
+      on: {
+        CONTINUE: [
+          {
+            cond: "hasJobIncome",
+            target: routes.apply.documents,
+          },
+          // If the above condition isn't met, we route to this page instead:
+          { target: routes.apply.review },
+        ],
+      },
+    },
+    [routes.apply.documents]: {
+      on: {
+        CONTINUE: routes.apply.review,
+      },
+    },
+    [routes.apply.review]: {
+      on: {
+        CONTINUE: routes.apply.success,
+      },
+    },
+    [routes.apply.success]: {},
+  },
+  guards,
+});
+```
+
+### Router
+
+Your router includes methods for triggering events, reading the next page’s path, and navigating to the page. The core methods of this router are:
+
+* A method for retrieving the next page from the state machine
+* A method for changing the current page
+
+Our method for retrieving the next page should support passing in “context,” which any guards in our state machine can read to inform conditional routing logic.
+
+```js
+// router.js
+import { routingMachine } from "machine";
+
+export function getNextPathname(event, context) {
+  const currentPathname = window.location.pathname;
+
+  const nextPathname = routingMachine
+    .withContext(context) // https://xstate.js.org/docs/guides/context.html
+    .transition(currentPathname, event); // https://xstate.js.org/api/interfaces/statemachine.html#transition
+
+  return nextPathname;
+}
+```
+
+In our example state machine above, we have an “income” page which upon a CONTINUE event will transition to one of two possible routes. The income page’s form state is the context we pass into our router to determine which page is next. In React, that might look like this:
+
+```js
+import { updateApplication } from "api";
+import { getNextPathname, goTo } from "router";
+
+function IncomePage() {
+  // This is within the page for example purposes, but
+  // could be abstracted for a multi-page form.
+  const handleFormSubmit = (event) => {
+    event.preventDefault();
+    const formData = new FormData(event.target);
+
+    updateApplication(formData).then(() => {
+      const context = {
+        has_job_income: formData.get("has_job_income") === "Yes",
+      };
+      const nextPathname = getNextPathname("CONTINUE", context);
+
+      goTo(nextPathname);
+    });
+  };
+
+  return (
+    <form onSubmit={handleFormSubmit}>
+      <label>
+        <input name="has_job_income" type="checkbox" value="Yes" />I have income
+        from a job in 2021
+      </label>
+    </form>
+  );
+}
+```
+
+### Visualization
+
+One of the biggest selling points to me for using a state machine for routing logic is that you can render your state machine as a diagram, visualizing what’s defined in your code. This is a helpful tool for auditing your routing behavior, identifying the various paths a user might take through a flow.
+
+There are various ways you can generate this diagram. If you’re using XState, you can use the XState [visualizer](https://xstate.js.org/viz/) or [inspector](https://statecharts.io/). On my most recent project, we used [Mermaid](https://mermaid-js.github.io/mermaid/#/flowchart) to generate our routing digram, and we render it in our project’s [Storybook](https://storybook.js.org/). GDS’s [Smart Answers](https://github.com/alphagov/smart-answers) tool include [a public route for visualizing each flow](https://www.gov.uk/business-coronavirus-support-finder/y/visualise).
+
+Here’s what our example state machine looks like using Mermaid to generate a visualization:
+
+<MarkdownImage url="/uploads/state-machine-visual.webp" alt="Flow diagram showing a flow through page routes " size="small" />
+
+[Here’s the state machine in XState’s visualizer](https://xstate.js.org/viz/?gist=0fa11f317c50c86bd5a058253124414e) for comparison.
+
+Interested in learning more? Check out [statecharts.dev](https://statecharts.dev/).

@@ -1,0 +1,154 @@
+@import "./_code.css";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-size: 16px;
+  }
+
+  body {
+    color: theme(colors.moss.900);
+    font-size: theme(fontSize.base);
+    font-family: theme(fontFamily.sans);
+  }
+}
+
+/* @media (prefers-color-scheme: dark) {
+  body {
+    background-color: theme(colors.moss.950);
+    color: theme(colors.slate.300);
+  }
+} */
+
+/**
+Layout
+*/
+.wrapper {
+  margin: auto;
+  padding: 0 theme(spacing.md);
+  max-width: 1024px;
+}
+
+/**
+Type elements
+*/
+@layer base {
+  h1,
+  h2,
+  h3,
+  h4 {
+    margin-bottom: 0.25em;
+    font-weight: bold;
+  }
+
+  h1 {
+    font-size: theme(fontSize.3xl);
+  }
+
+  h2 {
+    font-size: theme(fontSize.2xl);
+  }
+
+  h3 {
+    font-size: theme(fontSize.xl);
+  }
+
+  h4 {
+    font-size: theme(fontSize.lg);
+  }
+
+  a {
+    color: theme(colors.moss.950);
+    text-decoration: underline;
+  }
+
+  a:hover {
+    color: theme(colors.terracotta.800);
+  }
+
+  p,
+  ul,
+  ol,
+  blockquote,
+  pre {
+    margin-bottom: theme(space.6);
+  }
+
+  p,
+  li {
+    line-height: theme(lineHeight.normal);
+  }
+
+  p,
+  li,
+  blockquote {
+    max-width: theme(maxWidth.prose);
+  }
+
+  blockquote {
+    margin-left: calc(-1 * theme(padding.3));
+    border-left: 3px solid theme(colors.slate.500);
+    background: theme(colors.slate.100);
+    padding: theme(padding.sm);
+    color: theme(colors.slate.600);
+    line-height: theme(lineHeight.relaxed);
+  }
+
+  :is(ul, ol) ::marker {
+    color: theme(colors.terracotta.400);
+    font-family: theme(fontFamily.marker);
+  }
+
+  ul {
+    margin-left: 0.75em;
+  }
+
+  ol {
+    margin-left: 1.5em;
+    list-style: decimal;
+  }
+
+  ul {
+    list-style-type: "▹";
+  }
+
+  li {
+    margin-bottom: 0.5rem;
+    padding-left: 0.5rem;
+  }
+}
+
+/**
+Media
+*/
+.img-caption {
+  display: block;
+  margin-top: theme(space.2);
+  color: theme(colors.slate.600);
+  font-size: theme(fontSize.sm);
+  font-family: theme(fontFamily.marker);
+  text-align: left;
+}
+
+@layer components {
+  .subhead--marker {
+    color: theme(colors.moss.700);
+    font-size: theme(fontSize.lg);
+    font-family: theme(fontFamily.marker);
+  }
+}
+
+/**
+Custom utilities
+*/
+@layer utilities {
+  .font-marker {
+    font-family: var(--font-marker);
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+}

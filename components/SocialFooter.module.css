@@ -1,0 +1,11 @@
+.item {
+  display: inline-block;
+  margin-right: theme(space.sm);
+  color: theme(colors.terracotta.800);
+  font-size: theme(fontSize.sm);
+  text-decoration: underline;
+}
+
+.item:hover {
+  text-decoration-thickness: 3px;
+}

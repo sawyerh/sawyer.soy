@@ -1,0 +1,14 @@
+---
+title: Optimizing WebP files with cwebp
+draft: true
+published_at: 2023-10-31T14:59:30.685Z
+category: Article
+---
+
+I noticed the webp exports from Sketch still seemed larger than I expected, likely because the exports are losseless. Unfortunately, [ImageOptim](https://imageoptim.com/mac) doesn’t support compressing WebP, but I did find [cwebp](https://developers.google.com/speed/webp/docs/cwebp) CLI which helped cut the exported file’s size in half.
+
+Command I used for cutting an export size in half:
+
+```
+cwebp input-file.webp -o lossy-output.webp -m 6 -af
+```
