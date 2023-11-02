@@ -45,4 +45,6 @@ export default function Cover(props: {
       </div>
     );
   }
+
+  return null;
 }
