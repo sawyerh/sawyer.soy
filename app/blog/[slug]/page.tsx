@@ -19,9 +19,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const post = await getPost(params.slug);
   const image = post.cover.image_url;
 
+  const description =
+    post.category === "Link"
+      ? "Here's a link and my notes on it."
+      : post.excerpt;
+
   return {
     title: `${post.title} | Sawyer Hollenshead`,
-    description: post.excerpt,
+    description,
     openGraph: {
       images: image ? [image] : undefined,
     },
