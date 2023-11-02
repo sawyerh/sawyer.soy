@@ -14,11 +14,11 @@ const items: Array<{
   },
   {
     label: "Mastodon",
-    link: "https://twitter.com/sawyerh",
+    link: "https://elk.zone/hachyderm.io/@sawyer",
   },
   {
     label: "GitHub",
-    link: "https://twitter.com/sawyerh",
+    link: "https://github.com/sawyerh",
   },
 ];
 
