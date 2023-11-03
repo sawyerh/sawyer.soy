@@ -60,14 +60,14 @@ export default async function Page({ params }: Props) {
           value={post.published_at}
         />
         {post.category === "Link" && post.external_url && (
-          <div className="mb-md border-b-2 pb-md">
+          <div className={styles["original-source"]}>
             <Link
               href={post.external_url}
               className="font-bold"
               target="_blank"
             >
               View the original post on {getHostFromURL(post.external_url)}
-              <span className="ml-2 inline-block font-marker">↗</span>
+              <span className="ml-1 mr-2 inline-block font-marker">↗</span>
             </Link>{" "}
             or read <span className="font-marker">my notes</span> below.
           </div>

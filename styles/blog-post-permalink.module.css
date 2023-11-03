@@ -15,8 +15,11 @@
   }
 }
 
+/* Posts in the Link category */
 .post__link {
-  p {
+  p,
+  ul,
+  ol {
     font-size: theme(fontSize.sm);
     font-family: theme(fontFamily.marker);
   }
@@ -54,6 +57,18 @@
   margin-bottom: theme(space.2);
 }
 
+.original-source {
+  margin-bottom: theme(space.md);
+  border-bottom-width: 2px;
+  padding-bottom: theme(space.md);
+  text-wrap: pretty;
+
+  a {
+    /* match heading color above it */
+    color: theme(colors.terracotta.800);
+  }
+}
+
 .post__body {
   h2 {
     margin-top: theme(space.lg);
@@ -67,6 +82,17 @@
   h3,
   h4 {
     color: theme(colors.moss.700);
+  }
+}
+
+/* Dropcap */
+.post__article .post__body {
+  p:first-of-type::first-letter {
+    font-weight: bold;
+    font-family: var(--font-marker);
+    initial-letter: 2;
+    display: inline-block;
+    margin-right: 3px;
   }
 }
 
@@ -91,14 +117,4 @@
   color: theme(colors.moss.500);
   font-size: theme(fontSize.sm);
   font-family: theme(fontFamily.marker);
-}
-
-.post__article .post__body {
-  p:first-of-type::first-letter {
-    font-weight: bold;
-    font-family: var(--font-marker);
-    initial-letter: 2;
-    display: inline-block;
-    margin-right: 3px;
-  }
 }
