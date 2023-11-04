@@ -2,6 +2,7 @@ import { GeistMono } from "geist/font";
 import { Metadata } from "next";
 import { Atkinson_Hyperlegible } from "next/font/google";
 import LocalFont from "next/font/local";
+import Script from "next/script";
 import "styles/global.css";
 
 export const metadata: Metadata = {
@@ -37,7 +38,14 @@ export default function RootLayout({
         markerFont.variable,
       ].join(" ")}
     >
-      <body>{children}</body>
+      <body>
+        {children}
+        <Script
+          defer
+          src="https://static.cloudflareinsights.com/beacon.min.js"
+          data-cf-beacon='{"token": "53a3a4fd0e4c41a3bd9e71b8c3453d85"}'
+        />
+      </body>
     </html>
   );
 }
