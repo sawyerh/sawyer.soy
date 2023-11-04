@@ -23,13 +23,6 @@ const atkinson = Atkinson_Hyperlegible<"--font-atkinson">({
   weight: ["400", "700"],
 });
 
-// https://www.gent.media/manrope
-// const manrope = Manrope<"--font-manrope">({
-//   subsets: ["latin"],
-//   variable: "--font-manrope",
-//   weight: ["400", "700"],
-// });
-
 export default function RootLayout({
   children,
 }: {

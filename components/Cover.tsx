@@ -41,7 +41,11 @@ export default function Cover(props: {
   if (props.image_url) {
     return (
       <div className={props.className}>
-        <img src={props.image_url} alt={props.image_alt ?? undefined} />
+        <img
+          fetchPriority="high"
+          src={props.image_url}
+          alt={props.image_alt ?? undefined}
+        />
       </div>
     );
   }
