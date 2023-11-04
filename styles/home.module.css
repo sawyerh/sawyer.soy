@@ -7,7 +7,7 @@
 .hero {
   container-name: video-column;
   container-type: size;
-  background: url("/alabama-hills-cover.jpg") no-repeat center center;
+  background: url("/alabama-hills-cover.webp") no-repeat center center;
   background-size: cover;
   padding-top: theme(space.golden-small);
   width: 100%;

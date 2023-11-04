@@ -1,9 +1,16 @@
 import SocialFooter from "components/SocialFooter";
 import Link from "next/link";
+import { preload } from "react-dom";
 import styles from "styles/home.module.css";
 import { HeaderNav } from "../components/HeaderNav";
 
 export default function Page() {
+  preload("/alabama-hills.webm", {
+    as: "video",
+    type: "video/webm",
+    fetchPriority: "high",
+  });
+
   return (
     <div className={styles.container}>
       <div className={styles.hero}>
