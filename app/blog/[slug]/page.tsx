@@ -5,8 +5,8 @@ import { HeaderNav } from "components/HeaderNav";
 import Markdown from "components/Markdown";
 import PostEditLink from "components/PostEditLink";
 import SocialFooter from "components/SocialFooter";
-import { GeistMono } from "geist/font";
 import { Metadata } from "next";
+import LocalFont from "next/font/local";
 import Link from "next/link";
 import styles from "styles/blog-post-permalink.module.css";
 import { getPost } from "tina/helpers";
@@ -15,6 +15,11 @@ import { getHostFromURL } from "utils/getHostFromURL";
 interface Props {
   params: { slug: string };
 }
+
+const monospaceFont = LocalFont({
+  src: "../../../public/fonts/GeistMono-Regular.woff2",
+  variable: "--font-geist-mono",
+});
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const post = await getPost(params.slug);
@@ -38,7 +43,7 @@ export default async function Page({ params }: Props) {
   const post = await getPost(params.slug);
 
   return (
-    <div className={classNames("wrapper", GeistMono.variable)}>
+    <div className={classNames("wrapper", monospaceFont.variable)}>
       <HeaderNav className="mb-md" />
 
       <article

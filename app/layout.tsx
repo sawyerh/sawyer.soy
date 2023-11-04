@@ -35,11 +35,13 @@ export default function RootLayout({
     >
       <body>
         {children}
-        <Script
-          defer
-          src="https://static.cloudflareinsights.com/beacon.min.js"
-          data-cf-beacon='{"token": "53a3a4fd0e4c41a3bd9e71b8c3453d85"}'
-        />
+        {process.env.NODE_ENV === "production" && (
+          <Script
+            defer
+            src="https://static.cloudflareinsights.com/beacon.min.js"
+            data-cf-beacon='{"token": "53a3a4fd0e4c41a3bd9e71b8c3453d85"}'
+          />
+        )}
       </body>
     </html>
   );
