@@ -5,6 +5,7 @@ import { HeaderNav } from "components/HeaderNav";
 import Markdown from "components/Markdown";
 import PostEditLink from "components/PostEditLink";
 import SocialFooter from "components/SocialFooter";
+import { GeistMono } from "geist/font";
 import { Metadata } from "next";
 import Link from "next/link";
 import styles from "styles/blog-post-permalink.module.css";
@@ -37,7 +38,7 @@ export default async function Page({ params }: Props) {
   const post = await getPost(params.slug);
 
   return (
-    <div className="wrapper">
+    <div className={classNames("wrapper", GeistMono.variable)}>
       <HeaderNav className="mb-md" />
 
       <article

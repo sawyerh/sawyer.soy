@@ -1,4 +1,3 @@
-import { GeistMono } from "geist/font";
 import { Metadata } from "next";
 import { Atkinson_Hyperlegible } from "next/font/google";
 import LocalFont from "next/font/local";
@@ -32,11 +31,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={[
-        GeistMono.variable,
-        atkinson.variable,
-        markerFont.variable,
-      ].join(" ")}
+      className={[atkinson.variable, markerFont.variable].join(" ")}
     >
       <body>
         {children}
