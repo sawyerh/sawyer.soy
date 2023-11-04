@@ -62,7 +62,7 @@ export default async function Page() {
               key={post.filename}
               className={styles["linkroll-link"]}
             >
-              {post.title}{" "}
+              {post.title} {post.draft && "✏ [Draft] "}{" "}
               {post.external_url && (
                 <span className={styles["linkroll-link__host"]}>
                   {getHostFromURL(post.external_url)}
