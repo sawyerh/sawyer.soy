@@ -42,7 +42,7 @@ export default function Page() {
             shoutouts for:
           </p>
 
-          <ul className="font-marker text-lg">
+          <ul className="font-marker">
             <li>
               Helping teams maintain momentum and focus on the highest-impact
               work
@@ -78,7 +78,7 @@ export default function Page() {
           </p>
 
           <div className="max-w-prose gap-8 md:flex">
-            <p className="mb-0 flex-1">
+            <p className="flex-1">
               Outside of my day-to-day job, I enjoy working on side projects
               like{" "}
               <a href="https://highlights.sawyerh.com/">
