@@ -49,13 +49,13 @@ Embeddings were a concept that took a while to click for me. From [OpenAI’s do
 
 Something that helped make the concept click for me was visualizing the embeddings. [Cohere has an embeddings playground](https://dashboard.cohere.ai/playground/embed) that lets you add a list of sentences, and then see a visualization of the relatedness (closeness) of those sentences. For example, here’s a visualization for reading highlight embeddings from four books:
 
-![](/uploads/highlight-embeddings-cluster-1.png "Highlight embeddings clustered by similarity")
+![](/uploads/highlight-embeddings-cluster-1.webp "Highlight embeddings clustered by similarity")
 
 There are clear groupings of highlights from each book, but interestingly one of the highlights from Kill It with Fire — a book about legacy technology — is grouped with the highlights from Water Always Wins — a book about water management and climate change. If we look at the highlight, we can see it’s about climate change — it’s more related to the highlights from Water Always Wins.
 
 Semantic search can be built upon embeddings. A search query is just another sentence that you can create an embedding of. Once you have the query’s embedding, you can compare it against all other embeddings and return those that are closest. For example, in Water Always Wins, I learned about [paleo valleys](https://en.m.wikipedia.org/wiki/Palaeochannel), but I have trouble remembering the term. I remember the concept — land that water drains quicker into. If I search for that concept, the query embedding gets me close enough to other highlights about paleo valleys, helping me find the highlights I was looking for:
 
-![](/uploads/highlight-embeddings-cluster-2.png "A search query embedding clustered with highlights that are most similar")
+![](/uploads/highlight-embeddings-cluster-2.webp "A search query embedding clustered with highlights that are most similar")
 
 ### Embeddings APIs
 
@@ -63,7 +63,7 @@ There are several companies offering APIs for generating embeddings. I considere
 
 Pricing is based on the number of “tokens” in the text. According to OpenAI, “one token generally corresponds to \~4 characters of text.” You can use OpenAI’s [Tokenizer tool](https://platform.openai.com/tokenizer) to calculate and visualize how a piece of text is broken down into tokens.
 
-![](/uploads/highlight-embeddings-tokens.png "Tokenization of a reading highlight")
+![](/uploads/highlight-embeddings-tokens.webp "Tokenization of a reading highlight")
 
 I was initially worried that the costs for generating and storing embeddings for all of my reading highlights would be higher than I’d be willing to pay, so the first thing I did was estimate the costs. To do that, I needed to:
 
@@ -71,7 +71,7 @@ I was initially worried that the costs for generating and storing embeddings for
 2. Estimate the number of tokens for each highlight. I used [tiktoken](https://github.com/openai/openai-cookbook/blob/main/examples/How_to_count_tokens_with_tiktoken.ipynb), a Python library from OpenAI.
 3. Estimate the cost based on the total number of tokens across all the highlights
 
-![](/uploads/highlight-embeddings-token-lengths.png "Character lengths of each reading highlight")
+![](/uploads/highlight-embeddings-token-lengths.webp "Character lengths of each reading highlight")
 
 Turns out it’s cheap as hell. Here were the numbers:
 
@@ -103,7 +103,7 @@ I’d not be happy with these request times if I was building something for a lo
 
 There are some other tradeoffs to storing all embeddings in a single file. Race conditions are a big one. Unless you limit the concurrency of the writes/deletes to 1, there’s the possibility that multiple requests attempt to update the file at the same time, resulting in only a subset of the updates being saved. Again, since I’m the only user making infrequent writes/deletes and I know about this constraint, I’m cool with this tradeoff. For new highlights, they all get imported in a single request. I seldom delete a highlight.
 
-![Flow chart. 1: Submit a natural language search query. 2: Create an embedding of the search query. 3: Download embeddings of all highlights from S3. 4: Get the highlights nearest to the query’s embedding.](/uploads/highlight-embeddings-flow.png)
+![Flow chart. 1: Submit a natural language search query. 2: Create an embedding of the search query. 3: Download embeddings of all highlights from S3. 4: Get the highlights nearest to the query’s embedding.](/uploads/highlight-embeddings-flow.webp)
 
 ## Tying it all together
 

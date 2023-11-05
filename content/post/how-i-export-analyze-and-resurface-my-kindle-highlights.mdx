@@ -98,7 +98,7 @@ There’s a difference between publishing your highlights and actually rememberi
 
 But, I was mostly only remembering things that I recently read, and had a very specific use case for. Alongside the website, I’ve been trying something else: Sending myself daily SMS messages with a random highlight.
 
-![](/uploads/highlight-sms.png "Randomized daily SMS highlights")
+![](/uploads/highlight-sms.webp "Randomized daily SMS highlights")
 
 To do this, I’m using a scheduled [AWS CloudWatch Event](https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/WhatIsCloudWatchEvents.html), which triggers an AWS Lambda function. The Lambda function then grabs a random highlight from the Firestore database and sends an SMS message to my phone using [Twilio](https://www.twilio.com/).
 
