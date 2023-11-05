@@ -15,12 +15,17 @@ export default async function Page() {
     <div className="sm:flex">
       <div className="relative border-l-moss-800 border-t-moss-800 px-md sm:w-golden-large sm:border-l-8 sm:border-t-8 md:px-lg">
         <HeaderNav />
-        <img
-          src="/illo-writing.gif"
-          loading="lazy"
+        <video
           className={styles["desk-illustration"]}
-          alt="Illustration of a man typing at a computer with a cat resting next to him"
-        />
+          autoPlay
+          loop
+          muted
+          playsInline
+          role="presentation"
+        >
+          <source src="/illo-writing.webm" type="video/webm" />
+          <source src="/illo-writing.mp4" type="video/mp4" />
+        </video>
         <h1 className={classNames(styles["section-heading"], "mb-md")}>
           My latest posts
         </h1>
@@ -55,7 +60,7 @@ export default async function Page() {
       {process.env.NODE_ENV === "development" && (
         <div className={styles["linkroll"]}>
           <h2 className={styles["section-heading"]}>Linkroll</h2>
-          <p>Things shaping my thinking as an engineer</p>
+          <p>Things shaping my perspective as an engineer</p>
           {links.map((post) => (
             <Link
               href={postToUrl(post)}
