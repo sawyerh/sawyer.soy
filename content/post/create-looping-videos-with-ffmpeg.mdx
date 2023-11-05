@@ -1,0 +1,38 @@
+---
+title: "TIL: Using ffmpeg to create looping videos"
+draft: false
+published_at: 2023-11-05T14:59:30.685Z
+category: Article
+---
+
+For my site's redesign I've been experimenting with adding subtly moving backgrounds to a few pages. On the homepage, I've used an iOS [Live Photo](https://support.apple.com/en-us/HT207310), which I then slowed by 2x using iMovie. For other parts of the site, I've been experimenting with animating illustrations. In the process, I've learned how to use ffmpeg to edit the videos and optimize them for the web.
+
+Below is the three step process I've followed using [ffmpeg](https://www.ffmpeg.org/), a command line tool for recording, converting or streaming video.
+
+## Step 1: Create a reversed version of the video
+
+```sh
+ffmpeg -i original.mp4 -vf reverse -an reversed.mp4
+```
+
+The `-an` part removes any audio.
+
+## Step 2: Combine the original and reversed videos
+
+```sh
+ffmpeg -i original.mp4 -i reversed.mp4 -filter_complex "[0:v:0] [1:v:0] concat=n=2:v=1 [v]" -map "[v]" -an loop.mp4
+```
+
+## Step 3: Create a WebM version for the web
+
+This uses the AV1 codec, which results in a smaller file size, but can be very slow to convert and [isn't yet supported by all web browsers](https://caniuse.com/av1).
+
+```sh
+ffmpeg -i loop.mp4 -c:v libaom-av1 -crf 30 -an output.webm
+```
+
+Optionally shrink the dimensions, for example to 500x500:
+
+```sh
+ffmpeg -i loop.mp4 -vf scale=500:500 -an loop-500.mp4
+```
