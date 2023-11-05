@@ -16,6 +16,7 @@
     border: 1px solid theme(colors.slate.50);
     border-radius: theme(borderRadius.DEFAULT);
     padding: theme(spacing.sm);
+    overflow-x: auto;
   }
 }
 
