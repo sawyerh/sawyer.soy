@@ -27,7 +27,6 @@ export async function getPosts(): Promise<BlogPost[]> {
   return posts
     .filter(filterNullish)
     .map((post) => post.node)
-    .filter(filterNullish)
     .map(setPostDefaults)
     .reverse(); // newest published_at first
 }
