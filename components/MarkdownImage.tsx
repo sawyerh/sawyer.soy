@@ -17,17 +17,19 @@ export default function MarkdownImage(props: MarkdownImageProps) {
   const alt = props.alt ?? caption;
 
   return (
-    <span className={styles["post__image"]}>
+    <span
+      className={classNames(styles["post__image"], {
+        "max-w-prose": props.size === "prose",
+        "max-w-screen-sm": props.size === "small",
+        "max-w-screen-md": props.size === "medium",
+      })}
+    >
       <img
         src={props.url}
         alt={alt}
         aria-describedby={caption ? `caption_${id}` : undefined}
         loading="lazy"
-        className={classNames(props.className, {
-          "max-w-prose": props.size === "prose",
-          "max-w-screen-sm": props.size === "small",
-          "max-w-screen-md": props.size === "medium",
-        })}
+        className={props.className}
       />
       {caption && (
         <span className="img-caption" id={`caption_${id}`}>
