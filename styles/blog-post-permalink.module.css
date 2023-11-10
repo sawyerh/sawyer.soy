@@ -86,13 +86,15 @@
 }
 
 /* Dropcap */
-.post__article .post__body {
-  p:first-of-type::first-letter {
-    font-weight: bold;
-    font-family: var(--font-marker);
-    initial-letter: 2;
-    display: inline-block;
-    margin-right: 3px;
+@supports (initial-letter: 2) {
+  .post__article .post__body {
+    p:first-of-type::first-letter {
+      font-weight: bold;
+      font-family: var(--font-marker);
+      initial-letter: 2;
+      display: inline-block;
+      margin-right: 3px;
+    }
   }
 }
 
