@@ -17,8 +17,13 @@ interface Props {
 }
 
 const monospaceFont = LocalFont({
-  src: "../../../public/fonts/GeistMono-Regular.woff2",
-  variable: "--font-geist-mono",
+  src: "../../../public/fonts/monaspace/MonaspaceNeon-Regular.woff2",
+  variable: "--font-mono",
+});
+
+const monospaceHandwrittenFont = LocalFont({
+  src: "../../../public/fonts/monaspace/MonaspaceRadon-Regular.woff2",
+  variable: "--font-mono-handwritten",
 });
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -43,7 +48,13 @@ export default async function Page({ params }: Props) {
   const post = await getPost(params.slug);
 
   return (
-    <div className={classNames("wrapper", monospaceFont.variable)}>
+    <div
+      className={classNames(
+        "wrapper",
+        monospaceFont.variable,
+        monospaceHandwrittenFont.variable,
+      )}
+    >
       <HeaderNav className="mb-md" />
 
       <article

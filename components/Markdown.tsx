@@ -1,19 +1,33 @@
-import hljs from "highlight.js";
+import { Code } from "bright";
 import { TinaMarkdown, TinaMarkdownContent } from "tinacms/dist/rich-text";
 import MarkdownImage, { MarkdownImageProps } from "./MarkdownImage";
 
-function CodeBlock(props: { lang?: string; value: string }) {
-  const lang = props.lang;
+// Code.theme = {
+//   dark: "github-dark",
+//   light: "github-light",
+// };
+Code.theme = "github-light";
 
-  const highlighted = lang
-    ? hljs.highlight(props.value, {
-        language: lang,
-      })
-    : hljs.highlightAuto(props.value);
+function CodeBlock(props: { lang?: string; value: string }) {
+  /**
+   * Markdown code block opening tags can be written as:
+   * ```js
+   * or
+   * ```filepath/file.js
+   */
+  let lang = props.lang;
+  let title: string | undefined;
+
+  if (lang?.includes(".")) {
+    lang = lang.split(".")[1];
+    title = props.lang;
+  }
 
   return (
     <pre>
-      <code dangerouslySetInnerHTML={{ __html: highlighted.value }}></code>
+      <Code lang={lang} title={title}>
+        {props.value}
+      </Code>
     </pre>
   );
 }

@@ -54,7 +54,7 @@ module.exports = {
       },
       fontFamily: {
         sans: ["var(--font-atkinson)"],
-        mono: ["var(--font-geist-mono)"],
+        mono: ["var(--font-mono)"],
         marker: ["var(--font-marker)"],
       },
       lineHeight: {

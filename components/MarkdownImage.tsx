@@ -19,9 +19,9 @@ export default function MarkdownImage(props: MarkdownImageProps) {
   return (
     <span
       className={classNames(styles["post__image"], {
+        "max-w-sm": props.size === "small",
         "max-w-prose": props.size === "prose",
-        "max-w-screen-sm": props.size === "small",
-        "max-w-screen-md": props.size === "medium",
+        "max-w-screen-sm": props.size === "medium",
       })}
     >
       <img

@@ -28,9 +28,9 @@ const bodyFieldComponents = [
         name: "size",
         label: "Size",
         description:
-          "Constrain the width of the image. By default, images span the entire width of the container.",
+          "Constrain the width of the image. By default, images span the entire width of the container. Prose will match the width of the paragraphs.",
         type: "string",
-        options: ["prose", "small", "medium"],
+        options: ["small", "prose", "medium"],
       },
       {
         name: "className",
