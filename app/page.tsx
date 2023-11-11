@@ -1,3 +1,4 @@
+import classNames from "classnames";
 import SocialFooter from "components/SocialFooter";
 import Link from "next/link";
 import { preload } from "react-dom";
@@ -31,10 +32,10 @@ export default function Page() {
           distance.
         </span>
       </div>
-      <section className="flex min-h-screen flex-col px-md pb-lg sm:w-golden-large sm:px-lg">
-        <HeaderNav />
+      <section className="flex min-h-screen flex-col sm:w-golden-large">
+        <HeaderNav className="px-md sm:px-lg" />
 
-        <div className={styles["body"]}>
+        <div className={classNames(styles["body"], "grow px-md sm:px-lg")}>
           <p className="font-marker text-3xl text-terracotta-700">Heyo,</p>
           <p className="text-balance text-lg">
             I&rsquo;m a full-stack engineer specializing in frontend
@@ -111,7 +112,7 @@ export default function Page() {
             </p>
           </div>
         </div>
-        <SocialFooter />
+        <SocialFooter className="px-md sm:px-lg" />
       </section>
     </div>
   );

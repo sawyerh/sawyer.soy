@@ -3,8 +3,21 @@
   margin-right: theme(space.sm);
   color: theme(colors.terracotta.800);
   text-decoration: underline;
+
+  svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  path {
+    fill: currentColor;
+  }
 }
 
 .item:hover {
   text-decoration-thickness: 3px;
+
+  path {
+    fill: theme(colors.terracotta.950);
+  }
 }
