@@ -62,12 +62,15 @@ export default function Page() {
             I&rsquo;m at <a href="https://www.navapbc.com/">Nava</a>, working to
             make government services effective and accessible. Some projects
             I&rsquo;ve worked on include:{" "}
-            <a href="https://HealthCare.gov">HealthCare.gov</a>,{" "}
+            <a href="https://www.navapbc.com/insights/form-design-approaches">
+              HealthCare.gov
+            </a>
+            ,{" "}
             <a href="https://www.navapbc.com/case-studies/integrating-eligibility-enrollment-software">
               Vermont Integrated Benefits
             </a>
             ,{" "}
-            <a href="https://paidleave.mass.gov/">
+            <a href="https://www.navapbc.com/insights/repeatable-sustainable-processes-building-benefits-systems">
               Massachusetts Paid Family{" "}
               <span className="font-marker">&amp;</span> Medical Leave
             </a>
