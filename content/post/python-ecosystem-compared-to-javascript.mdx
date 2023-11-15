@@ -1,0 +1,140 @@
+---
+title: A JavaScript Developer's Guide to Python Tooling
+draft: false
+published_at: 2023-08-01T07:00:00.000Z
+category: Article
+cover:
+  image_url: /uploads/python-ecostystem.webp
+  image_alt: Abstract illustration of a snake
+excerpt: |
+  Drawing parallels between Python and JavaScript tools: virtual environments, dependency management, linting, code formatting, testing, and documentation.
+---
+
+I've contributed to a number of Python projects, but their foundations were already established by engineers familiar with the Python ecosystem. Working in these codebases helped me gain familiarity with Python, while minimizing the need to delve into Python tooling.
+
+Recently I've been [experimenting with "AI" projects](/blog/semantic-search-for-reading-highlights) more and more, and a lot of the libraries are either only available in Python, or the Python implementations are more straightforward. Since these are side projects, I'm now on the hook for setting up Python tooling, like dependency management, linting, and testing.
+
+Coming from a front-end background, with deep experience in the JavaScript and TypeScript ecosystems, I've found the Python ecosystem to be similar in ways, and surprising in others. **Below are my notes, drawing parallels between Python and JavaScript tools, and some resources I've found helpful.**
+
+## Virtual environments are similar to node_modules
+
+Similar to JavaScript packages, Python packages can be scoped globally or within a project. This allows you to have different versions of the same package installed for different projects.
+
+In JavaScript world, I'm used to just running `npm install` and having the packages installed within the project's directory. I found Python's approach less straightforward. You have to "activate" a virtual environment before running any packaging-related commands. A common theme I started to feel is there are a lot of different ways to do things in Python, and it's not always clear which is the best way. In this case, there are several popular conventions related to where you put the virtual environment, its naming, and activation methods. Do you run `python -m pip install` or `pip install`? Do you run `python -m venv` or `virtualenv`?
+
+This ambiguity prompted me to install [Poetry](https://python-poetry.org/), which decides a lot of these things for you.
+
+## Use Poetry for dependency management
+
+The smoothest transition for someone familiar with `npm` is to use [Poetry](https://python-poetry.org/) in their Python project.
+
+In my research, I encountered a post by James Bennett: [Boring Python: dependency management](https://www.b-list.org/weblog/2022/may/13/boring-python-dependencies/). In it James recommends sticking to Python’s default tools:
+
+> Python’s packaging ecosystem has default tools for each of these. In order, they are: (1) setuptools, (2) pip, (3) virtual environments. These three tools are your foundation, and for truly “boring” Python development work, I would argue that you should stick to them almost exclusively.
+
+This initially resonated with me — I find Node's default package manager, `npm`, to be sufficient and often feel it's an unnecessary step to install and maintain usage of a different package manager like `yarn`.
+
+That was until I tried using Python's default tools. I gave it a shot, but eventually succumbed to decision fatigue. You have to decide:
+
+- How to manage virtual environments?
+- How to define and install dependencies? A single or multiple requirements files, `setup.py`, or `pyproject.toml`?
+- How to pin dependency versions?
+
+Poetry takes these decisions off your shoulders, and is closer to how I'm used to working with NPM. It's an additional tool to install, unlike `npm`, but I think it eases the transition to working with Python. [The Poetry documentation is also great](https://python-poetry.org/docs/).
+
+A few tips I have in my notes:
+
+- `pyproject.toml` is like `package.json` but on steroids.
+- Set `poetry config virtualenvs.in-project true` and `poetry config virtualenvs.prefer-active-python true` so the virtual environment is created within your project, and uses the same Python version your project is configured to use.
+
+### DRY'ing common commands
+
+A [Makefile](https://opensource.com/article/18/8/what-how-makefile) can be used to encapsulate common commands, like `make install` and `make test`. Makefiles aren't exclusive to Python! A basic example of a `Makefile`:
+
+```make
+install:
+	poetry install
+
+test:
+	poetry run pytest -vv
+
+test-watch:
+	poetry run pytest-watch -v
+```
+
+This is similar to using the `scripts` section of `package.json`, although more powerful.
+
+## Linting
+
+For JavaScript, ESLint rules everything around me, but in Python there are at least two popular options: [flake8](https://flake8.pycqa.org/) or [Pylint](https://pylint.pycqa.org/en/latest/). There's also [Bandit](https://bandit.readthedocs.io/), for security linting.
+
+Another post from James, [Boring Python: code quality](https://www.b-list.org/weblog/2022/dec/19/boring-python-code-quality/), was helpful here:
+
+> flake8 is generally faster and will raise fewer false positives, but checks/enforces fewer things. Pylint is generally slower and will have more false positives, but checks/enforces a lot more things.
+
+> Pylint \[...] requires everything, including all of your dependencies, to be importable during the run (in order to check for things like correct usage of imported modules/functions/classes)
+
+I ended up going with flake8 for my side projects, and I've been on projects that have utilized both.
+
+## Code formatting
+
+The equivalent to Prettier is a combo of [Black](https://black.readthedocs.io/en/stable/) and [isort](https://pycqa.github.io/isort/).
+
+Some tips from [James' post](https://www.b-list.org/weblog/2022/dec/19/boring-python-code-quality/):
+
+> For isort, I recommend setting the “profile” option to "black" to tell isort to match Black’s preferences. If it has trouble recognizing which modules are part of your codebase and which aren’t, consider setting `known_first_party` and/or `known_third_party` to help it out
+
+> \[put] the configuration in a top-level `pyproject.toml` file in your repository. In the case of Black this is the only supported configuration file, and most other tools support using `pyproject.toml` as a centralized configuration file now
+
+## Testing
+
+As of Node 20, JavaScript developers can use Node's built-in test runner or install a testing dependency. I'm still a big fan and user of [Jest](https://jestjs.io/) for JavaScript testing.
+
+It's a similar story in Python. You can use Python's built-in test runner, or install a testing dependency. For both JavaScript and Python, I've found the testing dependencies to have a better developer experience, and for me it's worth the additional dependency.
+
+[Pytest](https://docs.pytest.org) seems to be the Python equivalent to Jest. If you're used to `jest.spyOn`, you can install the [`pytest-mock`](https://pytest-mock.readthedocs.io/en/latest/usage.html) plugin. If you're a heavy user of Jest's watch mode, you can add this to Pytest with the [`pytest-watcher`](https://github.com/olzhasar/pytest-watcher) plugin.
+
+## Documentation / Comments
+
+I'm a big fan of the [JSDoc](https://jsdoc.app/) comment format in JavaScript and TypeScript files. It was exciting to learn that [Python standardized](https://peps.python.org/pep-0257/) something similar: [docstrings](https://www.programiz.com/python-programming/docstrings).
+
+> Whenever string literals are present just after the definition of a function, module, class or method, they are associated with the object as their **doc** attribute. We can later use this attribute to retrieve this docstring.
+
+A docstring is akin to JSDoc, except it's within the function definition.
+There doesn't appear to be a standardized format for these strings, but [reStructuredText (reST) seems popular](https://stackoverflow.com/questions/3898572/what-are-the-most-common-python-docstring-formats) and [Google also has their own format](https://github.com/google/styleguide/blob/gh-pages/pyguide.md#38-comments-and-docstrings).
+
+[This Programiz course provides a helpful overview of Python docstrings](https://www.programiz.com/python-programming/docstrings).
+
+## VS Code
+
+Something I haven't quite figured out is how to set up a Python project where the linting and code formatting Just Works™️ without additional workspace settings. On JavaScript projects, ESLint and Prettier extensions work out of the box without any further configuration, but I haven't found the same to be true for Python projects.
+
+If you know a better way, send them my way, but so far I find myself often setting the following in a `.vscode/settings.json` file in the project directory. In this example, it's a monorepo where the project is in an `app/` subdirectory:
+
+```settings.json
+{
+  "black-formatter.args": ["--config", "app/pyproject.toml"],
+  "flake8.cwd": "${workspaceFolder}/app",
+  "isort.args": ["--settings-path", "app"],
+  "isort.path": ["app/.venv/bin/isort"],
+  "mypy-type-checker.args": [
+    "--config-file",
+    "${workspaceFolder}/app/pyproject.toml"
+  ],
+  "mypy-type-checker.cwd": "${workspaceFolder}/app",
+  "mypy-type-checker.importStrategy": "fromEnvironment",
+  "python.analysis.extraPaths": ["app/.venv/*"],
+  "python.testing.pytestArgs": ["app"],
+  "python.testing.pytestEnabled": true
+}
+```
+
+## Links
+
+- https://www.b-list.org/weblog/2022/may/13/boring-python-dependencies/
+- https://www.b-list.org/weblog/2022/dec/19/boring-python-code-quality/
+- https://hynek.me/articles/python-app-deps-2018
+- https://hynek.me/til/pip-tools-and-pyproject-toml/
+- https://simonwillison.net/tags/
+- https://www.programiz.com/python-programming
+- https://peps.python.org/pep-0621/

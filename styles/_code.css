@@ -3,6 +3,10 @@
     font-size: theme(fontSize.sm);
   }
 
+  a code {
+    text-decoration: underline;
+  }
+
   code:not(pre code) {
     display: inline-block;
     border-radius: theme(borderRadius.sm);
