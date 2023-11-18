@@ -1,10 +1,8 @@
 import classNames from "classnames";
 import Cover from "components/Cover";
 import FormattedDate from "components/FormattedDate";
-import { HeaderNav } from "components/HeaderNav";
 import Markdown from "components/Markdown";
 import PostEditLink from "components/PostEditLink";
-import SocialFooter from "components/SocialFooter";
 import { Metadata } from "next";
 import LocalFont from "next/font/local";
 import Link from "next/link";
@@ -48,67 +46,50 @@ export default async function Page({ params }: Props) {
   const post = await getPost(params.slug);
 
   return (
-    <div className="flex min-h-screen flex-col">
-      <div className="grow">
-        <div
-          className={classNames(
-            "wrapper",
-            monospaceFont.variable,
-            monospaceHandwrittenFont.variable,
-          )}
-        >
-          <HeaderNav className="mb-md" />
-
-          <article
-            className={classNames(
-              styles.post,
-              styles[`post__${post.category.toLowerCase()}`],
-            )}
-          >
-            <Cover
-              className={styles["post__cover"]}
-              {...post.cover}
-              external_url={post.external_url}
-            />
-            <h1 className={styles["post__title"]}>
-              {post.title}
-              <PostEditLink filename={post.filename} />
-            </h1>
-            <FormattedDate
-              className={styles["post__date"]}
-              value={post.published_at}
-            />
-            {post.category === "Link" && post.external_url && (
-              <div className={styles["original-source"]}>
-                <Link
-                  href={post.external_url}
-                  className="font-bold"
-                  target="_blank"
-                >
-                  View the original post on {getHostFromURL(post.external_url)}
-                  <span className="ml-1 mr-2 inline-block font-marker">↗</span>
-                </Link>{" "}
-                or read <span className="font-marker">my notes</span> below.
-              </div>
-            )}
-            <div className={styles["post__body"]}>
-              <Markdown content={post.body} />
-            </div>
-            {post.category === "Article" && post.external_url && (
-              <>
-                {post.excerpt && <blockquote>{post.excerpt}</blockquote>}
-                <p>
-                  <Link href={post.external_url}>
-                    This post of mine was originally published on{" "}
-                    {getHostFromURL(post.external_url)}. You can read it there.
-                  </Link>
-                </p>
-              </>
-            )}
-          </article>
+    <article
+      className={classNames(
+        styles.post,
+        styles[`post__${post.category.toLowerCase()}`],
+        monospaceFont.variable,
+        monospaceHandwrittenFont.variable,
+      )}
+    >
+      <Cover
+        className={styles["post__cover"]}
+        {...post.cover}
+        external_url={post.external_url}
+      />
+      <h1 className={styles["post__title"]}>
+        {post.title}
+        <PostEditLink filename={post.filename} />
+      </h1>
+      <FormattedDate
+        className={styles["post__date"]}
+        value={post.published_at}
+      />
+      {post.category === "Link" && post.external_url && (
+        <div className={styles["original-source"]}>
+          <Link href={post.external_url} className="font-bold" target="_blank">
+            View the original post on {getHostFromURL(post.external_url)}
+            <span className="ml-1 mr-2 inline-block font-marker">↗</span>
+          </Link>{" "}
+          or read <span className="font-marker">my notes</span> below.
         </div>
+      )}
+      <div className={styles["post__body"]}>
+        <Markdown content={post.body} />
       </div>
-      <SocialFooter className="wrapper" />
-    </div>
+      {post.category === "Article" && post.external_url && (
+        <>
+          {post.excerpt && <blockquote>{post.excerpt}</blockquote>}
+          <p>
+            <Link href={post.external_url}>
+              This post of mine was originally published on{" "}
+              {getHostFromURL(post.external_url)}. You can read it there.
+            </Link>
+          </p>
+        </>
+      )}
+    </article>
   );
 }
