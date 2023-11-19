@@ -7,7 +7,7 @@ import { Metadata } from "next";
 import LocalFont from "next/font/local";
 import Link from "next/link";
 import styles from "styles/blog-post-permalink.module.css";
-import { getPost } from "tina/helpers";
+import { getPost, getPosts, getPostSlug } from "tina/helpers";
 import { getHostFromURL } from "utils/getHostFromURL";
 
 interface Props {
@@ -23,6 +23,14 @@ const monospaceHandwrittenFont = LocalFont({
   src: "../../../public/fonts/monaspace/MonaspaceRadon-Regular.woff2",
   variable: "--font-mono-handwritten",
 });
+
+export async function generateStaticParams() {
+  const posts = await getPosts();
+
+  return posts.map((post) => ({
+    slug: getPostSlug(post),
+  }));
+}
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const post = await getPost(params.slug);

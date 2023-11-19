@@ -40,8 +40,12 @@ export const getPost = cache(async (filenameWithoutExtension: string) => {
   return setPostDefaults(data.post);
 });
 
+export function getPostSlug(post: BlogPost) {
+  return post.filename;
+}
+
 export function postToUrl(post: BlogPost) {
-  return `/blog/${post.filename}`;
+  return `/blog/${getPostSlug(post)}`;
 }
 
 function setPostDefaults(post: RawBlogPost): BlogPost {
