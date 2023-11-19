@@ -61,7 +61,7 @@
   margin-bottom: theme(space.md);
   border-bottom-width: 2px;
   padding-bottom: theme(space.md);
-  text-wrap: pretty;
+  text-wrap: balance;
 
   a {
     /* match heading color above it */
