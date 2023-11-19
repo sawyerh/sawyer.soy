@@ -44,26 +44,32 @@
   }
 }
 
-.article:hover .article-title {
-  text-decoration: underline;
-}
+@media (hover: hover) {
+  .article:hover {
+    color: currentColor;
 
-.article[target="_blank"]:hover {
-  .article-title {
-    text-decoration: none;
+    .article-title {
+      text-decoration: underline;
+    }
   }
 
-  .article-external-url {
-    background: theme(colors.terracotta.700);
-    padding: 0 theme(space.1);
-    color: theme(colors.white);
-    text-decoration: none;
-  }
+  .article[target="_blank"]:hover {
+    .article-title {
+      text-decoration: none;
+    }
 
-  .article-title__icon {
-    color: theme(colors.terracotta.700);
-    text-decoration: underline;
-    text-decoration-thickness: 5px;
+    .article-external-url {
+      background: theme(colors.terracotta.700);
+      padding: 0 theme(space.1);
+      color: theme(colors.white);
+      text-decoration: none;
+    }
+
+    .article-title__icon {
+      color: theme(colors.terracotta.700);
+      text-decoration: underline;
+      text-decoration-thickness: 5px;
+    }
   }
 }
 
