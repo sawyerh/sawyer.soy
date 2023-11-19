@@ -1,3 +1,4 @@
+import classNames from "classnames";
 import { Metadata } from "next";
 import { Atkinson_Hyperlegible } from "next/font/google";
 import LocalFont from "next/font/local";
@@ -31,7 +32,11 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={[atkinson.variable, markerFont.variable].join(" ")}
+      className={classNames(
+        atkinson.variable,
+        markerFont.variable,
+        "selection:bg-terracotta-700 selection:text-white",
+      )}
     >
       <body>
         {children}
