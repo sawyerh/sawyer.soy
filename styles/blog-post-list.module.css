@@ -44,13 +44,13 @@
   }
 }
 
-@media (hover: hover) {
-  .article:hover {
-    color: currentColor;
+.article:hover {
+  color: currentColor;
+}
 
-    .article-title {
-      text-decoration: underline;
-    }
+@media (hover: hover) {
+  .article:hover .article-title {
+    text-decoration: underline;
   }
 
   .article[target="_blank"]:hover {
