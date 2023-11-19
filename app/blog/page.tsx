@@ -24,6 +24,7 @@ export default async function Page() {
         <h1 className={classNames(styles["section-heading"], "mb-md")}>
           My latest posts
         </h1>
+        {/* Likely not necessary since we're exporting as a static site */}
         <Suspense fallback={<div>Loading...</div>}>
           <Articles />
         </Suspense>
@@ -32,6 +33,7 @@ export default async function Page() {
       <div className={styles["linkroll"]}>
         <h2 className={styles["section-heading"]}>Linkroll</h2>
         <p>Things shaping my perspective as an engineer</p>
+        {/* Likely not necessary since we're exporting as a static site */}
         <Suspense fallback={<div>Loading...</div>}>
           <Links />
         </Suspense>

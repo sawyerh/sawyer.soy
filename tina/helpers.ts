@@ -1,7 +1,7 @@
 /**
  * @file Custom methods for making it easier to access Tina CMS content.
  */
-import { cache } from "react";
+import { cache } from "react"; // Likely not necessary since we're exporting as a static site
 import { client } from "tina/__generated__/client";
 
 type RawBlogPost = Awaited<
