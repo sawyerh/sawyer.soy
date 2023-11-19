@@ -1,6 +1,7 @@
 /**
  * @file Custom methods for making it easier to access Tina CMS content.
  */
+import { cache } from "react";
 import { client } from "tina/__generated__/client";
 
 type RawBlogPost = Awaited<
@@ -14,7 +15,7 @@ export interface BlogPost extends Omit<RawBlogPost, "cover"> {
   filename: string;
 }
 
-export async function getPosts(): Promise<BlogPost[]> {
+export const getPosts = cache(async () => {
   const filter =
     process.env.NODE_ENV === "development" ? {} : { draft: { eq: false } };
 
@@ -29,17 +30,15 @@ export async function getPosts(): Promise<BlogPost[]> {
     .map((post) => post.node)
     .map(setPostDefaults)
     .reverse(); // newest published_at first
-}
+});
 
-export async function getPost(
-  filenameWithoutExtension: string,
-): Promise<BlogPost> {
+export const getPost = cache(async (filenameWithoutExtension: string) => {
   const { data } = await client.queries.post({
     relativePath: `${filenameWithoutExtension}.mdx`,
   });
 
   return setPostDefaults(data.post);
-}
+});
 
 export function postToUrl(post: BlogPost) {
   return `/blog/${post.filename}`;
