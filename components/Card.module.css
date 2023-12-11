@@ -2,6 +2,11 @@
   display: flex;
   flex-direction: column-reverse;
   margin-top: theme(space.md);
+
+  /* Make the card wider than the content body so text spans more on mobile */
+  margin-right: calc(-1 * theme(space.4));
+  margin-left: calc(-1 * theme(space.4));
+
   border: 1px solid theme(colors.slate.200);
   border-radius: theme(borderRadius.md);
 
@@ -11,7 +16,7 @@
 }
 
 .image {
-  border-radius: 0 theme(borderRadius.md) theme(borderRadius.md) 0;
+  border-radius: theme(borderRadius.md) theme(borderRadius.md) 0 0;
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -19,7 +24,7 @@
 }
 
 .body {
-  padding: theme(space.8);
+  padding: theme(space.6);
 }
 
 @media screen(sm) {
@@ -27,9 +32,12 @@
     --img-width: theme(space.golden-small);
     display: grid;
     grid-template-columns: 1fr var(--img-width);
+    margin-right: 0;
+    margin-left: 0;
   }
 
   .image {
+    border-radius: 0 theme(borderRadius.md) theme(borderRadius.md) 0;
     padding: 0;
   }
 }
@@ -37,5 +45,9 @@
 @media screen(lg) {
   .card {
     --img-width: 50%;
+  }
+
+  .body {
+    padding: theme(space.8);
   }
 }
