@@ -40,6 +40,31 @@ const bodyFieldComponents = [
       },
     ],
   },
+  {
+    name: "Card",
+    fields: [
+      {
+        name: "imageUrl",
+        label: "Image",
+        type: "image",
+      },
+      {
+        name: "imageAlt",
+        label: "Alt text",
+        type: "string",
+      },
+      {
+        name: "backgroundPosition",
+        label: "CSS background-position (optional)",
+        type: "string",
+      },
+      {
+        name: "body",
+        label: "Body",
+        type: "rich-text",
+      },
+    ],
+  },
 ];
 
 /**

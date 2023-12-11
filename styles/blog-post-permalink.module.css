@@ -70,11 +70,13 @@
 }
 
 .post__body {
-  h2 {
+  hanging-punctuation: first;
+
+  > h2 {
     margin-top: theme(space.lg);
   }
 
-  h3 {
+  > h3 {
     margin-top: theme(space.md);
   }
 
@@ -88,7 +90,7 @@
 /* Dropcap */
 @supports (initial-letter: 2) {
   .post__article .post__body {
-    p:first-of-type::first-letter {
+    > p:first-of-type::first-letter {
       font-weight: bold;
       font-family: var(--font-marker);
       initial-letter: 2;

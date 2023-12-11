@@ -1,0 +1,41 @@
+.card {
+  display: flex;
+  flex-direction: column-reverse;
+  margin-top: theme(space.md);
+  border: 1px solid theme(colors.slate.200);
+  border-radius: theme(borderRadius.md);
+
+  p:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.image {
+  border-radius: 0 theme(borderRadius.md) theme(borderRadius.md) 0;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding-top: theme(space.golden-large);
+}
+
+.body {
+  padding: theme(space.8);
+}
+
+@media screen(sm) {
+  .card {
+    --img-width: theme(space.golden-small);
+    display: grid;
+    grid-template-columns: 1fr var(--img-width);
+  }
+
+  .image {
+    padding: 0;
+  }
+}
+
+@media screen(lg) {
+  .card {
+    --img-width: 50%;
+  }
+}

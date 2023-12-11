@@ -1,5 +1,6 @@
 import { Code } from "bright";
 import { TinaMarkdown, TinaMarkdownContent } from "tinacms/dist/rich-text";
+import Card from "./Card";
 import MarkdownImage, { MarkdownImageProps } from "./MarkdownImage";
 
 // Code.theme = {
@@ -41,6 +42,7 @@ export default function Markdown(props: { content: TinaMarkdownContent }) {
       components={{
         img: MarkdownImage,
         code_block: CodeBlock,
+        Card,
         // @ts-expect-error Pretty sure TinaMarkdown types are wrong. This functionality works.
         MarkdownImage,
       }}
