@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Web component demo</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+
+    <style>
+      conditional-content noscript {
+        display: block;
+        font-style: italic;
+        margin-top: 20px;
+        margin-bottom: 10px;
+        padding-top: 20px;
+        color: purple;
+      }
+
+    </style>
+
+    <script src="conditional-content.js"></script>
+  </head>
+  <body>
+    <main class="prose mx-auto my-10 max-w-2xl px-4">
+      <h1 class="text-2xl">Open a lemonade stand</h1>
+
+      <form class="flex flex-col gap-5">
+        <fieldset>
+          <legend>Do you already have a permit?</legend>
+
+          <div>
+            <input
+              type="radio"
+              id="permit-yes"
+              name="has_permit"
+              value="yes"
+              required
+            />
+            <label for="permit-yes">Yes</label>
+          </div>
+
+          <div>
+            <input
+              type="radio"
+              id="permit-no"
+              name="has_permit"
+              value="no"
+              required
+            />
+            <label for="permit-no">No</label>
+          </div>
+        </fieldset>
+
+        <conditional-content when="has_permit" is="yes">
+          <div>
+            <noscript>If you have a permit:</noscript>
+            <label class="block" for="permit-number">
+              What is your permit number?
+            </label>
+            <input type="text" id="permit-number" name="permit_number" />
+          </div>
+        </conditional-content>
+
+        <conditional-content when="has_permit" is="no">
+          <div>
+            <noscript>If you don't have a permit:</noscript>
+            <fieldset>
+              <legend>What flavors of lemonade will you sell?</legend>
+              <div>
+                <input
+                  type="checkbox"
+                  name="flavors[]"
+                  value="original"
+                  id="flavor-original"
+                />
+                <label for="flavor-original">Original</label>
+              </div>
+
+              <div>
+                <input
+                  type="checkbox"
+                  name="flavors[]"
+                  value="strawberry"
+                  id="flavor-strawberry"
+                />
+                <label for="flavor-strawberry">Strawberry</label>
+              </div>
+
+              <div>
+                <input
+                  type="checkbox"
+                  name="flavors[]"
+                  value="other"
+                  id="flavor-other"
+                />
+                <label for="flavor-other">Other</label>
+            </fieldset>
+          </div>
+        </conditional-content>
+
+        <conditional-content when="flavors[]" is="other">
+          <div>
+            <noscript>If you selected "Other" as a flavor:</noscript>
+            <label class="block" for="flavor-other-text">
+              What other flavors will you sell?
+            </label>
+            <textarea id="flavor-other-text" name="flavor_other"></textarea>
+          </div>
+        </conditional-content>
+
+        <div>
+          <button
+            type="submit"
+            class="rounded-lg bg-purple-700 px-4 py-2 text-white"
+          >
+            Continue
+          </button>
+        </div>
+      </form>
+    </main>
+  </body>
+</html>
