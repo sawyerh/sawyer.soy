@@ -1,9 +1,16 @@
 import classNames from "classnames";
 import SocialFooter from "components/SocialFooter";
+import { Metadata } from "next";
 import Link from "next/link";
 import { preload } from "react-dom";
 import styles from "styles/home.module.css";
 import { HeaderNav } from "../components/HeaderNav";
+
+export const metadata: Metadata = {
+  alternates: {
+    canonical: "https://www.sawyer.soy",
+  },
+};
 
 export default function Page() {
   preload("/alabama-hills.webm", {
