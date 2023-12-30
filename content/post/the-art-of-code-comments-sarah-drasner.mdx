@@ -6,15 +6,15 @@ category: Link
 external_url: "https://www.youtube.com/watch?v=yhF7OmuIILc"
 ---
 
-There are different camps when it comes to code comments. The "clean code" camp says that code should be self-documenting. This misses nuance, and also doesn't account for the fact that "clean code" is subjective. Sarah surveyed the crowd with two code examples, and the crowd was split on which one was cleaner.
+> Code Can Describe How, But It Cannot Explain Why.
+
+There are different camps when it comes to code comments. The "clean code" camp says that code should be self-documenting. This misses nuance, and doesn't account for the fact that "clean code" is subjective. Sarah surveyed the crowd with two code examples, and the crowd was split on which one was cleaner.
 
 > The code that I think was clean five years ago is not what I think is clean today, and you level up in different ways.
 
 Code comments help teams be more productive.
 
 > The job of a more advanced engineer is to make sure that the team can scale efficiently. The job of a senior engineer is to make sure that everyone else can get going and be as productive as humanly possible, and sometimes comments can help with that.
-
-> It's said that 30% of a developer's time is spent writing code and 70% is spent reading code. My suggestion would be to spend a moment after you think you're done with a project and review with commenting and legibility in mind.
 
 ## Good comments
 
@@ -25,16 +25,10 @@ Categories of good comments:
 - What is the why
 - Clarify what's not typically legible by humans
 - Comments can be like chapters of a book
-- A guide to keep the logic straight while writing the code
 - This is ok to refactor
-- Commenting as a teaching tool
 - I stack overflowed the bejeezus out of this
 
 ### What is the why
-
-A common premise behind the good comments:
-
-> Code Can Describe How, But It Cannot Explain Why.
 
 A good comment doesn't describe what the code below it is doing. It describes why it's doing it. These comments can live on even when the code around it changes.
 
@@ -71,24 +65,9 @@ const shaderMaterial = new THREE.ShaderMaterial({
 
 > Necessarily there's gonna be a time when you get to a larger piece of code that just has to exist. Sometimes commenting different sections or making some separation can help people find their way more quickly.
 
-### A guide to keep the logic straight while writing the code
-
-```js
-// get the request from the server
-// give us an error if it failed
-// do x thing with that request
-// format the data like so
-```
-
-> Making a long to-do list of little sections so that I can break down my tasks. Now these are a weird one, because **these aren't the kind of comments you want to keep around**. \[...] In the process of writing all of this code it can be really helpful to write it like this, but then you should probably be remove it because when left in your code as is these comments can be a little screwy to read later
-
 ### This is ok to refactor
 
 Sometimes you just write some quick and dirty code, either for a rushed deadline, a/b test, or because it's "temporary". Leaving a comment with that context, indicating it's not the ideal approach, helps future maintainers understand and be more comfortable with refactoring it.
-
-### Commenting as a teaching tool
-
-If you're handing the code off to someone not familiar with the programming language, or you're teaching someone, comments can be a great way to explain the code. This is one of the exceptions where commenting on the how in addition to the why is ok.
 
 ### I stack overflowed the bejeezus out of this
 
@@ -160,5 +139,7 @@ created() {
 > We lie to ourselves in myriad ways. We spend time writing a comment that could be better spent making the code a little cleaner.
 
 ## Do your best
+
+> It's said that 30% of a developer's time is spent writing code and 70% is spent reading code. My suggestion would be to spend a moment after you think you're done with a project and review with commenting and legibility in mind.
 
 > Try to envision that you're both the author and the reader when you're looking at that code \[...] what information do you need to be as productive as possible, what would a younger you need?
