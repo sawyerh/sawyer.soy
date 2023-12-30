@@ -32,8 +32,12 @@ Layout
 */
 .wrapper {
   margin: auto;
-  padding: 0 theme(spacing.md);
+  padding: 0 theme(spacing.sm);
   max-width: 1024px;
+
+  @screen sm {
+    padding: 0 theme(spacing.md);
+  }
 }
 
 /**
@@ -50,10 +54,18 @@ Type elements
 
   h1 {
     font-size: theme(fontSize.3xl);
+
+    @screen sm {
+      font-size: theme(fontSize.4xl);
+    }
   }
 
   h2 {
     font-size: theme(fontSize.2xl);
+
+    @screen sm {
+      font-size: theme(fontSize.3xl);
+    }
   }
 
   h3 {
@@ -83,7 +95,7 @@ Type elements
 
   p,
   li {
-    line-height: theme(lineHeight.normal);
+    line-height: theme(lineHeight.relaxed);
   }
 
   p,

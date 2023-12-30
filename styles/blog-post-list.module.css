@@ -27,8 +27,13 @@
   }
 
   .article-external-url {
-    @apply mb-2 inline-block font-mono text-xs font-normal text-slate-800 underline;
+    display: inline-block;
     transition: all 0.2s ease-in-out;
+    margin-bottom: theme(space.2);
+    color: theme(colors.slate.800);
+    font-weight: normal;
+    font-size: theme(fontSize.xs);
+    text-decoration: underline;
   }
 
   .article-title {
@@ -41,6 +46,7 @@
 
   p {
     margin: 0;
+    line-height: theme(lineHeight.normal);
   }
 }
 
@@ -73,29 +79,19 @@
   }
 }
 
-.article:first-of-type {
-  .article-title {
-    font-size: theme(fontSize.3xl);
-  }
-
-  p {
-    max-width: theme(maxWidth.prose);
-    font-size: theme(fontSize.xl);
-  }
-}
-
 .linkroll {
   background: url("/illo-linkroll-50.webp") center center no-repeat
     theme(colors.moss.800);
   background-size: 100% auto;
   background-attachment: fixed;
   background-blend-mode: multiply;
-  padding: theme(space.md);
+  padding: theme(space.md) theme(space.sm);
   color: theme(colors.slate.200);
 
   @screen sm {
     background-position: right bottom;
     background-size: theme(space.golden-small) auto;
+    padding: theme(space.md);
     width: theme(space.golden-small);
   }
 }
@@ -103,11 +99,12 @@
 .linkroll-link {
   display: block;
   color: theme(colors.terracotta.300);
-  text-wrap: balance;
+  text-wrap: pretty;
   margin-bottom: theme(space.sm);
-  line-height: theme(lineHeight.tight);
+  max-width: 40ch;
+  font-size: theme(fontSize.sm);
   text-decoration: none;
-  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.75);
 }
 
 .linkroll-link:hover {
@@ -120,7 +117,5 @@
   display: block;
   color: theme(colors.slate.400);
   font-weight: normal;
-  font-size: theme(fontSize.xs);
-  font-family: theme(fontFamily.mono);
   text-decoration: underline;
 }

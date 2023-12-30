@@ -25,6 +25,10 @@
 
 .body {
   padding: theme(space.6);
+
+  h2 {
+    font-size: theme(fontSize.xl);
+  }
 }
 
 @media screen(sm) {

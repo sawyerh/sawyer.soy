@@ -1,10 +1,6 @@
 .post {
   margin-bottom: theme(space.lg);
 
-  @screen md {
-    font-size: theme(fontSize.lg);
-  }
-
   a {
     transition: all 0.2s ease-in-out;
     color: theme(colors.terracotta.900);
@@ -20,14 +16,19 @@
   p,
   ul,
   ol {
-    font-size: theme(fontSize.sm);
     font-family: theme(fontFamily.marker);
+  }
+}
+
+@screen md {
+  .post__article {
+    font-size: theme(fontSize.lg);
   }
 }
 
 .post__title {
   text-wrap: balance;
-  max-width: 45ch;
+  max-width: 50ch;
   color: theme(colors.terracotta.800);
   font-size: theme(fontSize.2xl);
   line-height: theme(lineHeight.snug);

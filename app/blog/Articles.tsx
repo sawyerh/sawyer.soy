@@ -23,16 +23,16 @@ export default async function Articles() {
               {post.external_url ? "↗" : "→"}
             </span>
           </h2>
+          <FormattedDate
+            className="mb-1 block font-marker text-xs"
+            value={post.published_at}
+          />
+          {post.excerpt && <p>{post.excerpt}</p>}
           {post.external_url && (
             <div className={styles["article-external-url"]}>
               Read this post on {getHostFromURL(post.external_url)}
             </div>
           )}
-          {post.excerpt && <p>{post.excerpt}</p>}
-          <FormattedDate
-            className="font-marker text-xs"
-            value={post.published_at}
-          />
         </Link>
       ))}
     </section>

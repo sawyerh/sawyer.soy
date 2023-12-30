@@ -53,7 +53,7 @@ module.exports = {
         },
       },
       fontFamily: {
-        sans: ["var(--font-atkinson)"],
+        sans: ["var(--font-manrope)"],
         mono: ["var(--font-mono)"],
         marker: ["var(--font-marker)"],
       },

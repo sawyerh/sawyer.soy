@@ -8,7 +8,7 @@ import Links from "./Links";
 export default async function Page() {
   return (
     <div className="sm:flex">
-      <div className="relative min-h-screen border-l-moss-800 border-t-moss-800 px-md sm:w-golden-large sm:border-l-8 sm:border-t-8 md:px-lg">
+      <div className="relative min-h-screen border-l-moss-800 border-t-moss-800 px-sm sm:w-golden-large sm:border-l-8 sm:border-t-8 md:px-md">
         <HeaderNav />
         <video
           className={styles["desk-illustration"]}

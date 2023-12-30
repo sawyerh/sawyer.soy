@@ -1,6 +1,6 @@
 import classNames from "classnames";
 import { Metadata } from "next";
-import { Atkinson_Hyperlegible } from "next/font/google";
+import { Manrope } from "next/font/google";
 import LocalFont from "next/font/local";
 import Script from "next/script";
 import "styles/global.css";
@@ -17,11 +17,11 @@ const markerFont = LocalFont({
   variable: "--font-marker",
 });
 
-const atkinson = Atkinson_Hyperlegible<"--font-atkinson">({
+const manrope = Manrope<"--font-manrope">({
   subsets: ["latin"],
-  style: ["normal", "italic"],
-  variable: "--font-atkinson",
-  weight: ["400", "700"],
+  style: ["normal"],
+  variable: "--font-manrope",
+  weight: ["500", "800"],
 });
 
 export default function RootLayout({
@@ -33,7 +33,7 @@ export default function RootLayout({
     <html
       lang="en"
       className={classNames(
-        atkinson.variable,
+        manrope.variable,
         markerFont.variable,
         "selection:bg-terracotta-700 selection:text-white",
       )}
