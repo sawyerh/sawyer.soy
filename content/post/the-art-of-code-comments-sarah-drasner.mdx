@@ -23,12 +23,12 @@ There are good comments and there are bad comments.
 Categories of good comments:
 
 - What is the why
-- Clarify What's Not Typically Legible By Humans
-- Comments Can Be Like Chapters Of A Book
-- A Guide To Keep The Logic Straight While Writing The Code
+- Clarify what's not typically legible by humans
+- Comments can be like chapters of a book
+- A guide to keep the logic straight while writing the code
 - This is ok to refactor
-- Commenting As A Teaching Tool
-- I Stack Overflowed The Bejeezus Out Of This
+- Commenting as a teaching tool
+- I stack overflowed the bejeezus out of this
 
 ### What is the why
 
@@ -40,7 +40,7 @@ A good comment doesn't describe what the code below it is doing. It describes wh
 
 > Less maintenance is required in order to keep these comments around. So if you found a better way to write this, then you probably wouldn't have to rewrite this comment.
 
-### Clarify What's Not Typically Legible By Humans
+### Clarify what's not typically legible by humans
 
 ```css
 // targets Chrome ≤ 28, Safari ≤ 7, Opera ≥ 14
@@ -49,7 +49,7 @@ A good comment doesn't describe what the code below it is doing. It describes wh
 
 > Great to tell people what the heck that's for, especially in preparation for a time when you no longer need it. Maybe they solve that browser issue or maybe you're not supporting that browser anymore.
 
-### Comments Can Be Like Chapters Of A Book
+### Comments can be like chapters of a book
 
 ```js
 // GEOMETRY
@@ -71,7 +71,7 @@ const shaderMaterial = new THREE.ShaderMaterial({
 
 > Necessarily there's gonna be a time when you get to a larger piece of code that just has to exist. Sometimes commenting different sections or making some separation can help people find their way more quickly.
 
-### A Guide To Keep The Logic Straight While Writing The Code
+### A guide to keep the logic straight while writing the code
 
 ```js
 // get the request from the server
@@ -86,11 +86,11 @@ const shaderMaterial = new THREE.ShaderMaterial({
 
 Sometimes you just write some quick and dirty code, either for a rushed deadline, a/b test, or because it's "temporary". Leaving a comment with that context, indicating it's not the ideal approach, helps future maintainers understand and be more comfortable with refactoring it.
 
-### Commenting As A Teaching Tool
+### Commenting as a teaching tool
 
 If you're handing the code off to someone not familiar with the programming language, or you're teaching someone, comments can be a great way to explain the code. This is one of the exceptions where commenting on the how in addition to the why is ok.
 
-### I Stack Overflowed The Bejeezus Out Of This
+### I stack overflowed the bejeezus out of this
 
 ```js
 /*
@@ -106,13 +106,13 @@ https://stackoverflow.com/questions/26203725/how-to-allow-for-webpack-dev-server
 
 Bad comments exist.
 
-- They Just Say What It's Already Doing
-- It Wasn't Well Maintained
-- Hoarders, But For Code
-- You Could Have Used A Better Name
-- The Comments Are An Excuse For Not Writing The Code Better To Begin With
+- They just say what it s already doing
+- It wasn't well maintained
+- Hoarders, but for code
+- You could have used a better name
+- The comments are an excuse for not writing the code better to begin with
 
-### They Just Say What It's Already Doing
+### They just say what it's already doing
 
 ```js
 // if foo equals bar ...
@@ -123,7 +123,7 @@ if (foo === bar) {
 
 > You're reading the same thing twice in two different formats. It gives you no more information and in fact it makes you process things twice. It's mental overhead rather than helpful.
 
-### It Wasn't Well Maintained
+### It wasn't well maintained
 
 > Bad documentation can be worse than no documentation. There's nothing more frustrating than coming across a block of code where a comment says something other than what the code beneath it does.
 
@@ -131,7 +131,7 @@ if (foo === bar) {
 
 > If you write your code to be good quality to begin with, that expresses the why and not the how, then you might find that the maintenance issue actually goes away.
 
-### Hoarders, But For Code
+### Hoarders, but for code
 
 ```js
 created() {
@@ -147,13 +147,13 @@ created() {
 
 > Future you, or your future teammates, will spend a few minutes trying to figure out what went on here. Do we need this, will we need this? It's time wasting to do this to people. Trust your instincts and your version control system, get rid of it.
 
-### You Could Have Used A Better Name
+### You could have used a better name
 
 > Where the variable or functions names are one letter and then you comment what the thing is here in the file. This is a waste. I know we all hate typing, but if you're using a variable or a function name repeatedly, I don't want to scan to the top of the whole document where you explained what the name did, when you could just use the name precisely.
 
 > If it's hard to name, maybe you're giving the function too much responsibility. Refactoring has helped me name and likewise, trying to name has also helped me make my functions smaller. — Mike Kerr
 
-### The Comments Are An Excuse For Not Writing The Code Better To Begin With
+### The comments are an excuse for not writing the code better to begin with
 
 > This is the crux of the issue for a lot of people. If you're writing code that's half hazard and you're leaning on your comments to clarify. This means the comments are holding back your programming.
 
