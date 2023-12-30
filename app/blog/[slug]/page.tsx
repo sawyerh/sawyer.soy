@@ -67,6 +67,14 @@ export default async function Page({ params }: Props) {
         {...post.cover}
         external_url={post.external_url}
       />
+      {post.category === "Link" && post.external_url && (
+        <div className={styles["original-source"]}>
+          <Link href={post.external_url} target="_blank">
+            View the original post on {getHostFromURL(post.external_url)}
+          </Link>{" "}
+          or read <span className="font-marker">my notes</span> below.
+        </div>
+      )}
       <h1 className={styles["post__title"]}>
         {post.title}
         <PostEditLink filename={post.filename} />
@@ -75,15 +83,6 @@ export default async function Page({ params }: Props) {
         className={styles["post__date"]}
         value={post.published_at}
       />
-      {post.category === "Link" && post.external_url && (
-        <div className={styles["original-source"]}>
-          <Link href={post.external_url} className="font-bold" target="_blank">
-            View the original post on {getHostFromURL(post.external_url)}
-            <span className="ml-1 mr-2 inline-block font-marker">↗</span>
-          </Link>{" "}
-          or read <span className="font-marker">my notes</span> below.
-        </div>
-      )}
       <div className={styles["post__body"]}>
         <Markdown content={post.body} />
       </div>

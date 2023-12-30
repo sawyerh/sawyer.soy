@@ -105,7 +105,6 @@ Type elements
   }
 
   blockquote {
-    margin-left: calc(-1 * theme(padding.3));
     border-left: 3px solid theme(colors.slate.500);
     background: theme(colors.slate.100);
     padding: theme(padding.sm);

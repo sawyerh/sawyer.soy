@@ -60,9 +60,11 @@
 
 .original-source {
   margin-bottom: theme(space.md);
-  border-bottom-width: 2px;
-  padding-bottom: theme(space.md);
-  text-wrap: balance;
+  padding: theme(space.sm);
+  text-wrap: pretty;
+  background: theme(colors.terracotta.50);
+  font-size: theme(fontSize.base);
+  text-align: center;
 
   a {
     /* match heading color above it */
