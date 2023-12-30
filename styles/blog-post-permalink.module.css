@@ -16,6 +16,7 @@
   p,
   ul,
   ol {
+    max-width: 60ch; /* Shorter than the sans font, but same width */
     font-family: theme(fontFamily.marker);
   }
 }

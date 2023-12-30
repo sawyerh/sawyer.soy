@@ -4,8 +4,8 @@
   margin-top: theme(space.md);
 
   /* Make the card wider than the content body so text spans more on mobile */
-  margin-right: calc(-1 * theme(space.4));
-  margin-left: calc(-1 * theme(space.4));
+  margin-right: calc(-1 * (theme(space.sm) / 2));
+  margin-left: calc(-1 * (theme(space.sm) / 2));
 
   border: 1px solid theme(colors.slate.200);
   border-radius: theme(borderRadius.md);

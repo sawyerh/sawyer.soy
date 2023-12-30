@@ -50,6 +50,10 @@ Type elements
   h4 {
     margin-bottom: 0.25em;
     font-weight: bold;
+
+    &:has(+ blockquote) {
+      margin-bottom: 0.75em;
+    }
   }
 
   h1 {
@@ -91,6 +95,10 @@ Type elements
   blockquote,
   pre {
     margin-bottom: theme(space.6);
+  }
+
+  p:has(+ blockquote) {
+    margin-bottom: theme(space.4);
   }
 
   p,
