@@ -80,19 +80,20 @@
 }
 
 .linkroll {
-  background: url("/illo-linkroll-50.webp") center center no-repeat
+  background: url("/illo-linkroll-50.webp") center bottom no-repeat
     theme(colors.moss.800);
-  background-size: 100% auto;
+  background-size: 125% auto;
   background-attachment: fixed;
   background-blend-mode: multiply;
   padding: theme(space.md) theme(space.sm);
   color: theme(colors.slate.200);
 
   @screen sm {
+    --width: theme(space.golden-small);
     background-position: right bottom;
-    background-size: theme(space.golden-small) auto;
+    background-size: var(--width) auto;
     padding: theme(space.md);
-    width: theme(space.golden-small);
+    width: var(--width);
   }
 }
 
