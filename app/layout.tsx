@@ -1,4 +1,4 @@
-import classNames from "classnames";
+import classNames from "clsx";
 import { Metadata } from "next";
 import { Manrope } from "next/font/google";
 import LocalFont from "next/font/local";

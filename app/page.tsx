@@ -1,4 +1,4 @@
-import classNames from "classnames";
+import classNames from "clsx";
 import SocialFooter from "components/SocialFooter";
 import { Metadata } from "next";
 import Link from "next/link";
@@ -88,8 +88,8 @@ export default function Page() {
             and state levels.
           </p>
 
-          <div className="max-w-prose gap-8 md:flex">
-            <p className="flex-1 text-sm leading-relaxed">
+          <div className="max-w-prose gap-8 md:flex md:text-sm">
+            <p className="flex-1">
               Outside of my day-to-day job, I enjoy working on side projects
               like{" "}
               <a href="https://highlights.sawyerh.com/">
@@ -113,7 +113,7 @@ export default function Page() {
               </a>
               .
             </p>
-            <p className="mb-0 flex-1 text-sm leading-relaxed">
+            <p className="mb-0 flex-1">
               Prior to Nava, I was at <a href="https://oak.is">Oak Studios</a>,
               where I helped lead product design and engineering on projects
               like <a href="https://creativemornings.com">CreativeMornings</a>,{" "}

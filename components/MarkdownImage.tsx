@@ -1,4 +1,4 @@
-import classNames from "classnames";
+import classNames from "clsx";
 import { useId } from "react";
 import styles from "styles/blog-post-permalink.module.css";
 

@@ -1,4 +1,4 @@
-import classNames from "classnames";
+import classNames from "clsx";
 import { HeaderNav } from "components/HeaderNav";
 import { Suspense } from "react";
 import styles from "styles/blog-post-list.module.css";

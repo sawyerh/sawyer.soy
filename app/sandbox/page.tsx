@@ -1,4 +1,4 @@
-import classNames from "classnames";
+import classNames from "clsx";
 
 const lorem = `Lorem ipsum dolor sit amet, consectetur adipiscing elit.`.repeat(
   3,

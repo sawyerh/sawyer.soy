@@ -1,4 +1,4 @@
-import classNames from "classnames";
+import classNames from "clsx";
 import Cover from "components/Cover";
 import FormattedDate from "components/FormattedDate";
 import Markdown from "components/Markdown";
