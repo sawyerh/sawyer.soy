@@ -37,6 +37,14 @@ export default async function Page() {
         <Suspense fallback={<div>Loading...</div>}>
           <Links />
         </Suspense>
+
+        <a
+          href="https://highlights.sawyerh.com"
+          className="mt-sm inline-block text-terracotta-100 hover:text-terracotta-200"
+        >
+          View the books I&rsquo;m reading{" "}
+          <span className="font-marker">↗</span>
+        </a>
       </div>
     </div>
   );
