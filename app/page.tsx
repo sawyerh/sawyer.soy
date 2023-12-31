@@ -40,9 +40,9 @@ export default function Page() {
         </span>
       </div>
       <section className="flex min-h-screen flex-col sm:w-golden-large">
-        <HeaderNav className="px-sm sm:px-lg" />
+        <HeaderNav className={classNames(styles["row"])} />
 
-        <div className={classNames(styles["body"], "grow px-sm sm:px-lg")}>
+        <div className={classNames(styles["body"], styles["row"], "grow")}>
           <p className="font-marker text-3xl text-terracotta-700">Heyo,</p>
           <p className="text-balance">
             I&rsquo;m a full-stack engineer specializing in frontend
@@ -122,7 +122,7 @@ export default function Page() {
             </p>
           </div>
         </div>
-        <SocialFooter className="px-sm sm:px-lg" />
+        <SocialFooter className={classNames(styles["row"])} />
       </section>
     </div>
   );

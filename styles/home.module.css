@@ -4,6 +4,18 @@
   }
 }
 
+.row {
+  padding-inline: theme(spacing.sm);
+
+  @media screen(sm) {
+    padding-inline: theme(spacing.md);
+  }
+
+  @media screen(md) {
+    padding-inline: theme(spacing.lg);
+  }
+}
+
 .hero {
   container-name: video-column;
   container-type: size;
