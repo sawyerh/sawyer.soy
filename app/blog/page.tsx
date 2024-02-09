@@ -18,7 +18,6 @@ export default async function Page() {
           playsInline
           role="presentation"
         >
-          <source src="/illo-writing.webm" type="video/webm" />
           <source src="/illo-writing.mp4" type="video/mp4" />
         </video>
         <h1 className={classNames(styles["section-heading"], "mb-md")}>

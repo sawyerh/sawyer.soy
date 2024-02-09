@@ -30,7 +30,6 @@ export default function Page() {
           playsInline
           aria-describedby="video-alt"
         >
-          <source src="/alabama-hills.webm" type="video/webm" />
           <source src="/alabama-hills.mp4" type="video/mp4" />
         </video>
         <span className="sr-only" id="video-alt">
