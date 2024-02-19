@@ -1,5 +1,5 @@
 ---
-title: 'TIL: Optimizing WebP files with cwebp'
+title: "TIL: Optimizing WebP files with cwebp"
 draft: false
 published_at: 2023-11-10T08:00:00.000Z
 excerpt: How to cut a WebP file's size in half.
@@ -14,4 +14,9 @@ I did find the [cwebp](https://developers.google.com/speed/webp/docs/cwebp) CLI 
 cwebp input-file.webp -o lossy-output.webp -m 6 -af
 ```
 
+- `-m`: Specify the compression method to use. This parameter controls the trade off between encoding speed and the compressed file size and quality. Possible values range from 0 to 6. Default value is 4. When higher values are used, the encoder will spend more time inspecting additional encoding possibilities and decide on the quality gain. Lower value can result in faster processing time at the expense of larger file size and lower compression quality.
+- `-af`: Turns auto-filter on. This algorithm will spend additional time optimizing the filtering strength to reach a well-balanced quality.
+
 [Download cwebp here](https://developers.google.com/speed/webp/docs/precompiled).
+
+Related: [Quick script to convert JPEG/PNG images to WebP and AVIF](https://pawelgrzybek.com/quick-script-to-convert-jpeg-png-images-to-webp-and-avif/)
