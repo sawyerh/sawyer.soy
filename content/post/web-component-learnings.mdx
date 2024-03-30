@@ -1,0 +1,61 @@
+---
+title: "Bunch of things I learned about web components"
+draft: true
+published_at: 2024-02-22T08:00:00.000Z
+excerpt: Todo
+category: Article
+---
+
+## `is` is cool but not really
+
+Genuinely think Safari is the new Internet Explorer. I was excited to learn about HTML’s 'is' attribute. Seems like a great way to progressively enhance HTML with custom elements. Then I discovered Safari won’t support it.
+
+Would have been nice to do the following but it wouldn't have worked in Safari:
+
+```html
+<button is="submit-once-button">Submit</button>
+```
+
+## Custom Elements Manifest
+
+It's a thing: https://github.com/webcomponents/custom-elements-manifest
+
+## Storybook support for web components is a rough around the edges
+
+- Have to call `customElements.define` in the `preview.js` file for each component
+- `@storybook/web-components` is a poorly documented.
+- Kinda supports the custom elements manifest via `setCustomElementsManifest` but it but seems to only work when `customElements.define` is called in the component's source file?
+
+## Linting
+
+There's a plugin for Web Components that is handy for catching things [like `is` not being recommended](https://github.com/43081j/eslint-plugin-wc/blob/master/docs/rules/no-customized-built-in-elements.md): https://github.com/43081j/eslint-plugin-wc
+
+## Making it easy to register the element
+
+A few approaches I've seen so far:
+
+A static method:
+
+```js
+class SummaryBox extends HTMLElement {
+  static register() {
+    customElements.define("summary-box", SummaryBox);
+  }
+  // ...
+}
+
+SummaryBox.register();
+```
+
+A static property:
+
+🚩 `tagName` is part of the [DOM standard though](https://developer.mozilla.org/en-US/docs/Web/API/Element/tagName)! This isn't a good approach because the element could be defined with a different tag name.
+
+```js
+class SummaryBox extends HTMLElement {
+  static tagName = "summary-box";
+  // ...
+}
+
+customElements.define(SummaryBox.tagName, SummaryBox);
+```
