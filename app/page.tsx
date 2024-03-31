@@ -54,7 +54,7 @@ export default function Page() {
               Helping teams maintain momentum and focus on the highest-impact
               work
             </li>
-            <li>Constructive and timely code reviews</li>
+            <li>Building polished UIs with extreme attention to detail</li>
             <li>
               A calm and communicative approach in complex, ambiguous
               environments

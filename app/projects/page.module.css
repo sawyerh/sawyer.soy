@@ -1,0 +1,7 @@
+.projects a {
+  color: theme("colors.white");
+
+  &:hover {
+    color: theme("colors.terracotta.200");
+  }
+}

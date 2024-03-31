@@ -13,6 +13,10 @@ export function HeaderNav(props: { className?: string }) {
         </Link>
         {[
           {
+            href: "/projects",
+            label: "Projects",
+          },
+          {
             href: "/blog",
             label: "Posts",
           },

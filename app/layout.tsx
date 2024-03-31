@@ -1,7 +1,7 @@
 import { Analytics } from "@vercel/analytics/react";
 import classNames from "clsx";
 import { Metadata } from "next";
-import { Manrope } from "next/font/google";
+import { Inter } from "next/font/google";
 import LocalFont from "next/font/local";
 import "styles/global.css";
 
@@ -17,11 +17,11 @@ const markerFont = LocalFont({
   variable: "--font-marker",
 });
 
-const manrope = Manrope<"--font-manrope">({
+const inter = Inter<"--font-inter">({
   subsets: ["latin"],
   style: ["normal"],
-  variable: "--font-manrope",
-  weight: ["500", "800"],
+  variable: "--font-inter",
+  weight: ["400", "700"],
 });
 
 export default function RootLayout({
@@ -33,7 +33,7 @@ export default function RootLayout({
     <html
       lang="en"
       className={classNames(
-        manrope.variable,
+        inter.variable,
         markerFont.variable,
         "selection:bg-terracotta-700 selection:text-white",
       )}
