@@ -31,7 +31,7 @@
 Layout
 */
 .wrapper {
-  margin: auto;
+  margin-inline: auto;
   padding: 0 theme(spacing.sm);
   max-width: 1024px;
 
@@ -159,6 +159,7 @@ Media
 @layer components {
   .subhead--marker {
     color: theme(colors.moss.700);
+    font-weight: normal;
     font-size: theme(fontSize.lg);
     font-family: theme(fontFamily.marker);
   }
@@ -169,6 +170,7 @@ Custom utilities
 */
 @layer utilities {
   .font-marker {
+    font-weight: normal;
     font-family: var(--font-marker);
   }
 

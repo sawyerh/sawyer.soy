@@ -53,13 +53,16 @@ module.exports = {
         },
       },
       fontFamily: {
-        sans: ["var(--font-manrope)"],
+        sans: ["var(--font-inter)"],
         mono: ["var(--font-mono)"],
         marker: ["var(--font-marker)"],
       },
       lineHeight: {
         normal: 1.6,
         relaxed: 1.7,
+      },
+      maxWidth: {
+        prose: "60ch",
       },
       spacing: {
         sm: defaultTheme.spacing[4],

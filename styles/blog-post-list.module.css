@@ -1,4 +1,5 @@
 .section-heading {
+  font-weight: normal;
   font-size: theme(fontSize.xl);
   font-family: var(--font-marker);
 }

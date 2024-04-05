@@ -70,14 +70,6 @@
 
 .body {
   margin-bottom: theme(space.md);
-
-  a {
-    text-decoration: dotted underline;
-  }
-
-  a:hover {
-    text-decoration: solid underline;
-  }
 }
 
 .link-list {

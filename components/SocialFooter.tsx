@@ -50,14 +50,8 @@ const items: Array<{
 
 export default function SocialFooter(props: { className?: string }) {
   return (
-    <footer className="bg-moss-100 py-md">
+    <footer className="bg-moss-100 pb-6 pt-8">
       <div className={props.className}>
-        <p>
-          <a href="https://forms.gle/uAcgayMLBgYsuUnu7">
-            Receive email updates
-          </a>{" "}
-          or follow me:
-        </p>
         {items.map((item) => (
           <a
             href={item.link}

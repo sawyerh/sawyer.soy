@@ -54,7 +54,7 @@ export default function Page() {
               Helping teams maintain momentum and focus on the highest-impact
               work
             </li>
-            <li>Constructive and timely code reviews</li>
+            <li>Building polished UIs with extreme attention to detail</li>
             <li>
               A calm and communicative approach in complex, ambiguous
               environments
@@ -67,59 +67,19 @@ export default function Page() {
           <p>
             I&rsquo;m at <a href="https://www.navapbc.com/">Nava</a>, working to
             make government services effective and accessible. Some projects
-            I&rsquo;ve worked on include:{" "}
-            <a href="https://www.navapbc.com/insights/form-design-approaches">
-              HealthCare.gov
-            </a>
-            ,{" "}
-            <a href="https://www.navapbc.com/case-studies/integrating-eligibility-enrollment-software">
-              Vermont Integrated Benefits
-            </a>
-            ,{" "}
-            <a href="https://www.navapbc.com/insights/repeatable-sustainable-processes-building-benefits-systems">
-              Massachusetts Paid Family{" "}
-              <span className="font-marker">&amp;</span> Medical Leave
-            </a>
-            , and{" "}
-            <a href="https://www.dol.gov/agencies/eta/ui-modernization/claims-status/example-page">
-              unemployment insurance modernization at the federal
-            </a>{" "}
-            and state levels.
+            I&rsquo;ve worked on include: HealthCare.gov, Massachusetts Paid
+            Family <span className="font-marker">&amp;</span> Medical Leave, and{" "}
+            unemployment insurance modernization at the federal and state
+            levels. Before that, I was at Oak Studios, designing and building
+            useful apps for developers and the creative community.
           </p>
 
-          <div className="max-w-prose gap-8 md:flex md:text-sm">
-            <p className="flex-1">
-              Outside of my day-to-day job, I enjoy working on side projects
-              like{" "}
-              <a href="https://highlights.sawyerh.com/">
-                tracking my reading highlights
-              </a>
-              ,{" "}
-              <Link href="/blog/semantic-search-for-reading-highlights">
-                experimenting with AI
-              </Link>
-              , creating{" "}
-              <a href="https://github.com/sawyerh/eslint-plugin-todo-plz">
-                developer tooling
-              </a>
-              , <a href="https://cursor.in/">design resources</a>,{" "}
-              <a href="https://chrome.google.com/webstore/detail/devtools-us-web-design-sy/pkdhffidhfklfcpockffiadeaelfflge">
-                browser extensions
-              </a>
-              , and{" "}
-              <a href="https://github.com/sawyerh">
-                other open source projects
-              </a>
-              .
-            </p>
-            <p className="mb-0 flex-1">
-              Prior to Nava, I was at <a href="https://oak.is">Oak Studios</a>,
-              where I helped lead product design and engineering on projects
-              like <a href="https://creativemornings.com">CreativeMornings</a>,{" "}
-              <a href="https://dropmark.com">Dropmark</a>, and{" "}
-              <a href="https://siteleaf.com">Siteleaf</a>.
-            </p>
-          </div>
+          <Link
+            href="/projects"
+            className="font-bold text-terracotta-800 hover:text-terracotta-950"
+          >
+            Learn more about my work
+          </Link>
         </div>
         <SocialFooter className={classNames(styles["row"])} />
       </section>
