@@ -1,7 +1,12 @@
+"use client";
+
 import classNames from "clsx";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 export function HeaderNav(props: { className?: string }) {
+  const pathname = usePathname();
+
   return (
     <header className={classNames(props.className, "mb-md")}>
       <nav>
@@ -14,7 +19,7 @@ export function HeaderNav(props: { className?: string }) {
         {[
           {
             href: "/projects",
-            label: "Projects",
+            label: "Work",
           },
           {
             href: "/blog",
@@ -22,7 +27,9 @@ export function HeaderNav(props: { className?: string }) {
           },
         ].map(({ href, label }) => (
           <Link
-            className="inline-block px-2 py-4 text-slate-700"
+            className={classNames("inline-block px-2 py-4 text-slate-700", {
+              "no-underline": href === pathname,
+            })}
             href={href}
             key={href}
           >
