@@ -71,7 +71,7 @@ export function Video(props: VideoProps) {
       />
       {!hideControls && (
         <button
-          className="absolute -bottom-14 -right-5 p-5 text-slate-400 hover:text-slate-200"
+          className="absolute -bottom-9 -right-0 text-slate-400 hover:text-slate-200"
           onClick={handleToggle}
         >
           {isPlaying ? <Pause /> : <Play />}
