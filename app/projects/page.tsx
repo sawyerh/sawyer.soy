@@ -1,5 +1,6 @@
 import clsx from "clsx";
 import { HeaderNav } from "components/HeaderNav";
+import SocialFooter from "components/SocialFooter";
 import Link from "next/link";
 import css from "./page.module.css";
 import { PaidLeaveFlow } from "./PaidLeaveFlow";
@@ -285,7 +286,7 @@ export default function Page() {
             My open-source projects ↓
           </h2>
 
-          <div className="wrapper mb-24 grid grid-cols-2 gap-6 text-slate-100 sm:grid-cols-3">
+          <div className="wrapper mb-20 grid grid-cols-2 gap-6 text-slate-100 sm:grid-cols-3">
             {openSourceProjects.map((project, index) => (
               <article key={index} className="bg-moss-950 p-6">
                 <h3 className="text-base font-normal">
@@ -304,6 +305,7 @@ export default function Page() {
           </div>
         </section>
       </main>
+      <SocialFooter className="wrapper" />
     </>
   );
 }
