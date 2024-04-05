@@ -18,11 +18,19 @@
 }
 
 .project-buffer {
-  padding-bottom: calc(theme("spacing.64") - theme("spacing.14"));
+  padding-bottom: calc(theme("spacing.32") - theme("spacing.14"));
+
+  @screen sm {
+    padding-bottom: calc(theme("spacing.64") - theme("spacing.14"));
+  }
 }
 
 .project:first-child {
-  margin-top: calc(theme("spacing.64") * -1);
+  margin-top: calc(theme("spacing.32") * -1);
+
+  @screen sm {
+    margin-top: calc(theme("spacing.64") * -1);
+  }
 
   .project__cover {
     animation: none;
