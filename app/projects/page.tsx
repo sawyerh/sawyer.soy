@@ -1,7 +1,9 @@
+import clsx from "clsx";
 import { HeaderNav } from "components/HeaderNav";
 import Link from "next/link";
 import css from "./page.module.css";
 import { PaidLeaveFlow } from "./PaidLeaveFlow";
+import { Video } from "./Video";
 
 function slugifyTitle(title: string) {
   return title
@@ -13,6 +15,26 @@ function slugifyTitle(title: string) {
 
 const projects = [
   {
+    title: "Massachusetts Paid Family &amp; Medical Leave",
+    cover: <PaidLeaveFlow />,
+    body: (
+      <p>
+        I was a full-stack engineer on the team responsible for implementing the
+        Massachusetts Paid Family &amp; Medical Leave system, a brand new state
+        program that provides paid time off for workers. The team successfully
+        launched the application within a year, by the legislative deadline,
+        during the COVID-19 pandemic. I led various initiatives, including a
+        migration from JavaScript to TypeScript, usage of Storybook to test each
+        question page in isolation, and introduced the concept of{" "}
+        <Link href="/blog/routing-with-state-machines">
+          using a state machine to manage the complex multi-step application
+          flow
+        </Link>
+        , allowing the team to visualize the implemented logic.
+      </p>
+    ),
+  },
+  {
     title: "CMS Design System",
     cover: (
       <img
@@ -22,11 +44,10 @@ const projects = [
     ),
     body: (
       <p>
-        I was the tech lead for the Centers for Medicare & Medicaid Services
-        (CMS) Design System. Initially built for HealthCare.gov, it’s also now
-        in use on sites like Medicare.gov and CMS.gov. I was the sole
-        contributor during the initial development of the system, and was
-        responsible for the system’s{" "}
+        I was the tech lead and helped create the Centers for Medicare &
+        Medicaid Services (CMS) Design System. Initially built for
+        HealthCare.gov, it’s also now in use on sites like Medicare.gov and
+        CMS.gov. I was responsible for the system’s{" "}
         <a
           href="https://www.navapbc.com/insights/building-design-system-healthcare-gov"
           target="_blank"
@@ -39,45 +60,10 @@ const projects = [
     ),
   },
   {
-    title: "Dropmark",
-    subheading: <a href="https://dropmark.com">dropmark.com</a>,
-    video: "/portfolio/dropmark-demo.mp4",
-    body: (
-      <p>
-        Dropmark helps organize all your links, files, and notes into visual
-        collections. As part of the 4-person team at Oak Studios, I helped shape
-        the product vision, design, and development. In 2015, I focused on
-        making the product self-sustaining, leading the creation of the Teams
-        offering. I led the design and development of features like annotations,
-        reactions, a new browser extension, and overall refresh of the Dropmark
-        brand.
-      </p>
-    ),
-  },
-  {
-    title: "Massachusetts Paid Family &amp; Medical Leave",
-    cover: <PaidLeaveFlow />,
-    body: (
-      <p>
-        I was a full-stack engineer on the team responsible for implementing the
-        Massachusetts Paid Family &amp; Medical Leave application, a brand new
-        state program that provides paid time off for workers. The team
-        successfully launched the application within a year, by the legislative
-        deadline, during the COVID-19 pandemic. I led various initiatives,
-        including a migration from JavaScript to TypeScript, usage of Storybook
-        to test each question page in isolation, and introduced the concept of{" "}
-        <Link href="/blog/routing-with-state-machines">
-          using a state machine to manage the complex multi-step application
-          flow
-        </Link>
-        , allowing the team to visualize the implemented logic.
-      </p>
-    ),
-  },
-  {
     title: "HealthCare.gov",
     cover: (
       <img
+        loading="lazy"
         src="/portfolio/hc-gov.jpg"
         alt="Screenshot of HealthCare.gov. Page heading shows: Complete these steps to apply for & enroll in health coverage."
       />
@@ -99,6 +85,22 @@ const projects = [
           help and guidance
         </a>{" "}
         patterns.
+      </p>
+    ),
+  },
+  {
+    title: "Dropmark",
+    subheading: <a href="https://dropmark.com">dropmark.com</a>,
+    video: "/portfolio/dropmark-demo.mp4",
+    body: (
+      <p>
+        Dropmark helps organize all your links, files, and notes into visual
+        collections. As part of the 4-person team at Oak Studios, I helped shape
+        the product vision, design, and development. In 2015, I focused on
+        making the product self-sustaining, leading the creation of the Teams
+        offering. I led the design and development of features like annotations,
+        reactions, a new browser extension, and overall refresh of the Dropmark
+        brand.
       </p>
     ),
   },
@@ -174,6 +176,7 @@ const projects = [
     title: "Gazette",
     cover: (
       <img
+        loading="lazy"
         src="/portfolio/gazette.jpg"
         alt="Webpage screenshot showing an iPad with a multi-column article."
       />
@@ -226,9 +229,7 @@ export default function Page() {
       <HeaderNav className="wrapper" />
       <main>
         <section className="wrapper">
-          <h1 className="text-3xl text-terracotta-800">
-            Projects I&rsquo;ve worked on
-          </h1>
+          <h1 className="text-3xl text-terracotta-800">My work</h1>
           <p className="mb-14 text-xl leading-relaxed">
             With over a decade of experience, I’ve worn many hats, ranging from
             UX and Product Design, Frontend, and Backend. Projects I’ve worked
@@ -238,36 +239,36 @@ export default function Page() {
           </p>
         </section>
 
-        <h2 className="wrapper mb-7 font-marker text-xl">
-          Selected works from 2007&ndash;2024 ↓
+        <h2
+          className={clsx(
+            "wrapper mb-7 font-marker text-xl",
+            css["project-buffer"],
+          )}
+        >
+          Selected projects from 2007&ndash;2024 ↓
         </h2>
 
         <section className="bg-moss-900 py-14">
-          <div className={`wrapper text-slate-100 ${css.projects}`}>
+          <div className={`wrapper text-slate-100`}>
             {projects.map((project, index) => (
               <article
                 key={index}
-                className="mb-28"
+                className={clsx("mb-28", css.project)}
                 id={slugifyTitle(project.title)}
               >
                 <div className={`${css["project__cover"]} mb-7`}>
                   {project.video ? (
-                    <video
-                      src={project.video}
-                      autoPlay
-                      loop
-                      muted
-                      className="shadow-lg"
-                    ></video>
+                    <Video src={project.video} />
                   ) : (
                     project.cover
                   )}
                 </div>
-                <h3 className="text-2xl text-terracotta-300">
+                <h3 className="text-lg text-terracotta-300">
                   <span dangerouslySetInnerHTML={{ __html: project.title }} />
                   <a
                     href={`#${slugifyTitle(project.title)}`}
-                    className="relative -top-0.5 ml-2 inline-block text-lg font-normal text-moss-500 no-underline"
+                    className="ml-2 inline-block text-base font-normal text-moss-500 no-underline"
+                    title={`Jump link to ${project.title}`}
                   >
                     #
                   </a>
@@ -277,11 +278,14 @@ export default function Page() {
             ))}
           </div>
 
-          <h2 className="wrapper mb-6 font-marker text-xl text-slate-100">
+          <h2
+            className="wrapper mb-6 font-marker text-xl text-slate-100"
+            id="open-source"
+          >
             My open-source projects ↓
           </h2>
 
-          <div className="wrapper mb-24 grid grid-cols-3 gap-6 text-slate-100">
+          <div className="wrapper mb-24 grid grid-cols-2 gap-6 text-slate-100 sm:grid-cols-3">
             {openSourceProjects.map((project, index) => (
               <article key={index} className="bg-moss-950 p-6">
                 <h3 className="text-base font-normal">
@@ -292,7 +296,7 @@ export default function Page() {
                     {project.title}
                   </a>
                 </h3>
-                <div className={`text-sm ${css["os__body"]}`}>
+                <div className={`text-sm ${css["project-card"]}`}>
                   {project.body}
                 </div>
               </article>
