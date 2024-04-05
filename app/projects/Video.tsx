@@ -59,7 +59,15 @@ export function Video(props: VideoProps) {
 
   return (
     <div className="relative">
-      <video onClick={handleToggle} ref={ref} {...videoProps} muted loop />
+      <video
+        width="1280"
+        height="720"
+        onClick={handleToggle}
+        ref={ref}
+        {...videoProps}
+        muted
+        loop
+      />
       {!hideControls && (
         <button
           className="absolute -bottom-14 -right-5 p-5 text-slate-400 hover:text-slate-200"

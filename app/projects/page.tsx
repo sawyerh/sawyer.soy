@@ -39,6 +39,9 @@ const projects = [
     title: "CMS Design System",
     cover: (
       <img
+        width="1280"
+        height="720"
+        loading="lazy"
         src="/portfolio/cms-design-system.jpg"
         alt="Screenshot of a Step List component documentation, overlaid with a brand colors documentation snippet."
       />
@@ -64,6 +67,8 @@ const projects = [
     title: "HealthCare.gov",
     cover: (
       <img
+        width="1280"
+        height="720"
         loading="lazy"
         src="/portfolio/hc-gov.jpg"
         alt="Screenshot of HealthCare.gov. Page heading shows: Complete these steps to apply for & enroll in health coverage."
@@ -177,6 +182,8 @@ const projects = [
     title: "Gazette",
     cover: (
       <img
+        width="1280"
+        height="720"
         loading="lazy"
         src="/portfolio/gazette.jpg"
         alt="Webpage screenshot showing an iPad with a multi-column article."
