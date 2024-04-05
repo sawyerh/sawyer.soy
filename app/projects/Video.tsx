@@ -26,6 +26,7 @@ const intersectionObserver =
 export function Video(props: VideoProps) {
   const ref = useRef<HTMLVideoElement>(null);
   const [isPlaying, setIsPlaying] = useState(false);
+  const { hideControls, ...videoProps } = props;
 
   useEffect(() => {
     const videoEl = ref.current;
@@ -58,8 +59,8 @@ export function Video(props: VideoProps) {
 
   return (
     <div className="relative">
-      <video onClick={handleToggle} ref={ref} {...props} muted loop />
-      {!props.hideControls && (
+      <video onClick={handleToggle} ref={ref} {...videoProps} muted loop />
+      {!hideControls && (
         <button
           className="absolute -bottom-14 -right-5 p-5 text-slate-400 hover:text-slate-200"
           onClick={handleToggle}
