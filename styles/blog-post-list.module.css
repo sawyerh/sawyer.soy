@@ -39,10 +39,9 @@
 
   .article-title {
     color: theme(colors.terracotta.800);
+    font-weight: bold;
     font-size: theme(fontSize.xl);
     line-height: theme(lineHeight.tight);
-    text-wrap: balance;
-    font-weight: bold;
   }
 
   p {

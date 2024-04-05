@@ -293,7 +293,7 @@ export default function Page() {
             My open-source projects ↓
           </h2>
 
-          <div className="wrapper mb-20 grid grid-cols-2 gap-6 text-slate-100 sm:grid-cols-3">
+          <div className="wrapper mb-20 grid gap-6 text-slate-100 min-[450px]:grid-cols-2 sm:grid-cols-3">
             {openSourceProjects.map((project, index) => (
               <article key={index} className="bg-moss-950 p-6">
                 <h3 className="text-base font-normal">

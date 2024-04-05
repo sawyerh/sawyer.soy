@@ -43,7 +43,7 @@ export default function Page() {
 
         <div className={classNames(styles["body"], styles["row"], "grow")}>
           <p className="font-marker text-3xl text-terracotta-700">Heyo,</p>
-          <p className="text-balance">
+          <p>
             I&rsquo;m a full-stack engineer specializing in frontend
             development, with a background in UX design. Coworkers have given me
             shoutouts for:

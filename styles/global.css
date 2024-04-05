@@ -50,6 +50,7 @@ Type elements
   h4 {
     margin-bottom: 0.25em;
     font-weight: bold;
+    text-wrap: balance;
 
     &:has(+ blockquote) {
       margin-bottom: 0.75em;
@@ -172,9 +173,5 @@ Custom utilities
   .font-marker {
     font-weight: normal;
     font-family: var(--font-marker);
-  }
-
-  .text-balance {
-    text-wrap: balance;
   }
 }
