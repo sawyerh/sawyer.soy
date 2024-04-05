@@ -3,17 +3,30 @@ import Link from "next/link";
 import css from "./page.module.css";
 import { PaidLeaveFlow } from "./PaidLeaveFlow";
 
+function slugifyTitle(title: string) {
+  return title
+    .toLowerCase()
+    .replace(/&[a-z]+;/g, "")
+    .replace(/[^a-z\s]/g, "")
+    .replace(/\s+/g, "-");
+}
+
 const projects = [
   {
     title: "CMS Design System",
-    cover: <img src="/portfolio/cms-design-system.jpg" alt="" />,
+    cover: (
+      <img
+        src="/portfolio/cms-design-system.jpg"
+        alt="Screenshot of a Step List component documentation, overlaid with a brand colors documentation snippet."
+      />
+    ),
     body: (
       <p>
-        I was the technical lead for the CMS Design System, now used across
-        Centers for Medicare & Medicaid Services (CMS) projects such as
-        HealthCare.gov, Medicare.gov, and CMS.gov. Before the team grew with
-        more resources, I was the sole contributor during the initial
-        development of the system, and was responsible for the system’s{" "}
+        I was the tech lead for the Centers for Medicare & Medicaid Services
+        (CMS) Design System. Initially built for HealthCare.gov, it’s also now
+        in use on sites like Medicare.gov and CMS.gov. I was the sole
+        contributor during the initial development of the system, and was
+        responsible for the system’s{" "}
         <a
           href="https://www.navapbc.com/insights/building-design-system-healthcare-gov"
           target="_blank"
@@ -32,7 +45,7 @@ const projects = [
     body: (
       <p>
         Dropmark helps organize all your links, files, and notes into visual
-        collections. As part of the 3-person team at Oak Studios, I helped shape
+        collections. As part of the 4-person team at Oak Studios, I helped shape
         the product vision, design, and development. In 2015, I focused on
         making the product self-sustaining, leading the creation of the Teams
         offering. I led the design and development of features like annotations,
@@ -42,18 +55,17 @@ const projects = [
     ),
   },
   {
-    title: <>Massachusetts Paid Family &amp; Medical Leave</>,
+    title: "Massachusetts Paid Family &amp; Medical Leave",
     cover: <PaidLeaveFlow />,
     body: (
       <p>
-        I served as a full-stack engineer on the team responsible for
-        implementing the Massachusetts Paid Family &amp; Medical Leave
-        application, a brand new state program that provides paid time off for
-        workers. The team successfully launched the application within a year,
-        by the legislative deadline, during the COVID-19 pandemic. I led various
-        initiatives, including a migration from JavaScript to TypeScript, usage
-        of Storybook to test each question page in isolation, and introduced the
-        concept of{" "}
+        I was a full-stack engineer on the team responsible for implementing the
+        Massachusetts Paid Family &amp; Medical Leave application, a brand new
+        state program that provides paid time off for workers. The team
+        successfully launched the application within a year, by the legislative
+        deadline, during the COVID-19 pandemic. I led various initiatives,
+        including a migration from JavaScript to TypeScript, usage of Storybook
+        to test each question page in isolation, and introduced the concept of{" "}
         <Link href="/blog/routing-with-state-machines">
           using a state machine to manage the complex multi-step application
           flow
@@ -64,13 +76,17 @@ const projects = [
   },
   {
     title: "HealthCare.gov",
-    cover: <img src="/portfolio/hc-gov.jpg" alt="" />,
+    cover: (
+      <img
+        src="/portfolio/hc-gov.jpg"
+        alt="Screenshot of HealthCare.gov. Page heading shows: Complete these steps to apply for & enroll in health coverage."
+      />
+    ),
     body: (
       <p>
-        I served as an interaction designer on the team responsible for
-        redesigning the HealthCare.gov eligibility and enrollment experience. I
-        was responsible for solving foundational complex form design challenges,
-        such as{" "}
+        I was an interaction designer on the team redesigning the HealthCare.gov
+        eligibility and enrollment experience. I was responsible for solving
+        complex form design challenges, such as{" "}
         <a href="https://www.navapbc.com/insights/form-design-approaches">
           downstream effects & nonlinear navigation
         </a>
@@ -92,17 +108,11 @@ const projects = [
     body: (
       <>
         <p>
-          Initially designed and built in one month at Oak Studios, Siteleaf has
-          grown to become a formidable CMS for static Jekyll websites. Our
-          philosophy behind Siteleaf is that you should be able to host your
-          website anywhere you want. That websites should be able to outlive
-          their CMS. That our tools should be simplified, but not dumbed down.
-        </p>
-        <p>
-          As part of the 4 person team, I led the design and front-end
-          development of the CMS focusing on building powerful management
-          controls while aiming to make it as simple and clear as possible for
-          clients who may just want to update their damn site.
+          Initially designed and built in one month at Oak Studios, Siteleaf is
+          a CMS for static Jekyll websites. As part of the 4-person team, I led
+          the design and frontend development, building the bulk of the
+          frontend, including a WYSIWYG markdown editor and smart metadata
+          controls that adjust based on the name of the field.
         </p>
       </>
     ),
@@ -111,15 +121,17 @@ const projects = [
     title: "Highlights",
     video: "/portfolio/highlights-demo.mp4",
     body: (
-      <>
-        <p>
-          I read in iBooks and Kindle, where the highlights ecosystem isn’t
-          exactly the most open. To get around this, I devised this hacky
-          solution which uses Email, AWS, and Siteleaf to get a grasp on my
-          highlights and share them online. This is the site where all of those
-          highlights end up.
-        </p>
-      </>
+      <p>
+        As a side project, I designed and built tooling to help track, share,
+        and search my reading highlights. Using the project as a learning
+        playground, I’ve built a robust serverless architecture for importing
+        highlights, fetching book metadata, and{" "}
+        <Link href="/blog/semantic-search-for-reading-highlights">
+          generating text embeddings to support semantic search and
+          summarization
+        </Link>
+        .
+      </p>
     ),
   },
   {
@@ -128,16 +140,14 @@ const projects = [
     body: (
       <p>
         CreativeMornings is a breakfast lecture series for the creative
-        community, founded by Tina Roth Eisenberg. In 2012, after a successful
-        Kickstarter campaign, they approached Oak Studios to help design and
-        build their online presence. As part of the team, I led the design and
-        front-end development of the initial CreativeMornings.com which was
-        translated into 11 languages, included over 350 hours of video and an
-        administrative section for hosts to manage event registration and
-        content. Over time, through our ongoing relationship with
-        CreativeMornings, we continued to lead the site’s development,
-        supporting a site that has grown to over 100k users, over 2k videos, and
-        a presence in over 130 cities across the world.
+        community. As part of a small 3-person consulting team, I led the design
+        and frontend development of the initial CreativeMornings.com website.
+        The site was translated into 11 languages, included over 350 hours of
+        video and an administrative section for hosts to manage event
+        registration and content. I was responsible for a number of
+        interactions, from the login form dropping off the page when you log in,
+        raining hearts when you like a video, tagging quotes within videos, and
+        a custom interactive map showing all chapter locations.
       </p>
     ),
   },
@@ -147,41 +157,66 @@ const projects = [
     body: (
       <>
         <p>
-          Blue was the first iOS app we launched at Oak, and was designed and
-          built in one week during our yearly team getaway. Blue provides
-          36-hour weather forecasts relevant to your location in a fast and fun
-          interface. You can swipe up to see each hour represented in a colorful
-          gradient visual, generated based on three variables: temperature,
-          humidity, and sunrise/sunset times.
-        </p>
-        <p>
-          I was responsible for conceptualizing and creating a marketing page
-          for the app and decided the best way to explain the app was to show it
-          in action and let it speak for itself. Over a period of 24 hours,
-          using an iPad I recorded a timelapse of the Los Angeles cityscape from
-          the balcony of the Airbnb we were staying at. From there I recreated
+          Blue was a weather app we launched at Oak Studios, and was designed
+          and built in one week during our yearly team getaway. I was
+          responsible for conceptualizing and creating a marketing page for the
+          app and decided the best way to explain the app was to show it in
+          action and let it speak for itself. Over a period of 24 hours, I
+          recorded a timelapse overlooking Los Angeles. From there I recreated
           the app’s interface in HTML & CSS, then paired a CSS animation of the
-          interface with the timelapse video background, demonstrating the
-          relation between weather, time, and the interface’s color gradient.
+          interface with the timelapse, demonstrating the relation between
+          weather, time, and the interface’s color gradient.
         </p>
       </>
     ),
   },
   {
     title: "Gazette",
-    cover: <img src="/portfolio/gazette.jpg" alt="" />,
+    cover: (
+      <img
+        src="/portfolio/gazette.jpg"
+        alt="Webpage screenshot showing an iPad with a multi-column article."
+      />
+    ),
     body: (
       <p>
-        Gazette was a product experiment I helped birth at Oak Studios. It
-        allowed you to subscribe to your favorite blogs, websites, and
-        publications and receive a weekly, personalized ebook to read and
-        highlight on iOS, Kindle, or other device that supported ePub/Mobi
-        formats. It synced issues with Readmill, Kindle, and also allowed you to
-        download directly. Unfortunately it didn’t take off how we would’ve
-        liked and we decided to shelve the idea in 2014 in order to focus on
-        other products.
+        Gazette was a product I conceptualized and built the frontend for while
+        at Oak Studios. It allowed you to subscribe to your favorite blogs,
+        websites, and publications and receive a weekly, personalized ebook to
+        read and highlight on iOS, Kindle, or Android. It synced issues with
+        Readmill, Kindle, and also allowed you to download directly.
       </p>
     ),
+  },
+];
+
+const openSourceProjects = [
+  {
+    title: "eslint-plugin-todo-plz",
+    body: <p>Enforce consistent and maintainable TODO comments</p>,
+    url: "https://github.com/sawyerh/eslint-plugin-todo-plz",
+  },
+  {
+    title: "eslint-plugin-no-node-env",
+    body: <p>Prevent usage of NODE_ENV</p>,
+    url: "https://github.com/sawyerh/eslint-plugin-no-node-env",
+  },
+  {
+    title: "cursor.in",
+    body: <p>SVG Mac cursor icon downloads</p>,
+    url: "https://cursor.in/",
+  },
+  {
+    title: "DevTools: U.S. Web Design System (USWDS)",
+    body: (
+      <p>Learn what U.S. Web Design System components are in use on a page</p>
+    ),
+    url: "https://chromewebstore.google.com/detail/devtools-us-web-design-sy/pkdhffidhfklfcpockffiadeaelfflge",
+  },
+  {
+    title: "Raycast: Type Snob",
+    body: <p>Find the correct typographic character</p>,
+    url: "https://www.raycast.com/sawyerh/type-snob",
   },
 ];
 
@@ -210,8 +245,12 @@ export default function Page() {
         <section className="bg-moss-900 py-14">
           <div className={`wrapper text-slate-100 ${css.projects}`}>
             {projects.map((project, index) => (
-              <article key={index} className="mb-28">
-                <div className="mb-7">
+              <article
+                key={index}
+                className="mb-28"
+                id={slugifyTitle(project.title)}
+              >
+                <div className={`${css["project__cover"]} mb-7`}>
                   {project.video ? (
                     <video
                       src={project.video}
@@ -225,9 +264,37 @@ export default function Page() {
                   )}
                 </div>
                 <h3 className="text-2xl text-terracotta-300">
-                  {project.title}
+                  <span dangerouslySetInnerHTML={{ __html: project.title }} />
+                  <a
+                    href={`#${slugifyTitle(project.title)}`}
+                    className="relative -top-0.5 ml-2 inline-block text-lg font-normal text-moss-500 no-underline"
+                  >
+                    #
+                  </a>
                 </h3>
-                {project.body}
+                <div className={css["project__body"]}>{project.body}</div>
+              </article>
+            ))}
+          </div>
+
+          <h2 className="wrapper mb-6 font-marker text-xl text-slate-100">
+            My open-source projects ↓
+          </h2>
+
+          <div className="wrapper mb-24 grid grid-cols-3 gap-6 text-slate-100">
+            {openSourceProjects.map((project, index) => (
+              <article key={index} className="bg-moss-950 p-6">
+                <h3 className="text-base font-normal">
+                  <a
+                    href={project.url}
+                    className="text-terracotta-300 underline"
+                  >
+                    {project.title}
+                  </a>
+                </h3>
+                <div className={`text-sm ${css["os__body"]}`}>
+                  {project.body}
+                </div>
               </article>
             ))}
           </div>
