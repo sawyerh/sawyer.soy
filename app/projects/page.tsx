@@ -30,8 +30,9 @@ const projects = [
         <Link href="/blog/routing-with-state-machines">
           using a state machine to manage the complex multi-step application
           flow
-        </Link>
-        , allowing the team to visualize the implemented logic.
+        </Link>{" "}
+        (60+ potential pages), allowing the team to visualize the implemented
+        routing behavior.
       </p>
     ),
   },
