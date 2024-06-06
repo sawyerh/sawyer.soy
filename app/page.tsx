@@ -63,17 +63,6 @@ export default function Page() {
             <li>Anticipating issues and diving deep to find solutions</li>
           </ul>
 
-          <h2 className="subhead--marker mt-md">My work</h2>
-          <p>
-            I&rsquo;m at <a href="https://www.navapbc.com/">Nava</a>, working to
-            make government services effective and accessible. Some projects
-            I&rsquo;ve worked on include: HealthCare.gov, Massachusetts Paid
-            Family <span className="font-marker">&amp;</span> Medical Leave, and{" "}
-            unemployment insurance modernization at the federal and state
-            levels. Before that, I was at Oak Studios, designing and building
-            useful apps for developers and the creative community.
-          </p>
-
           <Link
             href="/projects"
             className="font-bold text-terracotta-800 hover:text-terracotta-950"
