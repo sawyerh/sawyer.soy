@@ -1,86 +1,77 @@
-@media screen(sm) {
-  .container {
-    display: flex;
-  }
-}
-
-.row {
-  padding-inline: theme(spacing.sm);
+.container {
+  min-height: 100%;
 
   @media screen(sm) {
-    padding-inline: theme(spacing.md);
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    grid-template-columns: theme(space.golden-small) theme(space.golden-large);
+    grid-template-areas:
+      "hero header"
+      "hero main"
+      "hero footer";
   }
 
-  @media screen(md) {
-    padding-inline: theme(spacing.lg);
+  > *:not(.hero) {
+    padding-inline: theme(spacing.sm);
+
+    @media screen(sm) {
+      padding-inline: theme(spacing.md);
+    }
+
+    @media screen(md) {
+      padding-inline: theme(spacing.lg);
+    }
   }
 }
 
 .hero {
-  container-name: video-column;
-  container-type: size;
+  position: relative;
+  grid-area: hero;
   background: url("/alabama-hills-cover.webp") no-repeat center center;
   background-size: cover;
   padding-top: theme(space.golden-small);
-  width: 100%;
   overflow: hidden;
-}
 
-@media screen(sm) {
-  .hero {
-    position: sticky;
-    top: 0;
+  @media screen(sm) {
     padding-top: 0;
-    width: theme(space.golden-small);
-    height: 100vh;
+  }
+
+  video {
+    position: absolute;
+    transform: scale(1.6);
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 40%;
+
+    @media screen(sm) {
+      transform: none;
+      object-position: center;
+    }
+  }
+
+  /* Apply tint on top of video */
+  &::after {
+    display: block;
+    position: absolute;
+    opacity: 0.1;
+    mix-blend-mode: hard-light;
+    inset: 0;
+    background-color: theme(colors.terracotta.700);
+    content: "";
   }
 }
 
-/* Apply tint on top of video */
-.hero::after {
-  display: block;
-  position: absolute;
-  top: 0;
-  left: 0;
-  opacity: 0.1;
-  mix-blend-mode: hard-light;
-  background-color: theme(colors.terracotta.700);
-  width: 100%;
-  height: 100%;
-  content: "";
+.header {
+  grid-area: header;
 }
 
-.video {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translateX(-50%) translateY(-50%);
-  max-width: none;
-  max-height: 100%;
+.main {
+  grid-area: main;
+  margin-bottom: theme(space.lg);
 }
 
-@container video-column (min-aspect-ratio: 1303/978) {
-  .video {
-    top: 66%; /* vertically align myself */
-    transform: translateX(-50%) translateY(-50%) scale(1.6);
-    max-width: 100%;
-    max-height: none;
-  }
-}
-
-.body {
-  margin-bottom: theme(space.md);
-}
-
-.link-list {
-  text-wrap: balance;
-}
-
-.link-list li {
-  display: inline;
-}
-
-.link-list a {
-  display: inline-block;
-  padding: theme(spacing.1);
+.footer {
+  grid-area: footer;
 }
