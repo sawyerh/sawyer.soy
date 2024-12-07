@@ -8,7 +8,9 @@ excerpt: >-
 category: Article
 ---
 
-Routing logic in complex web applications can be a source of confusion and bugs. It pays off if the technical solution your team chooses for managing routing logic makes it easy to change where pages route to, and provides a holistic view of how pages connect to each other. State machines can be a framework and language agnostic option for maintaining the routing logic in your applications, and they can be visualized!
+Routing logic in complex web applications, like multipage form wizards, can be a source of confusion and bugs. It pays off if the technical solution your team chooses makes it easy to change where pages route to, and provides a holistic view of how pages connect to each other. State machines can be a language agnostic option for maintaining the routing logic in your applications, and they can be visualized!
+
+Here's how I've used a state machine to define and visualize routing logic in a large branching government application form.
 
 ### What’s a state machine?
 
@@ -23,12 +25,30 @@ State machines have been around since the 1950’s, so we’re not inventing any
 
 ### Elements of a routing machine
 
-On the three projects I’ve worked on so far at [Nava](https://www.navapbc.com/) over the past 4+ years, each one has included [building multi-page, branching form experiences](https://blog.navapbc.com/structuring-a-complex-eligibility-form-for-healthcare-gov-37d79a5ad6). Our forms often include branches a person is routed down, depending on their answers to preceding questions. Our forms need to answer: What’s the next page a person should be routed to after answering the current questions and pressing “Continue”? Using a state machine for this has worked really well. Below are the main elements of what we’ve implemented:
+On the projects I worked on while at [Nava](https://www.navapbc.com/), each project involved [building multi-page, branching form experiences](https://blog.navapbc.com/structuring-a-complex-eligibility-form-for-healthcare-gov-37d79a5ad6). Our forms often include branches a person is routed down, depending on their answers to preceding questions. Our forms need to answer: What’s the next page a person should be routed to after answering the current questions and pressing “Continue”?
 
+Using a state machine for this has worked really well. Below are the main elements of what we’ve implemented:
+
+- Visualization
 - Routes
 - State machine
 - Router
-- Visualization
+
+### Visualization
+
+One of the biggest selling points to me for using a state machine for routing logic is that you can render your state machine as a diagram, visualizing what’s defined in your code. This is a helpful tool for auditing your routing behavior, identifying the various paths a user might take through a flow.
+
+There are various ways you can generate this diagram. If you’re using XState, you can use the XState [visualizer](https://xstate.js.org/viz/) or [inspector](https://statecharts.io/). On my most recent project, we used [Mermaid](https://mermaid-js.github.io/mermaid/#/flowchart) to generate our routing digram, and we render it in our project’s [Storybook](https://storybook.js.org/). GDS’s [Smart Answers](https://github.com/alphagov/smart-answers) tool include [a public route for visualizing each flow](https://www.gov.uk/business-coronavirus-support-finder/y/visualise).
+
+Here’s what our example state machine looks like using Mermaid to generate a visualization:
+
+<MarkdownImage
+  url="/uploads/state-machine-visual.webp"
+  alt="Flow diagram showing a flow through page routes "
+  size="small"
+/>
+
+[Here’s the state machine in XState’s visualizer](https://xstate.js.org/viz/?gist=0fa11f317c50c86bd5a058253124414e) for comparison.
 
 ### Routes
 
@@ -54,7 +74,7 @@ export const routes = {
 
 ### State machine
 
-Your routing state machine is where you define the events each of your page’s supports that result in a routing transition. Within this machine you have:
+Your state machine is where you define which events result in a routing transition. Within this you have:
 
 - State nodes. Each route is a node.
 - Events. Each route’s state node has events that result in a routing change.
@@ -179,21 +199,5 @@ function IncomePage() {
   );
 }
 ```
-
-### Visualization
-
-One of the biggest selling points to me for using a state machine for routing logic is that you can render your state machine as a diagram, visualizing what’s defined in your code. This is a helpful tool for auditing your routing behavior, identifying the various paths a user might take through a flow.
-
-There are various ways you can generate this diagram. If you’re using XState, you can use the XState [visualizer](https://xstate.js.org/viz/) or [inspector](https://statecharts.io/). On my most recent project, we used [Mermaid](https://mermaid-js.github.io/mermaid/#/flowchart) to generate our routing digram, and we render it in our project’s [Storybook](https://storybook.js.org/). GDS’s [Smart Answers](https://github.com/alphagov/smart-answers) tool include [a public route for visualizing each flow](https://www.gov.uk/business-coronavirus-support-finder/y/visualise).
-
-Here’s what our example state machine looks like using Mermaid to generate a visualization:
-
-<MarkdownImage
-  url="/uploads/state-machine-visual.webp"
-  alt="Flow diagram showing a flow through page routes "
-  size="small"
-/>
-
-[Here’s the state machine in XState’s visualizer](https://xstate.js.org/viz/?gist=0fa11f317c50c86bd5a058253124414e) for comparison.
 
 Interested in learning more? Check out [statecharts.dev](https://statecharts.dev/).
