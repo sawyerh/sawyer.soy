@@ -1,7 +1,7 @@
 import Link from "next/link";
 import styles from "styles/blog-post-list.module.css";
-import { getPosts, postToUrl } from "tina/helpers";
 import { getHostFromURL } from "utils/getHostFromURL";
+import { getPosts, postToUrl } from "./mdx-helpers";
 
 export default async function Links() {
   const posts = await getPosts();
@@ -12,7 +12,7 @@ export default async function Links() {
       {links.map((post) => (
         <Link
           href={postToUrl(post)}
-          key={post.filename}
+          key={post.slug}
           className={styles["linkroll-link"]}
         >
           {post.title} {post.draft && "✏ [Draft] "}{" "}

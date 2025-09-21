@@ -1,5 +1,5 @@
 import RSS from "rss";
-import { getPosts } from "tina/helpers";
+import { getPosts, postToUrl } from "../blog/mdx-helpers";
 
 export async function GET() {
   const posts = await getPosts();
@@ -13,8 +13,8 @@ export async function GET() {
     rss.item({
       title: post.title,
       description: post.excerpt,
-      url: `https://sawyer.soy/blog/${post.filename}`,
-      guid: post.filename,
+      url: `https://sawyer.soy${postToUrl(post)}`,
+      guid: post.slug,
       date: post.published_at,
     });
   });

@@ -1,10 +1,9 @@
-import { TinaMarkdownContent } from "tinacms/dist/rich-text";
 import styles from "./Card.module.css";
 import Markdown from "./Markdown";
 
 interface CardProps {
   backgroundPosition?: string;
-  body: TinaMarkdownContent;
+  body: string;
   imageUrl: string;
   imgAlt: string;
 }

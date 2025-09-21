@@ -1,12 +1,12 @@
 import { YouTubeEmbed } from "@next/third-parties/google"; // Experimental. https://github.com/vercel/next.js/tree/canary/packages/third-parties
-import { BlogPost } from "tina/helpers";
+import type { Post, PostCover } from "../app/blog/mdx-helpers";
 
 export default function Cover(props: {
   className?: string;
-  image_url?: BlogPost["cover"]["image_url"];
-  image_alt?: BlogPost["cover"]["image_alt"];
-  embed?: BlogPost["cover"]["embed"];
-  external_url?: BlogPost["external_url"];
+  image_url?: PostCover["image_url"];
+  image_alt?: PostCover["image_alt"];
+  embed?: PostCover["embed"];
+  external_url?: Post["external_url"];
 }) {
   if (props.external_url) {
     /**

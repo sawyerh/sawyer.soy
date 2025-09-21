@@ -1,14 +1,12 @@
 import classNames from "clsx";
 import Cover from "components/Cover";
 import FormattedDate from "components/FormattedDate";
-import Markdown from "components/Markdown";
-import PostEditLink from "components/PostEditLink";
 import { Metadata } from "next";
 import LocalFont from "next/font/local";
 import Link from "next/link";
 import styles from "styles/blog-post-permalink.module.css";
-import { getPost, getPosts, getPostSlug } from "tina/helpers";
 import { getHostFromURL } from "utils/getHostFromURL";
+import { getPost, getPostSlugs } from "../mdx-helpers";
 
 interface Props {
   params: { slug: string };
@@ -25,16 +23,17 @@ const monospaceHandwrittenFont = LocalFont({
 });
 
 export async function generateStaticParams() {
-  const posts = await getPosts();
+  const slugs = getPostSlugs();
 
-  return posts.map((post) => ({
-    slug: getPostSlug(post),
+  return slugs.map((slug) => ({
+    slug,
   }));
 }
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
+export async function generateMetadata(props: Props): Promise<Metadata> {
+  const params = await props.params;
   const post = await getPost(params.slug);
-  const image = post.cover.image_url;
+  const image = post.cover?.image_url;
 
   const description =
     post.category === "Link"
@@ -50,8 +49,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default async function Page({ params }: Props) {
-  const post = await getPost(params.slug);
+export default async function Page(props: Props) {
+  const params = await props.params;
+  const { PostBody, ...post } = await getPost(params.slug);
 
   return (
     <article
@@ -75,16 +75,13 @@ export default async function Page({ params }: Props) {
           or read <span className="font-marker">my notes</span> below.
         </div>
       )}
-      <h1 className={styles["post__title"]}>
-        {post.title}
-        <PostEditLink filename={post.filename} />
-      </h1>
+      <h1 className={styles["post__title"]}>{post.title}</h1>
       <FormattedDate
         className={styles["post__date"]}
         value={post.published_at}
       />
       <div className={styles["post__body"]}>
-        <Markdown content={post.body} />
+        <PostBody />
       </div>
       {post.category === "Article" && post.external_url && (
         <>
@@ -100,3 +97,5 @@ export default async function Page({ params }: Props) {
     </article>
   );
 }
+
+export const dynamicParams = false;

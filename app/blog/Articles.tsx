@@ -1,8 +1,8 @@
 import FormattedDate from "components/FormattedDate";
 import Link from "next/link";
 import styles from "styles/blog-post-list.module.css";
-import { getPosts, postToUrl } from "tina/helpers";
 import { getHostFromURL } from "utils/getHostFromURL";
+import { getPosts, postToUrl } from "./mdx-helpers";
 
 export default async function Articles() {
   const posts = await getPosts();
@@ -12,7 +12,7 @@ export default async function Articles() {
     <section>
       {articles.map((post) => (
         <Link
-          key={post.id}
+          key={post.slug}
           href={post.external_url ? post.external_url : postToUrl(post)}
           target={post.external_url ? "_blank" : undefined}
           className={styles["article"]}

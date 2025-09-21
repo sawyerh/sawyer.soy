@@ -1,4 +1,4 @@
-This is a [Tina CMS](https://tina.io/) and Next.js project.
+This is a Next.js project.
 
 ## Local Development
 
@@ -18,19 +18,8 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 ### Building the Starter Locally (Using the hosted content API)
 
-Replace the `.env.template`, with `.env`
-
 Build the project:
 
 ```bash
 npm run build
 ```
-
-## Learn More
-
-To learn more about Tina, take a look at the following resources:
-
-- [Tina Docs](https://tina.io/docs)
-- [Getting starter guide](https://tina.io/guides/tina-cloud/starter/overview/)
-
-## [Deploy on Vercel](https://tina.io/guides/tina-cloud/add-tinacms-to-existing-site/deployment/)
