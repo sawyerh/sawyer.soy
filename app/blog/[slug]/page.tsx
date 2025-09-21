@@ -9,7 +9,7 @@ import { getHostFromURL } from "utils/getHostFromURL";
 import { getPost, getPostSlugs } from "../mdx-helpers";
 
 interface Props {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }
 
 const monospaceFont = LocalFont({
