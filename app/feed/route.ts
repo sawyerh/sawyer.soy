@@ -1,6 +1,8 @@
 import RSS from "rss";
 import { getPosts, postToUrl } from "../blog/mdx-helpers";
 
+export const dynamic = "force-static";
+
 export async function GET() {
   const posts = await getPosts();
   const rss = new RSS({
