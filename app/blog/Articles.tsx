@@ -6,7 +6,9 @@ import { getPosts, postToUrl } from "./mdx-helpers";
 
 export default async function Articles() {
   const posts = await getPosts();
-  const articles = posts.filter((post) => post.category === "Article");
+  const articles = posts.filter(
+    (post) => post.category === "Article" && !post.draft,
+  );
 
   return (
     <section>

@@ -5,7 +5,7 @@ import { getPosts, postToUrl } from "./mdx-helpers";
 
 export default async function Links() {
   const posts = await getPosts();
-  const links = posts.filter((post) => post.category === "Link");
+  const links = posts.filter((post) => post.category === "Link" && !post.draft);
 
   return (
     <>
