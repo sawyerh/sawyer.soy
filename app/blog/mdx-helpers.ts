@@ -37,7 +37,11 @@ export const getPost = async (slug: string): Promise<Post> => {
 export const getPosts = async (): Promise<Post[]> => {
   const slugs = getPostSlugs();
   const posts = await Promise.all(slugs.map((slug) => getPost(slug)));
-  return posts;
+  return posts.sort((a, b) => {
+    return (
+      new Date(b.published_at).getTime() - new Date(a.published_at).getTime()
+    );
+  });
 };
 
 export const postToUrl = (post: Post) => {
